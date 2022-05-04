@@ -1,0 +1,23 @@
+<ul class="navbar">
+    <li class="nav-logo">Logo</li>
+    <li class="nav-collapse" (click)="classToggle()"><mat-icon>menu</mat-icon></li> 
+    <li class="nav-items">
+        <mat-icon class="nav-icons">departure_board</mat-icon>
+        Book-Tickets
+    </li>
+    <li class="nav-items">
+        <mat-icon class="nav-icons">free_cancellation</mat-icon>
+        Bookings
+    </li>
+    <li class="nav-items" routerLink="user/login">
+        <mat-icon class="nav-icons">how_to_reg</mat-icon>  Login
+    </li>
+    <li class="nav-items" routerLink="user/register">
+        <mat-icon class="nav-icons">person_add</mat-icon>
+        Register
+    </li>
+    <li class="nav-items">
+        <mat-icon class="nav-icons">logout</mat-icon>
+        Log-out</li>
+</ul>
+<router-outlet></router-outlet>
