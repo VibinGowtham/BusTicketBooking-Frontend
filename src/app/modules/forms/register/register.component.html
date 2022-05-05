@@ -7,26 +7,33 @@
         <div class="form-element">
             <i class="fa fa-user form-icons"></i>
               <input type="text" placeholder="Name" formControlName="name"><br>
-              <p class="error">err</p>
+             <p style="text-align: center; width: 92.3%;background-color: red;color: white;padding: 4px;" *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched">Username must be filled</p>
         </div>
+
         <div class="form-element">
             <i class="fa fa-envelope email-icon form-icons"></i>
-              <input type="email" placeholder="Email"><br>
+              <input type="email" placeholder="Email" formControlName="email"><br>
+              <p style="text-align: center; width: 92.3%;background-color: red;color: white;padding: 4px;" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">Please enter valid email</p>
         </div>
+
         <div class="form-element">
           <i class="fa fa-address-card form-icons contact-icon"></i>
-            <input type="text" placeholder="Contact Number"><br>
+            <input type="number" placeholder="Contact Number" formControlName="contactNo"><br>
+            <p style="text-align: center; width: 92.3%;background-color: red;color: white;padding: 4px;" *ngIf="registerForm.get('contactNo')?.invalid && registerForm.get('contactNo')?.touched">Phone number must be of 10 digits</p>
       </div>
+
       <div class="form-element">
         <i class="fa fa-lock form-icons"></i>
-          <input type="password" placeholder="Enter your Password">
+          <input type="password" placeholder="Enter your Password" formControlName="password">
+          <p style="text-align: center; width: 92.3%;background-color: red;color: white;padding: 4px;" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">Please enter atleast 8-15 characters</p>
       </div>
+
       <div class="form-element">
-          <button id="login">Register</button>
+          <button id="login"[disabled]="registerForm.invalid">Register</button>
       </div>     
 
     </form>
 </div>
-
+<!-- To check a password between 7 to 16 characters which contain only characters, numeric digits, underscore and first character must be a letter -->
 
 <pre>{{registerForm.value | json}}</pre>

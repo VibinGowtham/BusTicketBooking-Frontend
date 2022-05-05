@@ -1,27 +1,28 @@
 <div id="container">
 
-    <form id="form">
+    <form id="form" [formGroup]="loginForm">
 
         <h2 style="text-align: center;"><span>L</span>OGIN</h2>
 
         <div class="form-element">
           <i class="fa fa-user icon form-icons"></i>
-              <input type="email" placeholder="Email"><br>
+              <input type="email" placeholder="Email" formControlName="email"><br>
+              <p style="text-align: center; width: 93%;background-color: red;color: white;padding: 4px;" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">Please enter valid email</p>
         </div>
       <div class="form-element">
         <i class="fa fa-lock form-icons"></i>
-          <input type="password" placeholder="Password">
+          <input type="password" placeholder="Password" formControlName="password">
+          <p style="text-align: center; width: 93%;background-color: red;color: white;padding: 4px;" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">Please enter atleast 8-15 characters</p>
       </div>
 
       <div class="form-element">
-          <button id="login">Log in</button>
+          <button id="login" [disabled]="loginForm.invalid">Log in</button>
       </div>   
 
       <div class="form-element" id="register">
-          <p>New user? <a href="#">Register here</a></p>
+          <p>New user? <a href="user/register">Register here</a></p>
       </div>  
 
     </form>
 </div>
-<!-- <p>Navbar</p> -->
- <!-- <mat-icon>person</mat-icon> -->
+<pre>{{loginForm.value | json}}</pre>
