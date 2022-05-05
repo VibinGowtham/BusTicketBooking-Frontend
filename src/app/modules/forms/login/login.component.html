@@ -1,8 +1,13 @@
+<div *ngIf="isLoggedIn==true" [ngClass]="{'message':isLoggedIn==true}">
+  <mat-icon>check_circle</mat-icon> 
+  <span>{{response.message}}</span> 
+</div>
+
 <div id="container">
 
     <form id="form" [formGroup]="loginForm">
 
-        <h2 style="text-align: center;"><span>L</span>OGIN</h2>
+        <h2 style="text-align: center;"><span id="title">L</span>OGIN</h2>
 
         <div class="form-element">
           <i class="fa fa-user icon form-icons"></i>
@@ -16,7 +21,7 @@
       </div>
 
       <div class="form-element">
-          <button id="login" [disabled]="loginForm.invalid">Log in</button>
+          <button id="login" [disabled]="loginForm.invalid" (click)="postLoginDetails()">Log in</button>
       </div>   
 
       <div class="form-element" id="register">
@@ -25,4 +30,4 @@
 
     </form>
 </div>
-<pre>{{loginForm.value | json}}</pre>
+

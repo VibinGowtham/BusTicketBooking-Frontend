@@ -1,3 +1,10 @@
+<div *ngIf="isRegistered==true" [ngClass]="{'message':isRegistered==true}">
+  <mat-icon>check_circle</mat-icon> 
+  <span>{{response.message}}</span> 
+</div>
+
+<div></div>
+
 <div id="container">
 
     <form id="form" [formGroup]="registerForm">
@@ -18,7 +25,7 @@
 
         <div class="form-element">
           <i class="fa fa-address-card form-icons contact-icon"></i>
-            <input type="number" placeholder="Contact Number" formControlName="contactNo"><br>
+            <input type="text" placeholder="Contact Number" formControlName="contactNo"><br>
             <p style="text-align: center; width: 92.3%;background-color: red;color: white;padding: 4px;" *ngIf="registerForm.get('contactNo')?.invalid && registerForm.get('contactNo')?.touched">Phone number must be of 10 digits</p>
       </div>
 
@@ -29,11 +36,12 @@
       </div>
 
       <div class="form-element">
-          <button id="login"[disabled]="registerForm.invalid">Register</button>
+          <button id="login" [disabled]="registerForm.invalid" (click)="postDetails()">Register</button>
       </div>     
 
     </form>
 </div>
-<!-- To check a password between 7 to 16 characters which contain only characters, numeric digits, underscore and first character must be a letter -->
+
+
 
 <pre>{{registerForm.value | json}}</pre>

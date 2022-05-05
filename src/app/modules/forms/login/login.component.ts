@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl, Validators } from '@angular/forms';
+import { UserserviceService } from 'src/app/services/userServices/userservice.service';
 
 @Component({
   selector: 'app-login',
@@ -9,13 +10,31 @@ import { FormGroup,FormControl, Validators } from '@angular/forms';
 
 export class LoginComponent implements OnInit {
 
-  loginForm=new FormGroup({
-    email:new FormControl('',[Validators.required,Validators.email]),
-    password:new FormControl('',[Validators.required,Validators.pattern('([a-zA-Z0-9]){8,15}')])
+response!:{
+message:'',
+token:''
+}
+isLoggedIn!:boolean
+loginForm!:FormGroup
+
+postLoginDetails(){
+  let body=this.loginForm.value
+  this.loginForm.reset()
+  this.userService.post('login', body).subscribe(data=>{
+    this.isLoggedIn=true
+    this.response=data
+    console.log(data);
+    
   })
-  constructor() { }
+}
+  constructor(private userService:UserserviceService) { }
 
   ngOnInit(): void {
+    this.isLoggedIn=false
+    this.loginForm=new FormGroup({
+      email:new FormControl('',[Validators.required,Validators.email]),
+      password:new FormControl('',[Validators.required,Validators.pattern('([a-zA-Z0-9]){8,15}')])
+    })
   }
 
 }

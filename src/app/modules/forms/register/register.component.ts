@@ -1,5 +1,10 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UserserviceService } from 'src/app/services/userServices/userservice.service';
+
+// import { UserserviceService } from 'src/app/services/userServices/userservice.service';
+
 
 @Component({
   selector: 'app-register',
@@ -8,11 +13,24 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
+  isRegistered!:boolean
+  response!:{
+    message:''
+  }
   registerForm!:FormGroup
 
-  constructor() { }
+ postDetails(){
+   let body=this.registerForm.value
+   this.registerForm.reset()
+   this.userService.post('register', body).subscribe(data=>{
+     this.isRegistered=true
+     this.response=data     
+   })
+ }
+  constructor(private userService:UserserviceService) { }
 
   ngOnInit(): void {
+    this.isRegistered=false
     this.registerForm=new FormGroup({
       name:new FormControl("",[Validators.required,Validators.minLength(5)]),
       email:new FormControl('',[Validators.required,Validators.email]),
