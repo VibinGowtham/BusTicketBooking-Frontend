@@ -1,13 +1,13 @@
-ul{
-box-sizing: border-box;
-margin: 0;
-list-style: none;
-display: flex;
-justify-content: space-evenly;
-background-color: blueviolet;
+.navbar {
+    box-sizing: border-box;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: blueviolet;
 }
 
-li{
+.nav-items {
     display: flex;
     align-items: center;
     padding: 15px;
@@ -16,42 +16,54 @@ li{
     text-transform: uppercase;
 }
 
-li:hover{
-    font-size: 1.2em;
-    background-color: white;
-    color: black;
+#nav-logo {
+    display: flex;
+    text-transform: uppercase;
+    color: white;
+    padding: 15px;
     cursor: pointer;
 }
-.nav-icons{
+
+.nav-items:hover {
+    background-color: white;
+    color: black;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+.nav-icons {
     padding-right: 5px;
 }
 
-.nav-collapse{
+.nav-collapse {
     display: none;
-}
-/* svg{
     color: white;
-} */
+    margin-right: 10px;
+    cursor: pointer;
+}
 
-@media screen and (max-width:770px){
-    ul,li{
-   flex-direction: column;
-   padding-left: 0;
+@media screen and (max-width:770px) {
+
+    ul,
+    li {
+        flex-direction: column;
+        padding-left: 0;
     }
-    .nav-items{
-       display: none;
+
+    .nav-items-hide {
+        display: none;
     }
-    .nav-items-show{
-        display: initial;
+
+    .nav-collapse {
+        position: absolute;
+        top: 13px;
+        display: flex;
+        align-self: flex-end;
+        cursor: pointer;
     }
-    .nav-collapse{
-        display: initial;
-       align-self: flex-end;
-       position: absolute;
-       cursor: pointer;
-    }
-    .nav-show{
-       display: flex;
-       flex-direction: column;
+
+    .nav-show {
+        display: flex;
+        flex-direction: column;
     }
 }

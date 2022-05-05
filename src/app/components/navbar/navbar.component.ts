@@ -7,13 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  classToggle=()=> {
+  isLoggedIn!:boolean;
 
-    const navs = document.querySelectorAll('.navbar')
-    console.log(navs);
-    const navItems = document.querySelectorAll('.nav-items')
-    navItems.forEach(nav => nav.classList.remove('.nav-items'));
-    navs.forEach(nav => nav.classList.toggle('.nav-show'));
+  update(){
+    this.isLoggedIn=!this.isLoggedIn
+  }
+   classToggle() {
+    const navs = document.querySelectorAll('.nav-items')
+    navs.forEach(nav => nav.classList.toggle('nav-items-hide'));
   }
 
   constructor() { }

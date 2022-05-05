@@ -1,1 +1,32 @@
-<p>register works!</p>
+<div id="container">
+
+    <form id="form" [formGroup]="registerForm">
+
+        <h2 style="text-align: center;"><span id="title">R</span>EGISTER</h2>
+
+        <div class="form-element">
+            <i class="fa fa-user form-icons"></i>
+              <input type="text" placeholder="Name" formControlName="name"><br>
+              <p class="error">err</p>
+        </div>
+        <div class="form-element">
+            <i class="fa fa-envelope email-icon form-icons"></i>
+              <input type="email" placeholder="Email"><br>
+        </div>
+        <div class="form-element">
+          <i class="fa fa-address-card form-icons contact-icon"></i>
+            <input type="text" placeholder="Contact Number"><br>
+      </div>
+      <div class="form-element">
+        <i class="fa fa-lock form-icons"></i>
+          <input type="password" placeholder="Enter your Password">
+      </div>
+      <div class="form-element">
+          <button id="login">Register</button>
+      </div>     
+
+    </form>
+</div>
+
+
+<pre>{{registerForm.value | json}}</pre>
