@@ -4,30 +4,34 @@
 </div>
 
 <div id="container">
-
+  <div id="homeImage" class="divs"> </div>
+  <div id="formContainer">
     <form id="form" [formGroup]="loginForm">
 
-        <h2 style="text-align: center;"><span id="title">L</span>OGIN</h2>
+      <h2 style="text-align: center;">
+        <span id="title">L</span>OGIN</h2>
 
-        <div class="form-element">
-          <i class="fa fa-user icon form-icons"></i>
-              <input type="email" placeholder="Email" formControlName="email"><br>
-              <p style="text-align: center; width: 93%;background-color: red;color: white;padding: 4px;" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">Please enter valid email</p>
-        </div>
       <div class="form-element">
-        <i class="fa fa-lock form-icons"></i>
-          <input type="password" placeholder="Password" formControlName="password">
-          <p style="text-align: center; width: 93%;background-color: red;color: white;padding: 4px;" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">Please enter atleast 8-15 characters</p>
+        <i class="fa fa-user icon form-icons"></i>
+            <input type="email" placeholder="Email" formControlName="email"><br>
+            <p style="text-align: center; width: 95%;background-color: red;color: white;padding: 4px;" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">Please enter valid email</p>
       </div>
+    <div class="form-element">
+      <i class="fa fa-lock form-icons"></i>
+        <input type="password" placeholder="Password" formControlName="password">
+        <p style="text-align: center; width: 95%;background-color: red;color: white;padding: 4px;" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">Please enter atleast 8-15 characters</p>
+    </div>
 
-      <div class="form-element">
-          <button id="login" [disabled]="loginForm.invalid" (click)="postLoginDetails()">Log in</button>
-      </div>   
+    <div class="form-element">
+        <button id="login" [disabled]="loginForm.invalid" (click)="postLoginDetails()">Log in</button>
+    </div>   
 
-      <div class="form-element" id="register">
-          <p>New user? <a href="user/register">Register here</a></p>
-      </div>  
+    <div class="form-element" id="register">
+        <p>New user? <a href="user/register">Register here</a></p>
+    </div>  
 
-    </form>
+  </form>
+  </div>
+    
 </div>
 

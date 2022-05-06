@@ -4,7 +4,6 @@
 }
 
 .message{
-    transition: visibility 2s;
     position: absolute;
     right: 0;
     top: 8.9vh;
@@ -27,13 +26,16 @@ h2{
     letter-spacing: 1px;
 }
 #container{
+    box-sizing: border-box;
     position: absolute;
-    display: flex;
+    display: grid;
+    align-items: center; 
+    grid-template-columns: 50% 35%;
     justify-content: center;
-    align-items: center;
     width: 100%;
-    height: 90%;
+    height: 91%;
 }
+
 
 input{
     width: 73%;
@@ -41,25 +43,31 @@ input{
      outline: none;
 }
 
-form{
-    background-image: url("https://cdn.pixabay.com/photo/2016/03/22/15/29/blue-1273089_1280.jpg");
-    border-top: 1px solid black;
-    width: 30%;
-    border-radius: 20px;
-    box-shadow: 1px 2px;
-    height: 70%;
+#formContainer{
+    height: 84%;
+    width: 90%;
+    border: 1px solid black;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#form{
+    width: 100%;
+    height: 75%;
     display: grid;
     align-items: center;
     justify-content: center;
     grid-template-columns: 75%;
-    transition: 2s;
 }
 
-#right{
-    margin-left: 67%;
-    border: 2px solid red;
-    width: 100%;
+#homeImage{
+    height: 85%;
+    background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbmjvzicipY10MB6sKB05_q5ZPBd_7g_Apsg&usqp=CAU');
+    /* background-image: url('https://c4.wallpaperflare.com/wallpaper/512/901/163/night-bus-wallpaper-preview.jpg'); */
+    background-size:cover
 }
+
     
 #title{
     border-bottom: 3px solid black;
@@ -67,10 +75,9 @@ form{
 }
 
 #login{
-    transition: 0.7s;
     width: 97%;
-    border: 1px solid black;
-    background-color: blueviolet;
+    /* border: 1px solid black; */
+    background-color: black;
     color: white;
     text-transform: uppercase;
     font-weight: 500;
@@ -78,12 +85,31 @@ form{
     border-radius: 20px;
     padding: 10px;
     margin-bottom: 10px;
+    transition: 0.5s;
     /* margin-top: 1%; */
 }
 
 #login:hover{
-    color: white;
-    background-color: black;
+    /* color: white;
+    background-color: black; */
     cursor: pointer;
     letter-spacing: 6px;
+}
+
+@media screen and (max-width:1056px) {
+    #form{
+       width: 47%;
+    }
+    
+}
+@media screen and (max-width:750px) {
+    #form{
+       width: 47%;
+    }
+}
+
+@media screen and (max-width:650px) {
+    #form{
+       width: 70%;
+    }
 }
