@@ -1,0 +1,22 @@
+<div id="mainContainer">
+    <!-- <div id="searchContainer"> -->
+    <!-- <h3>Search for Buses</h3> -->
+    <form id="inputContainer" [formGroup]="city" class="containers">
+       
+            <input type="text" formControlName="boardingLocation" list="cities" placeholder="Boarding Location*">
+            <input type="text" formControlName="destinationLocation" list="cities" placeholder="Destination Location*">
+            <datalist id="cities">
+                <span *ngFor="let city of cities">
+                    <option value="{{city}}"></option>
+                </span>
+            
+            </datalist>
+        <input id="date" type="date">
+        <button id="button" (click)="sendData()">Search Buses</button>
+        <!-- </div> -->
+    </form>
+
+    <div id="busContainer" class="containers">
+        buses
+    </div>
+</div>

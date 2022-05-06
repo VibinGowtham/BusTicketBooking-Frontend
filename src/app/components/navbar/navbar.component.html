@@ -2,7 +2,7 @@
     <li class="nav-collapse"><mat-icon (click)="classToggle()">menu</mat-icon></li> 
     <li id="nav-logo">Logo</li>
 
-    <li class="nav-items nav-items-hide" *ngIf="isLoggedIn">
+    <li class="nav-items nav-items-hide" routerLink="book/book-tickets">
         <mat-icon class="nav-icons">departure_board</mat-icon>
         Book-Tickets
     </li>

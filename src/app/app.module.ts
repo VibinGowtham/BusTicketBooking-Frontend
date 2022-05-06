@@ -8,6 +8,7 @@ import { MaterialModule } from './modules/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OwnFormsModule } from "./modules/forms/forms.module";
 import { HttpClientModule } from '@angular/common/http';
+import { BookTicketModule } from './modules/book-ticket/book-ticket.module';
 
 @NgModule({
   declarations: [
