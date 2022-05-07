@@ -22,7 +22,7 @@ export class BookComponent implements OnInit {
     this.locationService.post('bus/filterBus', this.city.value).subscribe(data => {
 
       this.busDetails = data
-      this.date=new Date().toDateString()
+      this.date=new Date().toLocaleTimeString().slice(0,4)
       console.log(this.busDetails);
     })
   }
