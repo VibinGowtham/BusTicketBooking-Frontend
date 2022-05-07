@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { BookTicketRoutingModule } from './book-ticket-routing.module';
 import { BookComponent } from './book/book.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from '../material/material.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     BookTicketRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModule
   ]
 })
 export class BookTicketModule { }

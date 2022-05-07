@@ -1,22 +1,224 @@
 <div id="mainContainer">
-    <!-- <div id="searchContainer"> -->
-    <!-- <h3>Search for Buses</h3> -->
-    <form id="inputContainer" [formGroup]="city" class="containers">
-       
-            <input type="text" formControlName="boardingLocation" list="cities" placeholder="Boarding Location*">
-            <input type="text" formControlName="destinationLocation" list="cities" placeholder="Destination Location*">
-            <datalist id="cities">
-                <span *ngFor="let city of cities">
-                    <option value="{{city}}"></option>
-                </span>
-            
-            </datalist>
-        <input id="date" type="date">
-        <button id="button" (click)="sendData()">Search Buses</button>
-        <!-- </div> -->
-    </form>
+    <form id="inputContainer" [formGroup]="city">
 
-    <div id="busContainer" class="containers">
-        buses
+        <input type="text" formControlName="boardingLocation" list="departureCities" placeholder="Boarding Location*">
+        <input type="text" formControlName="destinationLocation" list="boardingCities"
+            placeholder="Destination Location*">
+        <datalist id="departureCities">
+            <span *ngFor="let city of cities">
+                <option value="{{city}}"></option>
+            </span>
+        </datalist>
+        <datalist id="boardingCities">
+            <span *ngFor="let city of cities">
+                <option value="{{city}}"></option>
+            </span>
+        </datalist>
+        <input id="date" type="date" formControlName="departureTime">
+        <button id="button" (click)="sendData()">Search Buses</button>
+    </form>
+    <div id="busPropertiesContainer">
+        <div class="busProperties">
+            <div class="gridElement" id="busDetailsProperty">
+                <div>
+                    <span style="text-transform: bold;font-weight: 600;"> 16 Buses </span>
+                    <span> Available</span>
+                </div>
+
+            </div>
+            <div class="gridElement busProperty">
+                <mat-icon class="icons">departure_board</mat-icon>Departure
+            </div>
+            <div class="gridElement busProperty">
+                <mat-icon class="icons">schedule</mat-icon>Duration
+            </div>
+            <div class="gridElement busProperty">
+                <mat-icon class="icons">calendar_month</mat-icon>Arrival
+            </div>
+            <div class="gridElement busProperty">
+                <mat-icon class="icons">star</mat-icon>Ratings
+            </div>
+            <div class="gridElement busProperty" id="fare">
+                <mat-icon class="icons">price_change</mat-icon>Fare
+            </div>
+        </div>
+    </div>
+    <div id="busContainer">
+        <div class="bus">
+            <div class="gridElement" id="busDetails">
+                <div>
+                    <h3 style="font-weight:600;letter-spacing: 1.5px; text-transform: uppercase;">Vrt Travels</h3>
+                    <h5>A/C Sleeper</h5>
+                </div>
+
+                <div class="busIcons">
+                    <mat-icon>speed</mat-icon>
+                    <mat-icon>wifi</mat-icon>
+                    <mat-icon>light</mat-icon>
+                    <mat-icon>confirmation_number</mat-icon>
+                    <mat-icon>verified</mat-icon>
+                </div>
+            </div>
+            <div class="gridElement busInfo" id="departure">
+                <div>
+                    <h1>22:30</h1>
+                    <p>Gandhipuram</p>
+                </div>
+            </div>
+            <div class="gridElement busInfo" id="duration">
+                <h3 style="text-transform:lowercase ;">8h 30m</h3>
+            </div>
+            <div class="gridElement busInfo" id="arrival">
+                <h2>06:35</h2>
+                <div>
+                    <h3 style="margin:0 ;"><strong>07-May</strong></h3>
+                    <p>Sathy</p>
+                </div>
+            </div>
+            <div class="gridElement busInfo" id="rating">
+                <h2>4.7</h2>
+            </div>
+            <div class="gridElement busInfo" id="fare">
+                <span>Inr <h2>600/-</h2> </span>
+            </div>
+            <div class="gridElement" id="foot">
+                <div id="busButton">
+                    <span><span style="text-transform: uppercase;font-weight: 800;">Available Seats:</span> 10</span>
+                    <button id="book">Book Seats</button>
+                </div>
+            </div>
+        </div>
+        <div class="bus">
+            <div class="gridElement" id="busDetails">
+                <div>
+                    <h3 style="font-weight:600;letter-spacing: 1.5px; text-transform: uppercase;">Vrt Travels</h3>
+                    <h5>A/C Sleeper</h5>
+                </div>
+
+                <div class="busIcons">
+                    <mat-icon>speed</mat-icon>
+                    <mat-icon>wifi</mat-icon>
+                    <mat-icon>light</mat-icon>
+                    <mat-icon>confirmation_number</mat-icon>
+                    <mat-icon>verified</mat-icon>
+                </div>
+            </div>
+            <div class="gridElement busInfo" id="departure">
+                <div>
+                    <h1>22:30</h1>
+                    <p>Gandhipuram</p>
+                </div>
+            </div>
+            <div class="gridElement busInfo" id="duration">
+                <h3 style="text-transform:lowercase ;">8h 30m</h3>
+            </div>
+            <div class="gridElement busInfo" id="arrival">
+                <h2>06:35</h2>
+                <div>
+                    <h3 style="margin:0 ;"><strong>07-May</strong></h3>
+                    <p>Sathy</p>
+                </div>
+            </div>
+            <div class="gridElement busInfo" id="rating">
+                <h2>4.7</h2>
+            </div>
+            <div class="gridElement busInfo" id="fare">
+                <span>Inr <h2>600/-</h2> </span>
+            </div>
+            <div class="gridElement" id="foot">
+                <div id="busButton">
+                    <span><span style="text-transform: uppercase;font-weight: 800;">Available Seats:</span> 10</span>
+                    <button id="book">Book Seats</button>
+                </div>
+            </div>
+        </div>
+        <div class="bus">
+            <div class="gridElement" id="busDetails">
+                <div>
+                    <h3 style="font-weight:600;letter-spacing: 1.5px; text-transform: uppercase;">Vrt Travels</h3>
+                    <h5>A/C Sleeper</h5>
+                </div>
+
+                <div class="busIcons">
+                    <mat-icon>speed</mat-icon>
+                    <mat-icon>wifi</mat-icon>
+                    <mat-icon>light</mat-icon>
+                    <mat-icon>confirmation_number</mat-icon>
+                    <mat-icon>verified</mat-icon>
+                </div>
+            </div>
+            <div class="gridElement busInfo" id="departure">
+                <div>
+                    <h1>22:30</h1>
+                    <p>Gandhipuram</p>
+                </div>
+            </div>
+            <div class="gridElement busInfo" id="duration">
+                <h3 style="text-transform:lowercase ;">8h 30m</h3>
+            </div>
+            <div class="gridElement busInfo" id="arrival">
+                <h2>06:35</h2>
+                <div>
+                    <h3 style="margin:0 ;"><strong>07-May</strong></h3>
+                    <p>Sathy</p>
+                </div>
+            </div>
+            <div class="gridElement busInfo" id="rating">
+                <h2>4.7</h2>
+            </div>
+            <div class="gridElement busInfo" id="fare">
+                <span>Inr <h2>600/-</h2> </span>
+            </div>
+            <div class="gridElement" id="foot">
+                <div id="busButton">
+                    <span><span style="text-transform: uppercase;font-weight: 800;">Available Seats:</span> 10</span>
+                    <button id="book">Book Seats</button>
+                </div>
+            </div>
+        </div>
+        <div class="bus">
+            <div class="gridElement" id="busDetails">
+                <div>
+                    <h3 style="font-weight:600;letter-spacing: 1.5px; text-transform: uppercase;">Vrt Travels</h3>
+                    <h5>A/C Sleeper</h5>
+                </div>
+
+                <div class="busIcons">
+                    <mat-icon>speed</mat-icon>
+                    <mat-icon>wifi</mat-icon>
+                    <mat-icon>light</mat-icon>
+                    <mat-icon>confirmation_number</mat-icon>
+                    <mat-icon>verified</mat-icon>
+                </div>
+            </div>
+            <div class="gridElement busInfo" id="departure">
+                <div>
+                    <h1>22:30</h1>
+                    <p>Gandhipuram</p>
+                </div>
+            </div>
+            <div class="gridElement busInfo" id="duration">
+                <h3 style="text-transform:lowercase ;">8h 30m</h3>
+            </div>
+            <div class="gridElement busInfo" id="arrival">
+                <h2>06:35</h2>
+                <div>
+                    <h3 style="margin:0 ;"><strong>07-May</strong></h3>
+                    <p>Sathy</p>
+                </div>
+            </div>
+            <div class="gridElement busInfo" id="rating">
+                <h2>4.7</h2>
+            </div>
+            <div class="gridElement busInfo" id="fare">
+                <span>Inr <h2>600/-</h2> </span>
+            </div>
+            <div class="gridElement" id="foot">
+                <div id="busButton">
+                    <span><span style="text-transform: uppercase;font-weight: 800;">Available Seats:</span> 10</span>
+                    <button id="book">Book Seats</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

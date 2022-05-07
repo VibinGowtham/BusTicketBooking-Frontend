@@ -10,7 +10,7 @@ export class LocationService {
  SERVER_URL!:String
 
  constructor(private http:HttpClient) { 
-   this.SERVER_URL="http://localhost:3000/city"
+   this.SERVER_URL="http://localhost:3000"
  }
 
  get(route:string):Observable<any>{
