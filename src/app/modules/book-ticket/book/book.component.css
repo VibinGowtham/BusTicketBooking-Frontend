@@ -1,9 +1,9 @@
 #mainContainer{
     display: grid;
-    height: 90vh;
+    height: 70vh;
     grid-template-columns: 100%;
-    grid-template-rows: 65% 8% auto;
-    grid-gap: 1%;
+    grid-template-rows: 85% 15%;
+    row-gap: 5%;
 }
 
 #inputContainer{
@@ -42,14 +42,6 @@ button{
 
 button:hover{
     cursor: pointer;
-    background-color: whitesmoke;
-    color: black;
-}
-
-#book:hover{
-    cursor: pointer;
-    background-color: red;
-    color: white;
 }
 
 #one{
@@ -67,20 +59,29 @@ img{
 }
 
 #busContainer{
-    border: 2px solid red;
+    margin-top: 3.5%;
+    /* height: 100vh; */
     justify-content: center;
     display: grid;
-    grid-template-columns: 70%;
+    grid-template-columns: 80%;
     grid-template-rows: auto;
-    gap: 2%;
+    gap: 5%;
 }
 
 .bus{
-    border:1px solid lightcoral;
+    border:1px solid lightblue;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 75% 25%;
+    grid-template-rows: 70% 30%;
+    transition: all 0.5s;
 }
+
+.bus:hover{
+    /* border: 1px solid black; */
+    cursor: pointer;
+    box-shadow: 5px 5px 15px lightseagreen;
+}
+
 /* .gridElement{
     border: 1px solid black;
 } */
@@ -104,11 +105,11 @@ img{
 }
 
 #foot{
-    grid-column: 3/span 6;
+    grid-column: 4/span 6;
     display: grid;
-    grid-template-columns: 55%;
+    grid-template-columns: 70%;
     justify-content:flex-end;
-    align-items: center;
+    letter-spacing: 1.5px;
 }
 #busButton{
    margin-right: 10px;
@@ -120,7 +121,7 @@ img{
 #busPropertiesContainer{
     display: grid;
     justify-content: center;
-    grid-template-columns: 70%;
+    grid-template-columns: 80%;
 }
 
 .busProperties{
@@ -143,6 +144,8 @@ img{
 }
 
 .busInfo{
+    /* text-align: center; */
+    letter-spacing: 1.5px;
     display: grid;
     justify-content: center;
     align-items: center;
@@ -152,3 +155,9 @@ img{
 h1{
     font-weight: 500;
 }
+
+/* #arrival{
+    letter-spacing: 1.5px;
+    display: grid;
+    justify-content: center;
+    /* text-align: center; */
