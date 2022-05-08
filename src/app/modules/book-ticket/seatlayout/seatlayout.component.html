@@ -18,6 +18,6 @@
 <span style="font-size:12px;font-weight:500;letter-spacing: 1px;">
     Selected Seats: 
     <span style="font-size:15px;letter-spacing: normal;" *ngFor="let seat of selectedSeats">{{seat}} </span></span>
-<button>Confirm</button>
+<button [ngClass]="selectedSeats.length ==0 ?'disabled':''" (click)="bookSeats()">Confirm</button>
     </div>
 </div>

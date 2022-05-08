@@ -8,19 +8,38 @@ import { SeatService } from 'src/app/services/seatServices/seat.service';
   styleUrls: ['./seatlayout.component.css']
 })
 export class SeatlayoutComponent implements OnInit {
+  userId:any
   selectedSeat: any
   selectedSeats: any
-  id!: string
+  busId!: string
   iterations: any
   seats: any;
   availability: any
+  price:any
+
+
+bookSeats():any{
+  this.price=this.seats.length*this.price;
+  let body={
+    userId:this.userId,
+    busId:this.busId,
+    price:this.price,
+    seats:this.selectedSeats
+  }
+  this.seatService.post('updateAvailability',body)
+  .subscribe(data=>console.log(data)
+  )
+  this.selectedSeats,this.selectedSeat=[]
+}
+
 
   toggleSelection(id: any): any {
     this.selectedSeat = id.target.attributes.id.nodeValue
     document.getElementById(this.selectedSeat)?.classList.toggle("selected")
+
     console.log(this.selectedSeat);
     console.log(this.selectedSeats);
-    //  console.log(this.selectedSeats.find(this.selectedSeat.toString()))
+
     if (this.selectedSeats.length == 0) this.selectedSeats.push(this.selectedSeat);
     else if (this.selectedSeats.includes(this.selectedSeat) == false) this.selectedSeats.push(this.selectedSeat);
     else this.selectedSeats.splice(this.selectedSeats.indexOf(this.selectedSeat), 1)
@@ -28,17 +47,19 @@ export class SeatlayoutComponent implements OnInit {
 
   }
   constructor(private seatService: SeatService) {
+    this.price=600
     this.selectedSeats = []
     this.seats = [];
     this.iterations = [];
     this.availability = []
-    this.id = "627769bb80c9242f4b394db3"
+    this.busId = "6277eede9800c8fbfe05582e"
+    this.userId="6274b3ff155367b2a2fb542b"
   }
 
   ngOnInit(): void {
 
     this.seatService
-      .post('getSeats', { id: this.id })
+      .post('getSeats', { id: this.busId })
       .subscribe((data) => {
         console.log(data)
         for (let i = 0; i < data.length; i++) {
