@@ -7,9 +7,12 @@
 }
 
 #inputContainer{
-    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfX-Xc56MzLlSXKOWP-XI8WZ4ZVqYs6-YAaw&usqp=CAU");
-    background-size: cover;
+    /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfX-Xc56MzLlSXKOWP-XI8WZ4ZVqYs6-YAaw&usqp=CAU"); */
+    /* background-color: black; */
+    background-image: url("https://c1.wallpaperflare.com/preview/924/883/662/train-interior-train-aisle-train-wagon-seat.jpg");
+    background-size:cover;
     background-repeat: no-repeat;
+    border: 1px solid black;
     display: flex;
     justify-content: center;
     align-items: center;

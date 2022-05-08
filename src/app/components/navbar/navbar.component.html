@@ -7,7 +7,7 @@
         Book-Tickets
     </li>
 
-    <li class="nav-items nav-items-hide" *ngIf="isLoggedIn">
+    <li class="nav-items nav-items-hide"  routerLink="book/seat" *ngIf="isLoggedIn">
         <mat-icon class="nav-icons">free_cancellation</mat-icon>
         Bookings
     </li>
@@ -20,12 +20,15 @@
         <mat-icon class="nav-icons">person_add</mat-icon>
         Register
     </li>
+    <li class="nav-items nav-items-hide" *ngIf="isLoggedIn">
+        <mat-icon class="nav-icons">logout</mat-icon>
+        Log-out</li>
     
     <li class="nav-items nav-items-hide" *ngIf="isLoggedIn">
         <mat-icon class="nav-icons">logout</mat-icon>
         Log-out</li>
 </ul>
-<!-- <div style="display: flex;justify-content: center; position: absolute; background-image: url('https://c4.wallpaperflare.com/wallpaper/512/901/163/night-bus-wallpaper-preview.jpg');background-size: cover;width: 100vw;height: 91vh;color: white;">
+<!-- <div style="background-image:url('https://c1.wallpaperflare.com/preview/924/883/662/train-interior-train-aisle-train-wagon-seat.jpg') ; background-size: cover;height:91vh;position: absolute;width: 100vw;position: absolute;z-index:-1 ;">
 
 </div> -->
 <router-outlet></router-outlet>

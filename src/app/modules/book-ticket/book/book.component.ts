@@ -8,6 +8,7 @@ import { LocationService } from 'src/app/services/locationServices/location.serv
   styleUrls: ['./book.component.css']
 })
 export class BookComponent implements OnInit {
+  total:any
   date!: any
   busDetails!: any
   cities!: any
@@ -17,13 +18,13 @@ export class BookComponent implements OnInit {
      const { boardingLocation, destinationLocation, departureDate } = this.city.value
     if (boardingLocation === destinationLocation || departureDate === undefined) alert("Enter valid locations")
     this.city.value.departureDate = parseInt(departureDate.slice(8)) % 7
-    console.log(parseInt(departureDate.slice(8)) % 7);
+    // console.log(parseInt(departureDate.slice(8)) % 7);
 
     this.locationService.post('bus/filterBus', this.city.value).subscribe(data => {
-
+      this.total=data.length
       this.busDetails = data
-      this.date=new Date().toLocaleTimeString().slice(0,4)
-      console.log(this.busDetails);
+      this.date=new Date().toLocaleTimeString().slice(0,5)
+      // console.log(this.busDetails);
     })
   }
 
