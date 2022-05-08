@@ -16,9 +16,11 @@ export class BookComponent implements OnInit {
 
   sendData(): any {
      const { boardingLocation, destinationLocation, departureDate } = this.city.value
-    if (boardingLocation === destinationLocation || departureDate === undefined) alert("Enter valid locations")
+    if (boardingLocation === destinationLocation || departureDate === undefined) {
+      this.city.reset()
+      return
+    }
     this.city.value.departureDate = parseInt(departureDate.slice(8)) % 7
-    // console.log(parseInt(departureDate.slice(8)) % 7);
 
     this.locationService.post('bus/filterBus', this.city.value).subscribe(data => {
       this.total=data.length

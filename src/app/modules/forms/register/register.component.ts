@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserserviceService } from 'src/app/services/userServices/userservice.service';
 
 // import { UserserviceService } from 'src/app/services/userServices/userservice.service';
@@ -14,9 +15,7 @@ import { UserserviceService } from 'src/app/services/userServices/userservice.se
 export class RegisterComponent implements OnInit {
 
   isRegistered!:boolean
-  response!:{
-    message:''
-  }
+    message:any
   registerForm!:FormGroup
 
  postDetails(){
@@ -24,10 +23,15 @@ export class RegisterComponent implements OnInit {
    this.registerForm.reset()
    this.userService.post('register', body).subscribe(data=>{
      this.isRegistered=true
-     this.response=data     
-   })
+     this.message=data.message
+     if(data.status===200) {
+      setTimeout(() => {
+        this.router.navigateByUrl('user/login');
+      }, 2000); 
+   }
+  })
  }
-  constructor(private userService:UserserviceService) { }
+  constructor(private userService:UserserviceService,private router:Router) { }
 
   ngOnInit(): void {
     this.isRegistered=false
