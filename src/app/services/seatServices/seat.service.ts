@@ -10,8 +10,7 @@ export class SeatService {
   constructor(private http:HttpClient) {
     this.SERVER_URL="http://localhost:3000/seat"
    }
-
    post(route:string,body:any):Observable<any>{
-    return this.http.get<any>(`${this.SERVER_URL}/${route}`)
+    return this.http.post<any>(`${this.SERVER_URL}/${route}`,body)
   }
 }

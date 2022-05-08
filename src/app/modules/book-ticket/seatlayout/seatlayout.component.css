@@ -1,60 +1,63 @@
-#mainContainer{
+#mainContainer {
     margin-top: 10%;
     display: flex;
     flex-direction: column;
-justify-content: center;
-align-items: center;
-gap: 25px;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
 }
 
-#seatLayout{
-    display:grid;
-  width: 40%;
-  height: auto;
+#seatLayout {
+    display: grid;
+    width: 40%;
+    height: auto;
     grid-template-columns: 15% 15% 15% 15% 15% 15%;
     grid-template-rows: 50% 50%;
-column-gap: 5px;
+    column-gap: 5px;
     border: 1px solid black;
 }
 
-.seat{
+.seat {
     width: 100%;
     height: 30%;
-    border: 1px solid black;
+    border: 0.2px solid black;
     text-align: center;
     margin: 10px;
+    transition: all 0.5s;
 }
 
-.seat:hover{
-    background-color: green;
+.seat:hover {
+    background-color: orangered;
     cursor: pointer;
 }
 
-.seat:active{
+/* .seat:active {
     background-color: black;
+} */
+
+
+.booked {
+    background-color: lightgrey;
+    pointer-events:none;
 }
 
-
-.booked{
-    background-color: red;
-}
-
-.booked:hover{
+/* .booked:hover {
     cursor: not-allowed;
     background-color: red;
-}
+} */
 
-.available{
+.available {
     background-color: white;
 }
 
-#infoContainer{
+#infoContainer {
     /* border: 1px solid red; */
     width: 40%;
     display: flex;
     justify-content: space-evenly;
 }
-.infoSeat{
+
+.infoSeat {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -65,17 +68,17 @@ column-gap: 5px;
     font-weight: 500;
 }
 
-.availableInfo{
+.availableInfo {
     background-color: white;
     color: black;
 }
 
-.occupiedInfo{
-    background-color: red;
-    color: white;
+.occupiedInfo {
+    background-color: lightgrey;
+    color: black;
 }
 
-.selectedInfo{
-    background-color: green;
+.selectedInfo {
+    background-color: orangered;
     color: white;
 }
