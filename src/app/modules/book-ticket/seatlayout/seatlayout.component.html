@@ -1,14 +1,16 @@
-<div id="seatLayout">
-    <span *ngFor="let index of iterations;">
-        <span>
-            <div class="seat"  *ngIf="index!=seats.length"> {{seats[index]}}   </div>
-            <div class="seat"  *ngIf="index+1!=seats.length"> {{seats[index+1]}}   </div>
-            <!-- <br> -->
-            <!-- <div class="seat">{{seats[index+2]}}   </div> -->
-            <!-- <div class="seat">{{seats[index+3]}}   </div> -->
-            <!-- <br> -->
+<div id="mainContainer">
+    <div id="infoContainer">
+        <div class="availableInfo infoSeat">Available</div>
+        <div class="occupiedInfo infoSeat">Occupied</div>
+        <div class="selectedInfo infoSeat">Selected</div>
+    </div>
+    <div id="seatLayout">
+        <span *ngFor="let index of iterations;">
+            <span>
+                <div (click)="toggleSelection($event)" id="{{seats[index]}}" class="seat" [ngClass]="index %2 ==0?'booked':'available'" *ngIf="index!=seats.length"> <span id="{{seats[index]}}" style="visibility: hidden;">{{seats[index]}}</span>    </div>
+                
+                <div (click)="toggleSelection($event)" id="{{seats[index+1]}}" class="seat" [ngClass]="index+1 %2 ==0?'booked':'available'" *ngIf="index+1!=seats.length"><span id="{{seats[index]}}" style="visibility:hidden ;">{{seats[index+1]}}</span>    </div>
+            </span>
         </span>
-       
-    </span>
-   
+    </div>
 </div>
