@@ -19,7 +19,7 @@ export class SeatlayoutComponent implements OnInit {
 
 
 bookSeats():any{
-  this.price=this.seats.length*this.price;
+  this.price=this.selectedSeats.length*this.price;
   let body={
     userId:this.userId,
     busId:this.busId,
@@ -30,6 +30,7 @@ bookSeats():any{
   .subscribe(data=>console.log(data)
   )
   this.selectedSeats,this.selectedSeat=[]
+  this.price=600
 }
 
 

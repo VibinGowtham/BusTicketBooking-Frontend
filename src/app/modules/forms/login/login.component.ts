@@ -25,8 +25,12 @@ postLoginDetails(){
   this.loginForm.reset()
   this.userService.post('login', body).subscribe(data=>{
     console.log(data);
-    
     this.isLoggedIn=true
+
+    setTimeout(() => {
+      this.isLoggedIn=false
+    }, 1500);
+
     this.message=data.message
     this.token=data.token
     let status=data.status

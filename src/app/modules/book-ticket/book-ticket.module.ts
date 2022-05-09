@@ -6,12 +6,14 @@ import { BookComponent } from './book/book.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
 import { SeatlayoutComponent } from './seatlayout/seatlayout.component';
+import { BookingsComponent } from './bookings/bookings.component';
 
 
 @NgModule({
   declarations: [
     BookComponent,
-    SeatlayoutComponent
+    SeatlayoutComponent,
+    BookingsComponent
   ],
   imports: [
     CommonModule,

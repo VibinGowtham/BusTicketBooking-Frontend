@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BookComponent } from './book/book.component';
+import { BookingsComponent } from './bookings/bookings.component';
 import { SeatlayoutComponent } from './seatlayout/seatlayout.component';
 
 const routes: Routes = [
   {path:'book-tickets',component:BookComponent},
-  {path:'seat',component:SeatlayoutComponent}
+  {path:'seat',component:SeatlayoutComponent},
+  {path:'bookings',component:BookingsComponent}
 ];
 
 @NgModule({

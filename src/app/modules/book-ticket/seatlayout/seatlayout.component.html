@@ -1,4 +1,12 @@
 <!-- *ngIf="seats!=undefined && iterations!=undefined" -->
+<div id="driver">
+    <img id="wheel"
+    src="https://previews.123rf.com/images/ylivdesign/ylivdesign1612/ylivdesign161207397/67820176-icono-del-volante-ilustraci%C3%B3n-de-esquema-de-icono-de-vector-de-volante-para-web.jpg" 
+    style="background-color: white;"
+    alt="">
+</div>
+
+
 <div id="mainContainer">
     <div id="infoContainer">
         <div class="availableInfo infoSeat">Available</div>
@@ -6,13 +14,15 @@
         <div class="selectedInfo infoSeat">Selected</div>
     </div>
     <div id="seatLayout">
-        <span *ngFor="let index of iterations;">
-            <span>
+        <div *ngFor="let index of iterations;">
+        <!-- <span *ngFor="let index of iterations;"> -->
+            <!-- <span> -->
                 <div (click)="toggleSelection($event)" id="{{seats[index]}}" class="seat" [ngClass]="availability[index]==false?'booked':'available'" *ngIf="index!=seats.length"> <span id="{{seats[index]}}" style="visibility: hidden;">{{seats[index]}}</span>    </div>
                 
                 <div (click)="toggleSelection($event)" id="{{seats[index+1]}}" class="seat" [ngClass]="availability[index]==false?'booked':'available'" *ngIf="index+1!=seats.length"><span id="{{seats[index]}}" style="visibility:hidden ;">{{seats[index+1]}}</span>    </div>
-            </span>
-        </span>
+            <!-- </span> -->
+        <!-- </span> -->
+    </div>
     </div>
     <div id="foot">
 <span style="font-size:12px;font-weight:500;letter-spacing: 1px;">

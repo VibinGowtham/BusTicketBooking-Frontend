@@ -13,8 +13,9 @@
     height: auto;
     grid-template-columns: 15% 15% 15% 15% 15% 15%;
     grid-template-rows: auto;
-    column-gap: 5px;
-    border: 1px solid black;
+    column-gap: 7px;
+    row-gap: 15px;
+    /* border: 1px solid black; */
 }
 
 .seat {
@@ -31,27 +32,16 @@
     cursor: pointer;
 }
 
-/* .seat:active {
-    background-color: black;
-} */
-
-
 .booked {
     background-color: lightgrey;
-    pointer-events:none;
+    pointer-events: none;
 }
-
-/* .booked:hover {
-    cursor: not-allowed;
-    background-color: red;
-} */
 
 .available {
     background-color: white;
 }
 
 #infoContainer {
-    /* border: 1px solid red; */
     width: 40%;
     display: flex;
     justify-content: space-evenly;
@@ -68,8 +58,8 @@
     font-weight: 500;
 }
 
-.infoSeat:hover{
-    cursor:default
+.infoSeat:hover {
+    cursor: default
 }
 
 .availableInfo {
@@ -88,20 +78,16 @@
 }
 
 
-#foot{
+#foot {
     text-transform: uppercase;
     width: 35%;
-    /* border: 1px solid black; */
     display: flex;
     justify-content: space-between;
     height: auto;
     align-items: center;
 }
 
-button{
-
-    /* font-weight: 600; */
-    /* margin-right: 10px; */
+button {
     text-transform: uppercase;
     padding: 14px;
     font-size: 12px;
@@ -113,17 +99,33 @@ button{
     transition: 0.5s;
 }
 
-button:hover{
+button:hover {
     cursor: pointer;
 }
 
 
-.selected{
-background-color: orangered;
+.selected {
+    background-color: orangered;
 }
 
-.disabled{
+.disabled {
     pointer-events: none;
     background-color: gray;
-    color: black;
+    color: white;
+}
+
+
+#wheel {
+    width: 50px;
+    height: 50px;
+
+    transform: rotateZ(270deg);
+}
+
+#driver {
+    height: 26.3%;
+    margin-left: 25%;
+    margin-top: 12%;
+    width: 10%;
+    position: absolute;
 }

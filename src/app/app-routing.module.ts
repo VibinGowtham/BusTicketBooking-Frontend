@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {path:'user',loadChildren:()=>import('./modules/forms/forms-routing.module').then(mod=>mod.FormsRoutingModule)},
   {path:'book',loadChildren:()=>import('./modules/book-ticket/book-ticket-routing.module').then(mod=>mod.BookTicketRoutingModule)},
-  // {path:'',redirectTo:'user/login',pathMatch:'full'}
+  {path:'',redirectTo:'user/login',pathMatch:'full'}
 ];
 
 @NgModule({

@@ -1,0 +1,112 @@
+#mainContainer {
+    margin-top: 3.5%;
+    /* height: 100vh; */
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 70%;
+    grid-template-rows: auto;
+    gap: 5%;
+    /* border: 1px solid red; */
+
+}
+
+.booking {
+    border: 1px solid lightblue;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+
+/* .element {
+    border: 1px solid black;
+} */
+
+img {
+    width: 180px;
+    height: 180px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    letter-spacing: 0.6px;
+    margin: 0;
+}
+
+#qrCode {
+    border: 1px solid red;
+    display: grid;
+    justify-content: center;
+    align-items: flex-end;
+    grid-row: 1 /span 8;
+}
+
+
+#header {
+    padding: 5px;
+    grid-column: 2 /span 3;
+    grid-row: 1/span 3;
+    display: flex;
+    /* flex-direction: row; */
+    justify-content:space-around;
+    align-items: center;
+    text-transform: capitalize;
+    /* margin: 5px; */
+}
+
+
+#busDetails {
+    padding: 5px;
+    grid-area: 4/2/span 3/span 1;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+#boardingDetails {
+    grid-area: 4/3/span 3/span 1;
+}
+
+#departureDetails{
+    grid-area: 4/4/span 3/span 1;
+}
+
+#seatDetails{
+    grid-area: 7/2/span 2/span 1;
+}
+
+#passengerDetails{
+    grid-area: 7/3/span 2/span 1;
+}
+
+
+.foot{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#price{
+    grid-area: 9/4/span 3/span 1;
+}
+
+#paymentMode{
+    padding: 5px;
+    grid-area: 7/4/span 2/span 1;
+}
+
+#contact{
+    grid-area: 9/3/span 3/span 1;
+}
+
+#email{
+    grid-area: 9/2/span 3/span 1;
+}
+
+#busId{
+    grid-area: 9/1/span 3/span 1;
+}
