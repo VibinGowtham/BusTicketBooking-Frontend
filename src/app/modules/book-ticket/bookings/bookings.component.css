@@ -1,24 +1,34 @@
+#totalBookings{
+    text-align: center;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
 #mainContainer {
-    margin-top: 3.5%;
-    /* height: 100vh; */
     justify-content: center;
     display: grid;
     grid-template-columns: 70%;
     grid-template-rows: auto;
     gap: 5%;
-    /* border: 1px solid red; */
-
 }
 
 .booking {
     border: 1px solid lightblue;
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
+    transition: all 0.5s;
+    box-shadow: 1px 1px 5px lightseagreen;
+    text-transform: capitalize;
 }
 
-/* .element {
-    border: 1px solid black;
-} */
+.booking:hover{
+    /* border: 1px solid black; */
+    cursor: pointer;
+    box-shadow: 5px 5px 15px lightseagreen;
+}
 
 img {
     width: 180px;
@@ -35,7 +45,6 @@ h5 {
 }
 
 #qrCode {
-    border: 1px solid red;
     display: grid;
     justify-content: center;
     align-items: flex-end;
@@ -44,20 +53,17 @@ h5 {
 
 
 #header {
-    padding: 5px;
     grid-column: 2 /span 3;
     grid-row: 1/span 3;
     display: flex;
-    /* flex-direction: row; */
     justify-content:space-around;
     align-items: center;
     text-transform: capitalize;
-    /* margin: 5px; */
 }
 
 
 #busDetails {
-    padding: 5px;
+    /* padding: 5px; */
     grid-area: 4/2/span 3/span 1;
     display: grid;
     justify-content: center;
@@ -95,7 +101,7 @@ h5 {
 }
 
 #paymentMode{
-    padding: 5px;
+    /* padding: 5px; */
     grid-area: 7/4/span 2/span 1;
 }
 
@@ -105,6 +111,7 @@ h5 {
 
 #email{
     grid-area: 9/2/span 3/span 1;
+    text-transform: lowercase;
 }
 
 #busId{

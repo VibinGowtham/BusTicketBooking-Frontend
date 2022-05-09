@@ -1,73 +1,80 @@
+<div id="totalBookings"><span style="font-weight: 550;">Your Total Bookings : </span> {{totalBooking}}</div>
 <div id="mainContainer">
-    <div class="booking">
+    <div class="booking" *ngFor="let booking of bookings">
         <div class="element" id="qrCode">
             <img src="https://www.investopedia.com/thmb/ZG1jKEKttKbiHi0EkM8yJCJp6TU=/1148x1148/filters:no_upscale():max_bytes(150000):strip_icc()/qr-code-bc94057f452f4806af70fd34540f72ad.png"
                 alt="">
         </div>
         <div class="element" id="header">
-            <h2 style="display: flex;gap: 10px;">Coimbatore <mat-icon [inline]="true" style="font-size: 35px;">
-                    arrow_right_alt</mat-icon> Chennai</h2>
-            <h3>{{date}}</h3>
-            <h4 style="display:flex;align-items:center"><span style="font-size:22px ;"><mat-icon [inline]="true">book_online</mat-icon></span> E-Receipt</h4>
-            
+            <h2 style="display: flex;gap: 10px;">{{booking.boardingLocation}} <mat-icon [inline]="true"
+                    style="font-size: 35px;">
+                    arrow_right_alt</mat-icon> {{booking.destinationLocation}}</h2>
+            <h3>{{booking.bookedDate}}</h3>
+            <h4 style="display:flex;align-items:center"><span style="font-size:22px ;">
+                    <mat-icon [inline]="true">book_online</mat-icon>
+                </span> E-Receipt</h4>
+
         </div>
         <div class="element foot" id="busDetails">
             <div>
-                <h2>Volvo Riders</h2>
-                <h5>Sleeper Non A/C</h5>
+                <h2>{{booking.name}}</h2>
+                <h5 style="text-transform: uppercase;">{{booking.busType}}</h5>
             </div>
-          
+
         </div>
         <div class="element foot" id="boardingDetails">
-            <div>
-                <h2>10:30 PM</h2>
-                <h5>Gandhipuram</h5>
+            <div style="text-transform: uppercase;">
+                <h2>{{booking.depatureTime}}</h2>
+                <h5>{{booking.pickupLocation}}</h5>
             </div>
-          
+
         </div>
         <div class="element foot" id="departureDetails">
-            <div>
-                <h2>5:00 AM</h2>
-                <h5>Central</h5>
+            <div style="text-transform: uppercase;">
+                <h2>{{booking.arrivalTime}}</h2>
+                <h5>{{booking.dropLocation}}</h5>
             </div>
-           
+
         </div>
         <div class="element foot" id="seatDetails">
             <div>
                 <h2>Seats</h2>
-                <h5>A1 A2 A3</h5>
-            </div> 
+                <h5><span *ngFor="let seat of booking.seats">
+                        {{seat}}
+                    </span></h5>
+            </div>
 
         </div>
         <div class="element foot" id="passengerDetails">
             <div>
                 <h2>Passengers</h2>
-                <h5>3</h5>
+                <h5>{{booking.seats.length}}</h5>
             </div>
-          
+
         </div>
         <div class="element foot" id="paymentMode">
             <div>
                 <h2>Payment Mode</h2>
-                <h5>Cash</h5>
+                <h5>{{booking.paymentMode}}</h5>
             </div>
         </div>
         <div class="element foot" id="busId">
-            <h5>Id:6277fdc47e95d0bcd3df443f</h5>
+            <h5><span style="letter-spacing: 1.5px;font-weight: 600;">ID:</span>{{booking.bookingId}}</h5>
         </div>
         <div class="element foot" id="email">
-           <h5>vbngowtham@gmail.com</h5> 
+            <h5>{{booking.email}}</h5>
         </div>
         <div class="element foot" id="contact">
-          <h5>7397093792</h5> 
+            <h5>{{booking.contactNo}}</h5>
         </div>
         <div class="element foot" id="price">
-             <p style="text-transform:uppercase;margin:10px;">Inr <span style="font-size: 1.5em;font-weight:500">600</span>/-</p>
+            <p style="text-transform:uppercase;margin:10px;">Inr <span
+                    style="padding-left:3px ; font-size: 1.3em;font-weight:500">{{booking.totalAmount}}</span>/-</p>
         </div>
-      
+
     </div>
+</div>
 
-
-
-
+<div style="height:27%;display: grid;justify-content: end;align-items:flex-end;visibility: hidden;">
+    dummy
 </div>
