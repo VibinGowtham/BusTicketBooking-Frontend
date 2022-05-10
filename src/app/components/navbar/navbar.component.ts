@@ -8,21 +8,22 @@ import { StateService } from 'src/app/services/stateServices/state.service';
 })
 export class NavbarComponent implements OnInit {
 
-  logOut():any{
+  logOut(): any {
     this.stateService.setSignedIn(false)
+    localStorage.removeItem('token')
     this.router.navigateByUrl('user/login');
   }
 
-   classToggle() {
+  classToggle() {
     const navs = document.querySelectorAll('.nav-items')
     navs.forEach(nav => nav.classList.toggle('nav-items-hide'));
   }
 
-  constructor(public stateService:StateService,private router:Router) { }
+  constructor(public stateService: StateService, private router: Router) { }
 
   ngOnInit(): void {
-  
-    
+
+
   }
 
 }
