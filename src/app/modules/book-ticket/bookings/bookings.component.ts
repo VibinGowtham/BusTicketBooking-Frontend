@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BookingService } from 'src/app/services/bookServices/booking.service';
+import { StateService } from 'src/app/services/stateServices/state.service';
 
 @Component({
   selector: 'app-bookings',
@@ -11,21 +12,20 @@ export class BookingsComponent implements OnInit {
   userId: any
   totalBooking: any;
   bookings: any
-  constructor(private bookingService: BookingService) { }
+  constructor(private bookingService: BookingService, private stateService: StateService) { }
 
   ngOnInit(): void {
-    this.totalBooking=0
+    this.totalBooking = 0
     this.date = new Date().toDateString()
-    this.userId = "6279406d9bc61582d3ce3b69"
-    this.bookingService.post('getBookings', { userId: this.userId }).subscribe(data => {
-      console.log(data);
-      this.totalBooking = data.total;
-      this.bookings = data.filteredResults;
-      console.log(this.totalBooking);
-      console.log(this.bookings);
-      
-      
-    })
+    if (this.stateService.getUserId() != '') {
+      this.bookingService.post('getBookings', { userId: this.stateService.getUserId() }).subscribe(data => {
+        console.log(data);
+        this.totalBooking = data.total;
+        this.bookings = data.filteredResults;
+        console.log(this.totalBooking);
+        console.log(this.bookings);
+      })
+    }
   }
 
 }

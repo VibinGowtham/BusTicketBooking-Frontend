@@ -1,6 +1,7 @@
-import { animate } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SeatService } from 'src/app/services/seatServices/seat.service';
+import { StateService } from 'src/app/services/stateServices/state.service';
 
 @Component({
   selector: 'app-seatlayout',
@@ -23,9 +24,11 @@ export class SeatlayoutComponent implements OnInit {
     console.log(this.paymentMode);
 
     this.price = this.selectedSeats.length * this.price;
+    console.log(this.stateService.getUserId()+" "+this.stateService.getBusId());
+    
     let body = {
-      userId: this.userId,
-      busId: this.busId,
+      userId: this.stateService.getUserId(),
+      busId: this.stateService.getBusId(),
       price: this.price,
       seats: this.selectedSeats,
       bookedDate: new Date().toDateString(),
@@ -36,6 +39,7 @@ export class SeatlayoutComponent implements OnInit {
       )
     this.selectedSeats = [], this.selectedSeat = []
     this.price = 600
+    this.router.navigateByUrl('book/seat')
   }
 
 
@@ -43,46 +47,45 @@ export class SeatlayoutComponent implements OnInit {
     this.selectedSeat = id.target.attributes.id.nodeValue
     document.getElementById(this.selectedSeat)?.classList.toggle("selected")
 
-    // console.log(this.selectedSeat);
-    // console.log(this.selectedSeats);
-
     if (this.selectedSeats.length == 0) this.selectedSeats.push(this.selectedSeat);
     else if (this.selectedSeats.includes(this.selectedSeat) == false) this.selectedSeats.push(this.selectedSeat);
     else this.selectedSeats.splice(this.selectedSeats.indexOf(this.selectedSeat), 1)
     console.log(this.selectedSeats)
 
   }
-  constructor(private seatService: SeatService) {
+  constructor(private seatService: SeatService,private stateService:StateService,private router:Router) {
     this.price = 600
     this.selectedSeats = []
     this.seats = [];
     this.iterations = [];
     this.availability = []
-    this.busId = "627957562162769093343b58"
-    this.userId = "6279406d9bc61582d3ce3b69"
   }
 
   ngOnInit(): void {
-
+  if(this.stateService.busId!=''){
     this.seatService
-      .post('getSeats', { id: this.busId })
-      .subscribe((data) => {
-        // console.log('Data '+data)
-        for (let i = 0; i < data.length; i++) {
-          this.seats[i] = data[i].seatNumber
-          this.availability[i] = data[i].availability;
-        }
-        console.log(this.seats);
-        console.log(this.availability);
+    .post('getSeats', { id: this.stateService.busId })
+    .subscribe((data) => {
+      // console.log('Data '+data)
+      for (let i = 0; i < data.length; i++) {
+        this.seats[i] = data[i].seatNumber
+        this.availability[i] = data[i].availability;
+      }
+      console.log(this.seats);
+      console.log(this.availability);
 
 
-        for (let i = 0; i < this.seats.length; i += 2) {
-          this.iterations.push(i)
-        }
-        console.log(this.iterations);
+      for (let i = 0; i < this.seats.length; i += 2) {
+        this.iterations.push(i)
+      }
+      console.log(this.iterations);
 
 
-      })
+    })
+
+
+  }
+   
 
 
 

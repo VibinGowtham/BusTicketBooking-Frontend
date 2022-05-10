@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LocationService } from 'src/app/services/locationServices/location.service';
+import { StateService } from 'src/app/services/stateServices/state.service';
 
 @Component({
   selector: 'app-book',
@@ -8,14 +10,22 @@ import { LocationService } from 'src/app/services/locationServices/location.serv
   styleUrls: ['./book.component.css']
 })
 export class BookComponent implements OnInit {
-  total:any
+  total: any
   date!: any
   busDetails!: any
   cities!: any
   city!: FormGroup
 
+  getBusId(event: any) {
+    this.stateServive.setBusId(event.target.attributes.id.nodeValue.slice(5))
+    console.log(this.stateServive.getBusId());
+    console.log(this.stateServive.getUserId());
+    this.router.navigateByUrl('book/seat')
+  }
+
+
   sendData(): any {
-     const { boardingLocation, destinationLocation, departureDate } = this.city.value
+    const { boardingLocation, destinationLocation, departureDate } = this.city.value
     if (boardingLocation === destinationLocation || departureDate === undefined) {
       this.city.reset()
       return
@@ -23,14 +33,14 @@ export class BookComponent implements OnInit {
     this.city.value.departureDate = parseInt(departureDate.slice(8)) % 7
 
     this.locationService.post('bus/filterBus', this.city.value).subscribe(data => {
-      this.total=data.length
+      this.total = data.length
       this.busDetails = data
-      this.date=new Date().toLocaleTimeString().slice(0,5)
+      this.date = new Date().toLocaleTimeString().slice(0, 5)
       // console.log(this.busDetails);
     })
   }
 
-  constructor(private locationService: LocationService) { }
+  constructor(private locationService: LocationService, private stateServive: StateService,private router:Router) { }
 
   ngOnInit(): void {
     this.cities = []

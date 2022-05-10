@@ -46,7 +46,7 @@
 </div>
 <div *ngIf="busDetails!=undefined">
     <div id="busContainer">
-        <div class="bus" *ngFor="let bus of busDetails">
+        <div class="bus" *ngFor="let bus of busDetails" id="{{bus._id}}">
             <div class="gridElement" id="busDetails">
                 <div>
                     <h3 style="font-weight:600;letter-spacing: 1.5px; text-transform: uppercase;">{{bus.name}}</h3>
@@ -85,7 +85,7 @@
             <div class="gridElement" id="foot">
                 <div id="busButton">
                     <span><span style="text-transform: uppercase;font-weight: 800;margin-right: 5px;">Available Seats:</span>{{bus.availableSeats}}</span>
-                    <button id="book" routerLink="book/seat">Book Seats</button>
+                    <button id="book {{bus._id}}" (click)="getBusId($event)">Book Seats</button>
                 </div>
             </div>
         </div>
