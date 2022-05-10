@@ -13,7 +13,7 @@ import { UserserviceService } from 'src/app/services/userServices/userservice.se
 export class LoginComponent implements OnInit {
 
 message:any
-token:any
+// token:any
 
 loginForm!:FormGroup
 
@@ -23,7 +23,8 @@ postLoginDetails(){
   this.userService.post('login', body).subscribe(data=>{
     console.log(data);
     this.message=data.message
-    this.token=data.token
+    // this.token=data.token
+    localStorage.setItem('token',data.token)
     let status=data.status
     this.stateService.setUserId(data.userId)
     if(status===200) {
