@@ -3,12 +3,15 @@ import { FormGroup,FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { StateService } from 'src/app/services/stateServices/state.service';
 import { UserserviceService } from 'src/app/services/userServices/userservice.service';
+import jwtDecode from 'jwt-decode';
+import { token } from '../../../models/Token/token';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 
 export class LoginComponent implements OnInit {
 
@@ -22,13 +25,16 @@ postLoginDetails(){
   this.loginForm.reset()
   this.userService.post('login', body).subscribe(data=>{
     console.log(data);
+    let decodedValue=jwtDecode<token>(data.token)
+    this.stateService.setUserId(decodedValue.id)
+
     this.message=data.message
-    // this.token=data.token
     localStorage.setItem('token',data.token)
     let status=data.status
-    this.stateService.setUserId(data.userId)
+  
     if(status===200) {
       this.stateService.isSignedIn=true
+      this.stateService.isAdmin=decodedValue.isAdmin
       setTimeout(() => {
         this.router.navigateByUrl('book/book-tickets');
       }, 500);
