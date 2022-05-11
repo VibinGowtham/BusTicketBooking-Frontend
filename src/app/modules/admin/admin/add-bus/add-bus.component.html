@@ -1,0 +1,42 @@
+<div id="formContainer">
+    <h2><mat-icon [inline]="true" style="font-size:22px;margin-right:5px ;">directions_bus</mat-icon> Add Bus</h2>
+
+    <div>
+        <form [formGroup]="bus">
+            <input type="text" placeholder="Bus Name" formControlName="name">
+            <input list="bustypes" placeholder="Bus Type" formControlName="busType">
+            <datalist id="bustypes">
+                <option value="A/c Sleeper"></option>
+                <option value="Non-A/c Sleeper"></option>
+            </datalist>
+            <!-- <label for="boardingLocation">Boarding Location</label> -->
+            <input type="text" placeholder="Boarding Location" formControlName="boardingLocation">
+            <!-- <label for="destinationLocation">Destination Location</label> -->
+            <input type="text" placeholder="Destination Location" formControlName="destinationLocation">
+            <!-- <label for="pickUpLocation">Pick-Up Location</label> -->
+            <input type="text" placeholder="Pick-Up Location" formControlName="pickUpLocation">
+            <!-- <label for="dropLocation">Drop Location</label> -->
+            <input type="text" placeholder="Drop Location" formControlName="dropLocation">
+            <!-- <label for="price">Price</label> -->
+            <input type="text" placeholder="Price" formControlName="price">
+            <!-- <label for="totalSeats">Total Seats</label> -->
+            <input type="text" placeholder="Total Seats" formControlName="totalSeats">
+            <!-- <label for="depatureDate">Depature Date</label> -->
+            <input type="text" placeholder="Depature Date" formControlName="depatureDate">
+            <!-- <label for="rating">Rating</label> -->
+            <input type="text" placeholder="Rating" formControlName="rating">
+            <!-- <label for="depatureTime">Depature Time</label> -->
+            <input type="text" placeholder="Depature Time" formControlName="depatureTime">
+            <!-- <label for="arrivalTime">Arrival Time</label> -->
+            <input type="text" placeholder="Arrival Time" formControlName="arrivalTime">
+            <!-- <label for="totalTime">Total Time</label> -->
+            <input type="text" placeholder="Total Time" formControlName="totalTime">
+            <button (click)="showData()">Add Bus</button>
+        </form>
+    </div>
+    
+</div>
+
+<div>
+    Dummy
+</div>

@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BookTicketModule } from './modules/book-ticket/book-ticket.module';
 import { AdminModule } from './modules/admin/admin/admin.module';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,

@@ -10,6 +10,7 @@ export class NavbarComponent implements OnInit {
 
   logOut(): any {
     this.stateService.setSignedIn(false)
+    this.stateService.setIsAdmin(false)
     localStorage.removeItem('token')
     this.router.navigateByUrl('user/login');
   }
