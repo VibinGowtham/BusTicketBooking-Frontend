@@ -10,9 +10,14 @@ import { UserserviceService } from '../userServices/userservice.service';
 })
 export class AuthGuard implements CanActivate {
 
-  token:any
+  token: any
 
   constructor(private stateService: StateService, private router: Router, private userService: UserserviceService) { }
+
+
+  // async verifyToken(token:any): Promise<any> {
+  //    let result = this.userService.post('verify',{token})
+  // }
 
   canActivate(): any {
     let result: any
@@ -20,17 +25,18 @@ export class AuthGuard implements CanActivate {
     console.log(!!localStorage.getItem('token'));
 
     if (!!localStorage.getItem('token')) {
-      this.token=localStorage.getItem('token')?.slice(7)
-      try{
-        let result=jwtDecode(this.token)
+      this.token = localStorage.getItem('token')?.slice(7)
+      try {
+        let result = jwtDecode(this.token)
+        console.log(result);
         return true
       }
-    catch(err) {
-      alert("Unauthorized")
-      this.router.navigateByUrl('user/register')
-      return false
-    }
-      
+      catch (err) {
+        alert("Unauthorized")
+        this.router.navigateByUrl('user/register')
+        return false
+      }
+
 
       // let token = localStorage.getItem('token')?.slice(7)
 

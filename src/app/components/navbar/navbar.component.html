@@ -7,7 +7,7 @@
         Book-Tickets
     </li>
 
-    <li class="nav-items nav-items-hide"  routerLink="book/bookings" *ngIf="stateService.isSignedIn">
+    <li class="nav-items nav-items-hide"  routerLink="book/bookings" *ngIf="stateService.getSignedIn()">
         <mat-icon class="nav-icons">free_cancellation</mat-icon>
         Bookings
     </li>
@@ -20,7 +20,7 @@
         <mat-icon class="nav-icons">person_add</mat-icon>
         Register
     </li>
-    <li class="nav-items nav-items-hide" *ngIf="stateService.isSignedIn">
+    <li class="nav-items nav-items-hide"  routerLink="admin/admin" *ngIf="stateService.getSignedIn()">
         <mat-icon class="nav-icons">dashboard</mat-icon>
         Dashboard</li>
     

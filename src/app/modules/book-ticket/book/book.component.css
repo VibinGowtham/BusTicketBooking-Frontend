@@ -37,11 +37,12 @@ button{
     color: white;
     font-weight: 550;
     text-transform: uppercase;
-    padding: 12px;
-    border-radius: 20px;
+    padding: 15px;
+    border-radius: 25px;
     border: none;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     transition: 0.7s;
+    margin-left: 5px;
 }
 
 button:hover{

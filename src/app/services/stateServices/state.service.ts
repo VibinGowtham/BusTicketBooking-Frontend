@@ -6,15 +6,21 @@ import { Injectable } from '@angular/core';
 export class StateService {
   isSignedIn!: boolean
   isRegistered!:boolean
+  isAdmin!:boolean
   userId!: String
   busId!: String
 
   constructor() {
     this.isSignedIn = false
     this.isRegistered=false
+    this.isAdmin=false
     this.userId = ""
     this.busId = ""
   }
+
+getIsAdmin(){
+  return this.isAdmin
+}
 
   getSignedIn() {
     return this.isSignedIn
@@ -48,5 +54,9 @@ export class StateService {
 
   setBusId(busId: any) {
     this.busId = busId
+  }
+
+  setIsAdmin(isAdmin:any){
+    this.isAdmin=isAdmin
   }
 }
