@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import jwtDecode from 'jwt-decode';
+import { Observable } from 'rxjs';
 import { StateService } from '../stateServices/state.service';
 import { UserserviceService } from '../userServices/userservice.service';
+import { token } from "../../models/Token/token";
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class AuthGuard implements CanActivate {
-
+export class RoleGuard implements CanActivate {
   token: any
 
   constructor(private stateService: StateService, private router: Router, private userService: UserserviceService) { }
@@ -22,9 +23,10 @@ export class AuthGuard implements CanActivate {
     if (!!localStorage.getItem('token')) {
       this.token = localStorage.getItem('token')?.slice(7)
       try {
-        let result = jwtDecode(this.token)
+        let result = jwtDecode<token>(this.token)
         console.log(result);
-        return true
+        if(result.isAdmin) return true
+        throw new Error("");
       }
       catch (err) {
         alert("Unauthorized")
@@ -37,5 +39,5 @@ export class AuthGuard implements CanActivate {
       this.router.navigateByUrl('user/register')
     }
   }
-
+  
 }
