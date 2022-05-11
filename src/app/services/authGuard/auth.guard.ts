@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import jwtDecode from 'jwt-decode';
 import { StateService } from '../stateServices/state.service';
 import { UserserviceService } from '../userServices/userservice.service';
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
+
+  token:any
 
   constructor(private stateService: StateService, private router: Router, private userService: UserserviceService) { }
 
@@ -16,8 +20,18 @@ export class AuthGuard implements CanActivate {
     console.log(!!localStorage.getItem('token'));
 
     if (!!localStorage.getItem('token')) {
-      return true
+      this.token=localStorage.getItem('token')?.slice(7)
+      try{
+        let result=jwtDecode(this.token)
+        return true
+      }
+    catch(err) {
+      alert("Unauthorized")
+      this.router.navigateByUrl('user/register')
+      return false
+    }
       
+
       // let token = localStorage.getItem('token')?.slice(7)
 
       // console.log(localStorage.getItem('token'));
