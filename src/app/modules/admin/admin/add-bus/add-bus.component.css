@@ -39,6 +39,7 @@ button {
     letter-spacing: 2px;
     margin: 3%;
     width: 91%;
+    margin-bottom: 20px;
 }
 
 button:hover {
@@ -108,4 +109,8 @@ button:hover {
     display: flex;
     align-items: center;
     /* justify-content: center; */
+}
+
+.foot{
+    margin-bottom: 20px;
 }

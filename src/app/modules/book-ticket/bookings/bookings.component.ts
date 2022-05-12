@@ -19,6 +19,8 @@ export class BookingsComponent implements OnInit {
     this.date = new Date().toDateString()
     if (this.stateService.getUserId() != '') {
       this.bookingService.post('getBookings', { userId: this.stateService.getUserId() }).subscribe(data => {
+        console.log("bookings");
+        
         console.log(data);
         this.totalBooking = data.total;
         this.bookings = data.filteredResults;
