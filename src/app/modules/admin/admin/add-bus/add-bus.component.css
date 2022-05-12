@@ -1,19 +1,13 @@
-#formContainer{
-    margin-left: 35%;
+#formContainer {
+    margin-left: 15%;
     margin-top: 5%;
-    width: 35%;
+    width: 70%;
     display: grid;
-    
-    /* justify-content: center; */
-    /* align-items:center ; */
-    /* border: 1px solid lightblue; */
     box-shadow: 3px 3px 8px 5px lightblue;
-    /* margin-bottom: 10%; */
 }
 
-h2{
-    margin-top: 10px;
-    margin-bottom: 0;
+h2 {
+    margin-top: 20px;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 1.5px;
@@ -21,30 +15,97 @@ h2{
     justify-content: center;
 }
 
-form{
+form {
     display: grid;
-
+    grid-template-columns: 50% 50%;
 }
 
-input{
+input {
     margin: 15px;
+    margin-bottom: 0;
     padding: 10px;
+    width: 85%;
     outline: none;
 }
 
-button{
+button {
     transition: all 0.5s;
     background-color: black;
     color: white;
     cursor: pointer;
     text-transform: uppercase;
     border-radius: 20px;
-    padding: 10px;
+    /* padding: 5px; */
     letter-spacing: 2px;
-    /* width: 80%; */
-    margin: 5%;
+    margin: 3%;
+    width: 91%;
 }
 
-button:hover{
+button:hover {
     letter-spacing: 7px;
+}
+
+.error {
+    text-align: center;
+    letter-spacing: 1.5px;
+    margin-left: 15px;
+    background-color: red;
+    color: white;
+    padding: 1px;
+    transition: all 1s;
+    width: 90%;
+    /* width: 32.5%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+.inputContainer{
+    margin-bottom: 10px;
+}
+
+.foot{
+    margin-bottom: 20px;
+}
+
+
+.disabled{
+    background-color: grey;
+    border: none;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+
+.message{
+   color: white;
+   padding: 10px;
+   margin-left: 46%;
+   margin-top: 13px;
+   position: absolute;
+   letter-spacing: 1.5px;
+   display: flex;
+   width: 21%;
+   display: grid;
+   justify-content: center;
+}
+
+.success{
+    background-color: green;
+}
+
+.failed{
+    background-color: #FF0000;
+}
+
+.initial{
+    display: none;
+}
+
+.messageContainer{
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
 }

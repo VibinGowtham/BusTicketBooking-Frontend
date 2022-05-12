@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AdminService } from 'src/app/services/adminServices/admin.service';
 
 @Component({
   selector: 'app-add-bus',
@@ -9,28 +10,47 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class AddBusComponent implements OnInit {
 
   bus: any
+  message:any
+  status:any
 
-  showData(){
-    console.log(this.bus.value);
+  removeEmpty(object: any) {
+    for (let key in object) {
+      if (object[key] == '') delete object[key]
+    }
   }
 
-  constructor() { }
+  postData() {
+      // console.log(this.bus.value);
+    let body=this.bus.value
+    this.removeEmpty(body)
+    this.adminService.post('addBus', body).subscribe(data => {
+      console.log(data);
+      this.status=data.status
+      this.message=data.message
+    })
+    setTimeout(()=>{
+      this.status=0
+    },10000)
+    this.bus.reset()
+  }
+
+  constructor(private adminService: AdminService) { }
 
   ngOnInit(): void {
     this.bus = new FormGroup({
-        name:new FormControl(''),
-        busType:new FormControl(''),
-        boardingLocation:new FormControl(''),
-        destinationLocation:new FormControl(''),
-        pickUpLocation:new FormControl(''),
-        dropLocation:new FormControl(''),
-        price:new FormControl(''),
-        totalSeats:new FormControl(''),
-        depatureDate:new FormControl(''),
-        rating:new FormControl(''),
-        depatureTime:new FormControl(''),
-        arrivalTime:new FormControl(''),
-        totalTime:new FormControl('')
+      name: new FormControl('', Validators.required),
+      busType: new FormControl(''),
+      boardingLocation: new FormControl('', Validators.required),
+      destinationLocation: new FormControl('', Validators.required),
+      pickupLocation: new FormControl('', Validators.required),
+      dropLocation: new FormControl('', Validators.required),
+      price: new FormControl(''),
+      totalSeats: new FormControl(''),
+      depatureDate: new FormControl(''),
+      rating: new FormControl(''),
+      depatureTime: new FormControl(''),
+      arrivalTime: new FormControl(''),
+      totalTime: new FormControl('')
     })
   }
 

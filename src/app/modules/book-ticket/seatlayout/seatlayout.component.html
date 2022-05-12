@@ -15,19 +15,24 @@
     </div>
     <div id="seatLayout">
         <div *ngFor="let index of iterations;">
-        <!-- <span *ngFor="let index of iterations;"> -->
+            <!-- <span *ngFor="let index of iterations;"> -->
             <!-- <span> -->
-                <div (click)="toggleSelection($event)" id="{{seats[index]}}" class="seat" [ngClass]="availability[index]==false?'booked':'available'" *ngIf="index!=seats.length"> <span id="{{seats[index]}}" style="visibility: hidden;">{{seats[index]}}</span>    </div>
-                
-                <div (click)="toggleSelection($event)" id="{{seats[index+1]}}" class="seat" [ngClass]="availability[index+1]==false?'booked':'available'" *ngIf="index+1!=seats.length"><span id="{{seats[index]}}" style="visibility:hidden ;">{{seats[index+1]}}</span>    </div>
+            <div (click)="toggleSelection($event)" id="{{seats[index]}}" class="seat"
+                [ngClass]="availability[index]==false?'booked':'available'" *ngIf="index!=seats.length"> <span
+                    id="{{seats[index]}}" style="visibility: hidden;">{{seats[index]}}</span> </div>
+
+            <div (click)="toggleSelection($event)" id="{{seats[index+1]}}" class="seat"
+                [ngClass]="availability[index+1]==false?'booked':'available'" *ngIf="index+1!=seats.length"><span
+                    id="{{seats[index]}}" style="visibility:hidden ;">{{seats[index+1]}}</span> </div>
             <!-- </span> -->
-        <!-- </span> -->
-    </div>
+            <!-- </span> -->
+        </div>
     </div>
     <div id="foot">
-<span style="font-size:12px;font-weight:500;letter-spacing: 1px;">
-    Selected Seats: 
-    <span style="font-size:15px;letter-spacing: normal;" *ngFor="let seat of selectedSeats">{{seat}} </span></span>
-<button [ngClass]="selectedSeats.length ==0 ?'disabled':''" (click)="bookSeats()">Confirm</button>
+        <span style="font-size:12px;font-weight:500;letter-spacing: 1px;">
+            Selected Seats:
+            <span style="font-size:15px;letter-spacing: normal;" *ngFor="let seat of selectedSeats">{{seat}}
+            </span></span>
+        <button [ngClass]="selectedSeats.length ==0 ?'disabled':''" (click)="bookSeats()">Confirm</button>
     </div>
 </div>

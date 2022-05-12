@@ -1,1 +1,12 @@
-<p>add-user works</p>
+<div id="mainContainer">
+    <form [formGroup]="user">
+        <input type="text" placeholder="Name" formControlName="user">
+        <input type="text" placeholder="Email" formControlName="email">
+        <input type="text" placeholder="Contact Number" formControlName="contactNo">
+        <input type="password" placeholder="Password" formControlName="password">
+        <select id="roles" formControlName="isAdmin">
+            <option value=true>True</option>
+            <option value=false>False</option>
+        </select>
+    </form>
+</div>

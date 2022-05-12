@@ -1,42 +1,103 @@
 <div id="formContainer">
-    <h2><mat-icon [inline]="true" style="font-size:22px;margin-right:5px ;">directions_bus</mat-icon> Add Bus</h2>
+    <p [ngClass]="status===200?'message success':'initial'">
+      <span class="messageContainer">
+            <mat-icon [inline]="true" style="font-size:20px;margin-right:10px ;">check_circle</mat-icon> <span>{{message}}</span>
+    </span>
+   </p>
+
+    <p [ngClass]="status===403?'message failed':'initial'">
+        <span class="messageContainer">
+            <mat-icon [inline]="true" style="font-size:20px;margin-right:10px;">warning</mat-icon> <span>{{message}}</span>
+        </span>
+        
+     </p>
+
+    <h2>
+        <mat-icon [inline]="true" style="font-size:22px;margin-right:5px;">directions_bus</mat-icon> Add Bus
+    </h2>
+
 
     <div>
         <form [formGroup]="bus">
-            <input type="text" placeholder="Bus Name" formControlName="name">
-            <input list="bustypes" placeholder="Bus Type" formControlName="busType">
-            <datalist id="bustypes">
-                <option value="A/c Sleeper"></option>
-                <option value="Non-A/c Sleeper"></option>
-            </datalist>
-            <!-- <label for="boardingLocation">Boarding Location</label> -->
-            <input type="text" placeholder="Boarding Location" formControlName="boardingLocation">
-            <!-- <label for="destinationLocation">Destination Location</label> -->
-            <input type="text" placeholder="Destination Location" formControlName="destinationLocation">
-            <!-- <label for="pickUpLocation">Pick-Up Location</label> -->
-            <input type="text" placeholder="Pick-Up Location" formControlName="pickUpLocation">
-            <!-- <label for="dropLocation">Drop Location</label> -->
-            <input type="text" placeholder="Drop Location" formControlName="dropLocation">
-            <!-- <label for="price">Price</label> -->
-            <input type="text" placeholder="Price" formControlName="price">
-            <!-- <label for="totalSeats">Total Seats</label> -->
-            <input type="text" placeholder="Total Seats" formControlName="totalSeats">
-            <!-- <label for="depatureDate">Depature Date</label> -->
-            <input type="text" placeholder="Depature Date" formControlName="depatureDate">
-            <!-- <label for="rating">Rating</label> -->
-            <input type="text" placeholder="Rating" formControlName="rating">
-            <!-- <label for="depatureTime">Depature Time</label> -->
-            <input type="text" placeholder="Depature Time" formControlName="depatureTime">
-            <!-- <label for="arrivalTime">Arrival Time</label> -->
-            <input type="text" placeholder="Arrival Time" formControlName="arrivalTime">
-            <!-- <label for="totalTime">Total Time</label> -->
-            <input type="text" placeholder="Total Time" formControlName="totalTime">
-            <button (click)="showData()">Add Bus</button>
+            <div class="inputContainer">
+                <input type="text" placeholder="Bus Name" formControlName="name">
+                <p class="error" *ngIf="bus.get('name')?.touched&& bus.get('name')?.invalid">
+                    <mat-icon style="margin-right:5px ;">dangerous</mat-icon> Bus name is mandatory
+                </p>
+            </div>
+
+            <div class="inputContainer">
+                <input list="bustypes" placeholder="Bus Type" formControlName="busType">
+                <datalist id="bustypes">
+                    <option value="A/c Sleeper"></option>
+                    <option value="Non-A/c Sleeper"></option>
+                </datalist>
+            </div>
+
+            <div class="inputContainer">
+                <input type="text" placeholder="Boarding Location" formControlName="boardingLocation">
+                <p class="error" *ngIf="bus.get('boardingLocation')?.touched&& bus.get('boardingLocation')?.invalid">
+                    <mat-icon style="margin-right:5px;">dangerous</mat-icon> Boarding Location is mandatory
+                </p>
+            </div>
+
+            <div class="inputContainer">
+                <input type="text" placeholder="Destination Location" formControlName="destinationLocation">
+                <p class="error"
+                    *ngIf="bus.get('destinationLocation')?.touched&& bus.get('destinationLocation')?.invalid">
+                    <mat-icon style="margin-right:5px;">dangerous</mat-icon> Destination Location is mandatory
+                </p>
+            </div>
+
+            <div class="inputContainer">
+                <input type="text" placeholder="Pick-Up Location" formControlName="pickupLocation">
+                <p class="error" *ngIf="bus.get('pickupLocation')?.touched&& bus.get('pickupLocation')?.invalid">
+                    <mat-icon style="margin-right:5px;">dangerous</mat-icon> Pick-Up Location Location is mandatory
+                </p>
+            </div>
+
+            <div class="inputContainer">
+                <input type="text" placeholder="Drop Location" formControlName="dropLocation">
+                <p class="error" *ngIf="bus.get('dropLocation')?.touched&& bus.get('dropLocation')?.invalid">
+                    <mat-icon style="margin-right:5px;">dangerous</mat-icon> Drop Location Location is mandatory
+                </p>
+            </div>
+
+            <div class="inputContainer">
+                <input type="text" placeholder="Price" formControlName="price">
+            </div>
+
+            <div class="inputContainer">
+                <input type="text" placeholder="Total Seats" formControlName="totalSeats">
+            </div>
+
+            <div class="inputContainer">
+                <input type="text" placeholder="Depature Date" formControlName="depatureDate">
+            </div>
+
+            <div class="inputContainer">
+                <input type="text" placeholder="Rating" formControlName="rating">
+            </div>
+
+            <div class="inputContainer">
+                <input type="text" placeholder="Depature Time" formControlName="depatureTime">
+            </div>
+
+            <div class="inputContainer">
+                <input type="text" placeholder="Arrival Time" formControlName="arrivalTime">
+            </div>
+
+            <div class="inputContainer">
+                <input type="text" placeholder="Total Time" formControlName="totalTime">
+            </div>
+
+            <button [ngClass]="bus.invalid?'disabled':''" (click)="postData()">Add Bus</button>
+
         </form>
     </div>
-    
+
 </div>
 
-<div>
+<div style="visibility: hidden;height:7% ;">
     Dummy
 </div>
