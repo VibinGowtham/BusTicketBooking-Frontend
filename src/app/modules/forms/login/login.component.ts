@@ -25,11 +25,11 @@ postLoginDetails(){
   this.loginForm.reset()
   this.userService.post('login', body).subscribe(data=>{
     console.log(data);
-    let decodedValue=jwtDecode<token>(data.token)
+    let decodedValue=jwtDecode<token>(data.AccessToken)
     this.stateService.setUserId(decodedValue.id)
 
     this.message=data.message
-    localStorage.setItem('token',data.token)
+    localStorage.setItem('token',data.AccessToken)
     let status=data.status
   
     if(status===200) {

@@ -1,22 +1,32 @@
 <div id="mainContainer">
     <div class="element">
-        <img id="bus" src="https://i.pinimg.com/originals/3b/a1/cb/3ba1cbc7b2fd44ef59b0da8775f7da44.jpg" alt="" srcset="">
+        <img id="bus" src="https://i.pinimg.com/originals/3b/a1/cb/3ba1cbc7b2fd44ef59b0da8775f7da44.jpg" alt=""
+            srcset="">
         <div id="button">
-            <button (click)="toggleAddBusComponent()"><mat-icon [inline]="true" style="height: fit-content;width: auto;">person_add</mat-icon> Add</button>
-            <button (click)="toggleUpdateBusComponent()"><mat-icon [inline]="true" style="height: fit-content;width: auto;">mode_edit</mat-icon> Update</button>
+            <button (click)="toggleAddBusComponent()">
+                <mat-icon [inline]="true" style="height: fit-content;width: auto;">person_add</mat-icon> Add
+            </button>
+            <button (click)="toggleUpdateBusComponent()">
+                <mat-icon [inline]="true" style="height: fit-content;width: auto;">mode_edit</mat-icon> Update
+            </button>
         </div>
     </div>
     <div class="element" id="userContainer">
-        <img id="user" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBjxOceYV-fj5jmBU759YZHGj94hwqykf2pg&usqp=CAU" alt="" srcset="">
+        <img id="user"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBjxOceYV-fj5jmBU759YZHGj94hwqykf2pg&usqp=CAU"
+            alt="" srcset="">
         <div id="button">
-            <button (click)="toggleAddUserComponent()"><mat-icon [inline]="true" style="height: fit-content;width: auto;">person_add</mat-icon> Add</button>
-            <button (click)="toggleUpdateUserComponent()"><mat-icon [inline]="true" style="height: fit-content;width: auto;">mode_edit</mat-icon> Update</button>
+            <button (click)="toggleAddUserComponent()">
+                <mat-icon [inline]="true" style="height: fit-content;width: auto;">person_add</mat-icon> Add
+            </button>
+            <button (click)="toggleUpdateUserComponent()">
+                <mat-icon [inline]="true" style="height: fit-content;width: auto;">mode_edit</mat-icon> Update
+            </button>
         </div>
     </div>
 </div>
 
-<app-add-bus *ngIf="showAddBus"></app-add-bus>
-<app-add-user *ngIf="showAddUser"></app-add-user>
-<app-update-user *ngIf="showUpdateUser"></app-update-user>
-<app-update-bus  *ngIf="showUpdateBus"></app-update-bus>
-
+<app-add-bus style="display:none ;" id="addBus"></app-add-bus>
+<app-add-user style="display:none ;" id="addUser"></app-add-user>
+<app-update-user style="display:none ;" id="updateUser"></app-update-user>
+<app-update-bus style="display:none ;" id="updateBus"></app-update-bus>

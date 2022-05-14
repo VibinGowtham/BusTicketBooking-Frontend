@@ -13,6 +13,16 @@ export class AddUserComponent implements OnInit {
   status: any
   message: any
 
+
+  close(){
+    let main=document.getElementById('mainNav') as HTMLElement
+    main.scrollIntoView({behavior:'smooth'})
+    setTimeout(() => {
+      document.getElementById('addUser')!.style.display='none'
+    }, 500);
+   
+  }
+
   changeToBoolean(value: string) {
     return value === 'Yes'
   }

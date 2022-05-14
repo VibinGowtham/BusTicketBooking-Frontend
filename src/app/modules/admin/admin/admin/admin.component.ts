@@ -7,32 +7,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  showAddBus!: boolean
-  showUpdateBus!: boolean
-  showAddUser!:boolean
-  showUpdateUser!:boolean
+  toggle(id: any) {
+    const element = document.getElementById(`${id}`) as HTMLElement;
+    if (element.style.display = 'none') element.style.display = 'grid'
+    else if (element.style.display = 'grid') element.style.display = 'npne'
+    element!.scrollIntoView({ behavior: 'smooth' });
+  }
 
   toggleAddBusComponent() {
-    this.showAddBus = !this.showAddBus
+    console.log(document.getElementById("addBus")?.style.display);
+
+    this.toggle('addBus')
   }
   toggleUpdateBusComponent() {
-    this.showUpdateBus = !this.showUpdateBus
+    this.toggle('updateBus')
   }
-  toggleAddUserComponent(){
-    this.showAddUser=!this.showAddUser
+  toggleAddUserComponent() {
+    this.toggle('addUser')
   }
-  toggleUpdateUserComponent(){
-this.showUpdateUser=!this.showUpdateUser
+  toggleUpdateUserComponent() {
+    this.toggle('updateUser')
   }
 
 
   constructor() { }
 
   ngOnInit(): void {
-    this.showAddBus = false
-    this.showAddUser = false
-    this.showUpdateBus=false
-    this.showUpdateUser=false
+ 
   }
 
 }

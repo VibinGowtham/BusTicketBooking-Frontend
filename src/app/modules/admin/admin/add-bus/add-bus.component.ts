@@ -13,6 +13,15 @@ export class AddBusComponent implements OnInit {
   message:any
   status:any
 
+close(){
+  let main=document.getElementById('mainNav') as HTMLElement
+  main.scrollIntoView({behavior:'smooth'})
+  setTimeout(() => {
+    document.getElementById('addBus')!.style.display='none'
+  }, 500);
+ 
+}
+
   removeEmpty(object: any) {
     for (let key in object) {
       if (object[key] == '') delete object[key]
@@ -37,6 +46,8 @@ export class AddBusComponent implements OnInit {
   constructor(private adminService: AdminService) { }
 
   ngOnInit(): void {
+    // this.message="User Successfully registered"
+    // this.status=200
     this.bus = new FormGroup({
       name: new FormControl('', Validators.required),
       busType: new FormControl(''),

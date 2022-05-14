@@ -4,6 +4,7 @@
     width: 70%;
     display: grid;
     box-shadow: 3px 3px 8px 5px lightblue;
+    position: relative;
 }
 
 h2 {
@@ -59,9 +60,7 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    
 }
-
 
 .inputContainer{
     margin-bottom: 10px;
@@ -113,3 +112,11 @@ button:hover {
 .foot{
     margin-bottom: 30px;
 }
+
+
+.close{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    }

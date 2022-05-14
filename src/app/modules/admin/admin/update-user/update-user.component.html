@@ -1,1 +1,46 @@
-<p>update-user works!</p>
+<form [ngClass]="disabled?'disabled':'initial'">
+    <input type="text" placeholder="Name">
+    <input type="text" placeholder="Email">
+</form>
+<div id="tableContainer">
+    <table>
+        <tr>
+            <th>
+                NAME
+            </th>
+            <th>
+                EMAIL
+            </th>
+            <th>
+                PASSWORD
+            </th>
+            <th>
+                ADMIN
+            </th>
+        </tr>
+        <tr>
+            <td>User</td>
+            <td>user@gmail.com</td>
+            <td>User123</td>
+            <td>Yes</td>
+            <td><button (click)="toggle($event)">Edit</button></td>
+            <td><button>Delete</button></td>
+        </tr>
+        <tr>
+            <td>User</td>
+            <td>user@gmail.com</td>
+            <td>User123</td>
+            <td>Yes</td>
+            <td><button (click)="toggle($event)">Edit</button></td>
+            <td><button>Delete</button></td>
+        </tr>
+        <tr>
+            <td>User</td>
+            <td>user@gmail.com</td>
+            <td>User123</td>
+            <td>Yes</td>
+            <td><button (click)="toggle($event)">Edit</button></td>
+            <td><button>Delete</button></td>
+        </tr>
+    </table>
+</div>
