@@ -1,1 +1,116 @@
-<p>update-user</p>
+<div id="updateTableContainer">
+    <span class="close"><mat-icon (click)="close()">close</mat-icon></span>
+    <span class="reset"><mat-icon (click)="getUpdatedUsers()">replay</mat-icon></span>
+    <p [ngClass]="status===200?'deleteMessage success':'initial'">
+        <span class="messageContainer">
+              <mat-icon [inline]="true" style="font-size:20px;margin-right:10px ;">check_circle</mat-icon> <span>{{message}}</span>
+      </span>
+     </p>
+  
+      <p [ngClass]="status===409?'deletemessage failed':'initial'">
+          <span class="messageContainer">
+              <mat-icon [inline]="true" style="font-size:20px;margin-right:10px;">warning</mat-icon> <span>{{message}}</span>
+          </span>
+       </p>
+    <h1> <mat-icon [inline]="true" style="margin-right: 10px;">handyman</mat-icon> User Table</h1>
+    <table>
+        <tr>
+            <th>UserName</th>
+            <th>Email</th>
+            <th>Contact Number</th>
+            <th>password</th>
+            <th style="border-right:3px double black ;">Admin</th>
+            <th colspan="2" style="text-align:center;border-right:none; letter-spacing:3px ;">Update/DELETE</th>
+        </tr>
+        <tr *ngFor="let user of users">
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.contactNo}}</td>
+            <td>
+                <input id="password" type="password" value="{{user.email}}" disabled="true">
+            </td>
+            <td style="border-right:3px double black ;">{{user.isAdmin==true?'Yes':'No'}}</td>
+            <td class="buttonContainer">
+                <button id="{{user._id}}" (click)="getUserDetails($event)">Update</button>
+                <button id="{{user._id}}" (click)="deleteUser($event)">Delete</button>
+            </td>    
+                <!-- <td class="buttonContainer" style="border-bottom:3px double black ;"><button  id="{{bus._id}}">Delete</button></td> -->
+        </tr>
+    </table>
+</div>
+
+<div id="updateFormContainer">
+    <span class="close" (click)="closeForm()"><mat-icon>close</mat-icon></span>
+    <p [ngClass]="status===200?'message success':'initial'">
+      <span class="messageContainer">
+            <mat-icon [inline]="true" style="font-size:20px;margin-right:10px ;">check_circle</mat-icon> <span>{{message}}</span>
+    </span>
+   </p>
+
+    <p [ngClass]="status===403?'message failed':'initial'">
+        <span class="messageContainer">
+            <mat-icon [inline]="true" style="font-size:20px;margin-right:10px;">warning</mat-icon> <span>{{message}}</span>
+        </span>
+        
+     </p>
+
+    <h2>
+        <mat-icon [inline]="true" style="font-size:22px;margin-right:5px;">directions_bus</mat-icon> Update User
+    </h2>
+
+
+    <div>
+        <form [formGroup]="user">
+            <div class="inputContainer">
+                <input type="text" placeholder="Name" formControlName="name">
+                <p class="error" *ngIf="user.get('name')?.touched && user.get('name')?.invalid">
+                    <mat-icon style="margin-right:5px ;">dangerous</mat-icon> User name is required
+                </p>
+            </div>
+
+            <div class="inputContainer">
+                <input type="text" placeholder="Contact Number" formControlName="contactNo">
+                <p class="error" *ngIf="user.get('contactNo')?.touched && user.get('contactNo')?.invalid">
+                    <mat-icon style="margin-right:5px;">dangerous</mat-icon>Contact Number must contain only 10 numbers 
+                </p>
+            </div>
+
+            <div class="inputContainer">
+                <input type="text" placeholder="Email" formControlName="email">
+                <p class="error"
+                    *ngIf="user.get('email')?.touched&& user.get('email')?.invalid">
+                    <mat-icon style="margin-right:5px;">dangerous</mat-icon> Enter a valid email
+                </p>
+            </div>
+
+            <div class="inputContainer">
+                <input type="password" placeholder="Password" formControlName="password">
+                <p class="error" *ngIf="user.get('password')?.touched && user.get('password')?.invalid">
+                    <mat-icon style="margin-right:5px;">dangerous</mat-icon> Password must be 8-15 characters
+                </p>
+            </div>
+
+
+            <div class="inputContainer foot">
+                <input list="role" placeholder="Admin" formControlName="isAdmin">
+                <datalist id="role">
+                    <option value="Yes"></option>
+                    <option value="No"></option>
+                </datalist>
+            </div>
+            <button id="button" [ngClass]="user.invalid?'disabled':''" (click)="postData()">Update User</button>
+        </form>
+    </div>
+
+</div>
+
+
+<!-- <div style="visibility: hidden;height:7% ;">
+    Dummy
+</div> -->
+
+
+<div id="dummy" style="height:10%;visibility:hidden">
+    dummy
+</div>
+

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UpdateBusComponent } from '../update-bus/update-bus.component';
+import { UpdateUserComponent } from '../update-user/update-user.component';
 
 @Component({
   selector: 'app-admin',
@@ -8,7 +9,9 @@ import { UpdateBusComponent } from '../update-bus/update-bus.component';
 })
 export class AdminComponent implements OnInit {
  
-  @ViewChild(UpdateBusComponent)child!: UpdateBusComponent;
+  @ViewChild(UpdateBusComponent)updateBus!: UpdateBusComponent;
+
+  @ViewChild(UpdateUserComponent)updateUser!: UpdateUserComponent;
 
   toggle(id: any) {
     const element = document.getElementById(`${id}`) as HTMLElement;
@@ -23,13 +26,14 @@ export class AdminComponent implements OnInit {
     this.toggle('addBus')
   }
   toggleUpdateBusComponent() {
-    this.child.getUpdatedBuses()
+    this.updateBus.getUpdatedBuses()
     this.toggle('updateBus')
   }
   toggleAddUserComponent() {
     this.toggle('addUser')
   }
   toggleUpdateUserComponent() {
+    this.updateUser.getUpdatedUsers()
     this.toggle('updateUser')
   }
 
