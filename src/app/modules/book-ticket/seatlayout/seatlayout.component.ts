@@ -43,7 +43,6 @@ export class SeatlayoutComponent implements OnInit {
       .subscribe(data => console.log(data)
       )
     this.selectedSeats = [], this.selectedSeat = []
-    // this.price = 600
     this.router.navigateByUrl('book/bookings')
   }
 

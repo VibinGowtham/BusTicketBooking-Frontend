@@ -72,7 +72,8 @@
             </div>
 
             <div class="inputContainer">
-                <input type="text" placeholder="Depature Date" formControlName="depatureDate">
+                <!-- <input type="text" placeholder="Date of birth" onfocus="(this.type='date')">  -->
+                <input type="date" placeholder="Depature Date" formControlName="depatureDate">
             </div>
 
             <div class="inputContainer">
@@ -91,7 +92,7 @@
                 <input type="text" placeholder="Total Time" formControlName="totalTime">
             </div>
 
-            <button [ngClass]="bus.invalid?'disabled':''" (click)="postData()">Add Bus</button>
+            <button id="button" [ngClass]="bus.invalid?'disabled':''" (click)="postData()">Add Bus</button>
 
         </form>
     </div>

@@ -16,4 +16,8 @@ export class AdminService {
     return this.http.post<any>(`${this.SERVER_URL}/${route}`, body)
   }
 
+  get(route: string): Observable<any> {
+    return this.http.get<any>(`${this.SERVER_URL}/${route}`)
+  }
+
 }

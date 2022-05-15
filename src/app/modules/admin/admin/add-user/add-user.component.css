@@ -80,16 +80,13 @@ button:hover {
 
 
 .message{
+    top: 10px;
+    right: 10px;
    color: white;
    padding: 10px;
-   margin-left: 46%;
-   margin-top: 13px;
+   display: block;
    position: absolute;
    letter-spacing: 1.5px;
-   display: flex;
-   width: 21%;
-   display: grid;
-   justify-content: center;
 }
 
 .success{

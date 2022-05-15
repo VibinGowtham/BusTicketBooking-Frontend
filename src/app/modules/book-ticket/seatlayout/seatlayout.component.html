@@ -22,8 +22,8 @@
                     id="{{seats[index]}}" style="visibility: hidden;">{{seats[index]}}</span> </div>
 
             <div (click)="toggleSelection($event)" id="{{seats[index+1]}}" class="seat"
-                [ngClass]="availability[index+1]==false?'booked':'available'" *ngIf="index+1!=seats.length"><span
-                    id="{{seats[index]}}" style="visibility:hidden ;">{{seats[index+1]}}</span> </div>
+                [ngClass]="availability[index+1]==false?'booked':'available'" *ngIf="index+1!=seats.length">
+                <span id="{{seats[index]}}" style="visibility:hidden ;">{{seats[index+1]}}</span> </div>
             <!-- </span> -->
             <!-- </span> -->
         </div>

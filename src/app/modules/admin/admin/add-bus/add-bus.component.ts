@@ -10,36 +10,40 @@ import { AdminService } from 'src/app/services/adminServices/admin.service';
 export class AddBusComponent implements OnInit {
 
   bus: any
-  message:any
-  status:any
+  message: any
+  status: any
 
-close(){
-  let main=document.getElementById('mainNav') as HTMLElement
-  main.scrollIntoView({behavior:'smooth'})
-  setTimeout(() => {
-    document.getElementById('addBus')!.style.display='none'
-  }, 500);
- 
-}
+  close() {
+    let main = document.getElementById('mainNav') as HTMLElement
+    main.scrollIntoView({ behavior: 'smooth' })
+    setTimeout(() => {
+      document.getElementById('addBus')!.style.display = 'none'
+    }, 500);
+
+  }
 
   removeEmpty(object: any) {
     for (let key in object) {
-      if (object[key] == '') delete object[key]
+      if (object[key] == '' || object[key] === null) delete object[key]
     }
   }
 
   postData() {
-      // console.log(this.bus.value);
-    let body=this.bus.value
+    // console.log(this.bus.value.depatureDate);
+    this.bus.value.depatureDate=parseInt(this.bus.value.depatureDate.slice(8))%7
+    console.log(this.bus.value.depatureDate);
+    
+    let body = this.bus.value
     this.removeEmpty(body)
+    console.log(body);
     this.adminService.post('addBus', body).subscribe(data => {
       console.log(data);
-      this.status=data.status
-      this.message=data.message
+      this.status = data.status
+      this.message = data.message
     })
-    setTimeout(()=>{
-      this.status=0
-    },10000)
+    setTimeout(() => {
+      this.status = 0
+    }, 10000)
     this.bus.reset()
   }
 
@@ -55,10 +59,10 @@ close(){
       destinationLocation: new FormControl('', Validators.required),
       pickupLocation: new FormControl('', Validators.required),
       dropLocation: new FormControl('', Validators.required),
-      price: new FormControl(''),
-      totalSeats: new FormControl(''),
+      price: new FormControl('', Validators.pattern('[0-9]*$')),
+      totalSeats: new FormControl('', Validators.pattern('[0-9]{2}')),
       depatureDate: new FormControl(''),
-      rating: new FormControl(''),
+      rating: new FormControl('', [Validators.min(1.0), Validators.max(5.0)]),
       depatureTime: new FormControl(''),
       arrivalTime: new FormControl(''),
       totalTime: new FormControl('')

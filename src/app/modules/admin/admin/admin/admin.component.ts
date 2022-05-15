@@ -9,8 +9,8 @@ export class AdminComponent implements OnInit {
 
   toggle(id: any) {
     const element = document.getElementById(`${id}`) as HTMLElement;
-    if (element.style.display = 'none') element.style.display = 'grid'
-    else if (element.style.display = 'grid') element.style.display = 'npne'
+    if (element.style.display == 'none') element.style.display = 'grid'
+    else if (element.style.display == 'grid') element.style.display = 'npne'
     element!.scrollIntoView({ behavior: 'smooth' });
   }
 
