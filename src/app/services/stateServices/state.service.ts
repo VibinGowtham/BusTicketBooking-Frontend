@@ -41,6 +41,14 @@ export class StateService {
   setToken(token:any){
     localStorage.setItem('token',token)
   }
+
+  getRefreshToken(){
+    return localStorage.getItem('refreshToken')
+  }
+  
+  setRefreshToken(token:any){
+    localStorage.setItem('refreshToken',token)
+  }
   
   getIsRegistered() {
     return this.isRegistered
