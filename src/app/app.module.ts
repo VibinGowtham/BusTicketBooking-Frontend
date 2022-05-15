@@ -7,11 +7,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OwnFormsModule } from "./modules/forms/forms.module";
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpContext, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { BookTicketModule } from './modules/book-ticket/book-ticket.module';
 import { AdminModule } from './modules/admin/admin/admin.module';
-
-
+import { TokeninterceptorService } from './services/interceptor/tokeninterceptor.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +26,7 @@ import { AdminModule } from './modules/admin/admin/admin.module';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{provide:HTTP_INTERCEPTORS,useClass:TokeninterceptorService,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

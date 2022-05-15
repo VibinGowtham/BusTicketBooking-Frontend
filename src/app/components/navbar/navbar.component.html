@@ -2,7 +2,7 @@
     <li class="nav-collapse"><mat-icon (click)="classToggle()">menu</mat-icon></li> 
     <li id="nav-logo">Logo</li>
 
-    <li class="nav-items nav-items-hide" routerLink="book/book-tickets" *ngIf="stateService.isSignedIn">
+    <li class="nav-items nav-items-hide" routerLink="book/book-tickets" *ngIf="stateService.getSignedIn()">
         <mat-icon class="nav-icons">departure_board</mat-icon>
         Book-Tickets
     </li>
@@ -12,11 +12,11 @@
         Bookings
     </li>
 
-    <li class="nav-items nav-items-hide" routerLink="user/login" *ngIf="stateService.isSignedIn==false">
+    <li class="nav-items nav-items-hide" routerLink="user/login" *ngIf="stateService.getSignedIn()==false">
         <mat-icon class="nav-icons">how_to_reg</mat-icon>  Login
     </li>
     
-    <li class="nav-items nav-items-hide" routerLink="user/register" *ngIf="stateService.isSignedIn==false">
+    <li class="nav-items nav-items-hide" routerLink="user/register" *ngIf="stateService.getSignedIn()==false">
         <mat-icon class="nav-icons">person_add</mat-icon>
         Register
     </li>

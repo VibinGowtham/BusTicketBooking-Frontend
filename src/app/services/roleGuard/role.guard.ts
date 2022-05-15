@@ -17,11 +17,11 @@ export class RoleGuard implements CanActivate {
 
   canActivate(): any {
     let result: any
-    console.log(localStorage.getItem('token'));
-    console.log(!!localStorage.getItem('token'));
+    // console.log(localStorage.getItem('token'));
+    // console.log(!!localStorage.getItem('token'));
 
-    if (!!localStorage.getItem('token')) {
-      this.token = localStorage.getItem('token')?.slice(7)
+    if (!!this.stateService.getToken()) {
+      this.token = this.stateService.getToken()?.slice(7)
       try {
         let result = jwtDecode<token>(this.token)
         console.log(result);

@@ -5,22 +5,22 @@ import { Injectable } from '@angular/core';
 })
 export class StateService {
   isSignedIn!: boolean
-  isRegistered!:boolean
-  isAdmin!:boolean
+  isRegistered!: boolean
+  isAdmin!: boolean
   userId!: String
   busId!: String
 
   constructor() {
     this.isSignedIn = false
-    this.isRegistered=false
-    this.isAdmin=false
+    this.isRegistered = false
+    this.isAdmin = false
     this.userId = ""
     this.busId = ""
   }
 
-getIsAdmin(){
-  return this.isAdmin
-}
+  getIsAdmin() {
+    return this.isAdmin
+  }
 
   getSignedIn() {
     return this.isSignedIn
@@ -34,12 +34,20 @@ getIsAdmin(){
     return this.busId
   }
 
-  getIsRegistered(){
+  getToken(){
+    return localStorage.getItem('token')
+  }
+  
+  setToken(token:any){
+    localStorage.setItem('token',token)
+  }
+  
+  getIsRegistered() {
     return this.isRegistered
   }
 
-  setIsRegistered(isRegistered:any){
-    this.isRegistered=isRegistered
+  setIsRegistered(isRegistered: any) {
+    this.isRegistered = isRegistered
   }
 
   setSignedIn(status: boolean) {
@@ -56,7 +64,7 @@ getIsAdmin(){
     this.busId = busId
   }
 
-  setIsAdmin(isAdmin:any){
-    this.isAdmin=isAdmin
+  setIsAdmin(isAdmin: any) {
+    this.isAdmin = isAdmin
   }
 }

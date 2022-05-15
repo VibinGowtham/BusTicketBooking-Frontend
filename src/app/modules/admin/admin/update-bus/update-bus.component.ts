@@ -42,32 +42,32 @@ export class UpdateBusComponent implements OnInit {
     console.log("Inside");
     
     this.toggleUpdateForm()
-    // this.date = new Date()
-    // let year = this.date.getFullYear()
-    // let day = '0' + this.date.getDate()
-    // day = day.slice(-2)
-    // let month = '0' + this.date.getMonth()
-    // month = month.slice(-2)
-    // this.busId = event.target.attributes.id.nodeValue
-    // this.adminService.post('getBus', { id: this.busId }).subscribe(data => {
-    //   console.log(data);
-    //   this.bus = new FormGroup({
-    //     name: new FormControl(data.name, Validators.required),
-    //     busType: new FormControl(data.busType),
-    //     boardingLocation: new FormControl(data.boardingLocation, Validators.required),
-    //     destinationLocation: new FormControl(data.destinationLocation, Validators.required),
-    //     pickupLocation: new FormControl(data.pickupLocation, Validators.required),
-    //     dropLocation: new FormControl(data.dropLocation, Validators.required),
-    //     price: new FormControl(data.price, Validators.pattern('[0-9]*$')),
-    //     totalSeats: new FormControl(data.totalSeats, Validators.pattern('[0-9]{2}')),
-    //     depatureDate: new FormControl(`${year}-${month}-${day}`),
-    //     rating: new FormControl(data.rating, [Validators.min(1.0), Validators.max(5.0)]),
-    //     depatureTime: new FormControl(data.depatureTime),
-    //     arrivalTime: new FormControl(data.arrivalTime),
-    //     totalTime: new FormControl(data.totalTime)
-    //   })
+    this.date = new Date()
+    let year = this.date.getFullYear()
+    let day = '0' + this.date.getDate()
+    day = day.slice(-2)
+    let month = '0' + this.date.getMonth()
+    month = month.slice(-2)
+    this.busId = event.target.attributes.id.nodeValue
+    this.adminService.post('getBus', { id: this.busId }).subscribe(data => {
+      console.log(data);
+      this.bus = new FormGroup({
+        name: new FormControl(data.name, Validators.required),
+        busType: new FormControl(data.busType),
+        boardingLocation: new FormControl(data.boardingLocation, Validators.required),
+        destinationLocation: new FormControl(data.destinationLocation, Validators.required),
+        pickupLocation: new FormControl(data.pickupLocation, Validators.required),
+        dropLocation: new FormControl(data.dropLocation, Validators.required),
+        price: new FormControl(data.price, Validators.pattern('[0-9]*$')),
+        totalSeats: new FormControl(data.totalSeats, Validators.pattern('[0-9]{2}')),
+        depatureDate: new FormControl(`${year}-${month}-${day}`),
+        rating: new FormControl(data.rating, [Validators.min(1.0), Validators.max(5.0)]),
+        depatureTime: new FormControl(data.depatureTime),
+        arrivalTime: new FormControl(data.arrivalTime),
+        totalTime: new FormControl(data.totalTime)
+      })
 
-    // })
+    })
 
   }
 

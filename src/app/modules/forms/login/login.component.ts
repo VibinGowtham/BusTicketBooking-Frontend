@@ -29,7 +29,8 @@ postLoginDetails(){
     this.stateService.setUserId(decodedValue.id)
 
     this.message=data.message
-    localStorage.setItem('token',data.AccessToken)
+    // localStorage.setItem('token',data.AccessToken)
+    this.stateService.setToken(data.AccessToken)
     let status=data.status
   
     if(status===200) {

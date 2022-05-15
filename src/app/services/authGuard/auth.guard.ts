@@ -16,11 +16,11 @@ export class AuthGuard implements CanActivate {
 
   canActivate(): any {
     let result: any
-    console.log(localStorage.getItem('token'));
-    console.log(!!localStorage.getItem('token'));
+    // console.log(localStorage.getItem('token'));
+    // console.log(!!localStorage.getItem('token'));
 
-    if (!!localStorage.getItem('token')) {
-      this.token = localStorage.getItem('token')?.slice(7)
+    if (!!this.stateService.getToken()) {
+      this.token = this.stateService.getToken()?.slice(7)
       try {
         let result = jwtDecode(this.token)
         console.log(result);
@@ -28,12 +28,16 @@ export class AuthGuard implements CanActivate {
       }
       catch (err) {
         alert("Unauthorized")
+        this.stateService.setSignedIn(false)
+        this.stateService.setIsAdmin(false)
         this.router.navigateByUrl('user/register')
         return false
       }
     }   
     else {
       alert("Restricted")
+      // this.stateService.setSignedIn(false)
+      // this.stateService.setIsAdmin(false)
       this.router.navigateByUrl('user/register')
     }
   }
