@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { UpdateBusComponent } from '../update-bus/update-bus.component';
 
 @Component({
   selector: 'app-admin',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
+ 
+  @ViewChild(UpdateBusComponent)child!: UpdateBusComponent;
 
   toggle(id: any) {
     const element = document.getElementById(`${id}`) as HTMLElement;
@@ -20,6 +23,7 @@ export class AdminComponent implements OnInit {
     this.toggle('addBus')
   }
   toggleUpdateBusComponent() {
+    this.child.getUpdatedBuses()
     this.toggle('updateBus')
   }
   toggleAddUserComponent() {

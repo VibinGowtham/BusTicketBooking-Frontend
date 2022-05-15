@@ -9,6 +9,7 @@ import { UserserviceService } from 'src/app/services/userServices/userservice.se
   styleUrls: ['./add-user.component.css']
 })
 export class AddUserComponent implements OnInit {
+  initialValues:any
   user: any
   status: any
   message: any
@@ -44,7 +45,7 @@ export class AddUserComponent implements OnInit {
           this.status=0
         }, 5000);  
     })
-    this.user.reset()
+    this.user.reset(this.initialValues)
   }
 
   constructor(private userService:UserserviceService) { }
@@ -59,5 +60,6 @@ export class AddUserComponent implements OnInit {
       password: new FormControl('', [Validators.required, Validators.pattern('([a-zA-Z0-9!@#$%^&*]){8,15}')]),
       isAdmin: new FormControl('')
     })
+    this.initialValues=this.user.value
   }
 }

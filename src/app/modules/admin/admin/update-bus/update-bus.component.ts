@@ -16,7 +16,6 @@ export class UpdateBusComponent implements OnInit {
   buses: any
   bus: any
 
-
   getUpdatedBuses() {
     this.adminService.get('getAllBuses').subscribe(data => {
       console.log(data);

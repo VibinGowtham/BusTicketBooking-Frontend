@@ -8,7 +8,7 @@ import { AdminService } from 'src/app/services/adminServices/admin.service';
   styleUrls: ['./add-bus.component.css']
 })
 export class AddBusComponent implements OnInit {
-
+initialFormValues:any
   bus: any
   message: any
   status: any
@@ -44,14 +44,13 @@ export class AddBusComponent implements OnInit {
     setTimeout(() => {
       this.status = 0
     }, 10000)
-    this.bus.reset()
+    this.bus.reset(this.initialFormValues)
+    
   }
 
   constructor(private adminService: AdminService) { }
 
   ngOnInit(): void {
-    // this.message="User Successfully registered"
-    // this.status=200
     this.bus = new FormGroup({
       name: new FormControl('', Validators.required),
       busType: new FormControl(''),
@@ -67,6 +66,8 @@ export class AddBusComponent implements OnInit {
       arrivalTime: new FormControl(''),
       totalTime: new FormControl('')
     })
+    this.initialFormValues= this.bus.value
+    
   }
 
 }
