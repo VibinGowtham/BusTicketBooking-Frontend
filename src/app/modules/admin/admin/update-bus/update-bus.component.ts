@@ -31,39 +31,43 @@ export class UpdateBusComponent implements OnInit {
   }
 
   toggleUpdateForm() {
-    let element = document.getElementById("updateFormContainer") as HTMLElement
+    let element = document.getElementById("updateBusFormContainer") as HTMLElement
     element.style.display = 'grid'
+    console.log(element.style.display);
+    
     element.scrollIntoView({ behavior: 'smooth' })
   }
 
   getBusDetails(event: any) {
-    this.date = new Date()
-    let year = this.date.getFullYear()
-    let day = '0' + this.date.getDate()
-    day = day.slice(-2)
-    let month = '0' + this.date.getMonth()
-    month = month.slice(-2)
+    console.log("Inside");
+    
     this.toggleUpdateForm()
-    this.busId = event.target.attributes.id.nodeValue
-    this.adminService.post('getBus', { id: this.busId }).subscribe(data => {
-      console.log(data);
-      this.bus = new FormGroup({
-        name: new FormControl(data.name, Validators.required),
-        busType: new FormControl(data.busType),
-        boardingLocation: new FormControl(data.boardingLocation, Validators.required),
-        destinationLocation: new FormControl(data.destinationLocation, Validators.required),
-        pickupLocation: new FormControl(data.pickupLocation, Validators.required),
-        dropLocation: new FormControl(data.dropLocation, Validators.required),
-        price: new FormControl(data.price, Validators.pattern('[0-9]*$')),
-        totalSeats: new FormControl(data.totalSeats, Validators.pattern('[0-9]{2}')),
-        depatureDate: new FormControl(`${year}-${month}-${day}`),
-        rating: new FormControl(data.rating, [Validators.min(1.0), Validators.max(5.0)]),
-        depatureTime: new FormControl(data.depatureTime),
-        arrivalTime: new FormControl(data.arrivalTime),
-        totalTime: new FormControl(data.totalTime)
-      })
+    // this.date = new Date()
+    // let year = this.date.getFullYear()
+    // let day = '0' + this.date.getDate()
+    // day = day.slice(-2)
+    // let month = '0' + this.date.getMonth()
+    // month = month.slice(-2)
+    // this.busId = event.target.attributes.id.nodeValue
+    // this.adminService.post('getBus', { id: this.busId }).subscribe(data => {
+    //   console.log(data);
+    //   this.bus = new FormGroup({
+    //     name: new FormControl(data.name, Validators.required),
+    //     busType: new FormControl(data.busType),
+    //     boardingLocation: new FormControl(data.boardingLocation, Validators.required),
+    //     destinationLocation: new FormControl(data.destinationLocation, Validators.required),
+    //     pickupLocation: new FormControl(data.pickupLocation, Validators.required),
+    //     dropLocation: new FormControl(data.dropLocation, Validators.required),
+    //     price: new FormControl(data.price, Validators.pattern('[0-9]*$')),
+    //     totalSeats: new FormControl(data.totalSeats, Validators.pattern('[0-9]{2}')),
+    //     depatureDate: new FormControl(`${year}-${month}-${day}`),
+    //     rating: new FormControl(data.rating, [Validators.min(1.0), Validators.max(5.0)]),
+    //     depatureTime: new FormControl(data.depatureTime),
+    //     arrivalTime: new FormControl(data.arrivalTime),
+    //     totalTime: new FormControl(data.totalTime)
+    //   })
 
-    })
+    // })
 
   }
 
@@ -111,7 +115,7 @@ export class UpdateBusComponent implements OnInit {
     let main = document.getElementById('tableContainer') as HTMLElement
     main.scrollIntoView({ behavior: 'smooth' })
     setTimeout(() => {
-      document.getElementById('updateFormContainer')!.style.display = 'none'
+      document.getElementById('updateBusFormContainer')!.style.display = 'none'
     }, 500);
   }
 
@@ -126,9 +130,6 @@ export class UpdateBusComponent implements OnInit {
   constructor(private adminService: AdminService) { }
 
   ngOnInit(): void {
-
-    // this.status=200
-    // this.message="Bus Successfully deleted"
     this.getUpdatedBuses()
 
     this.bus = new FormGroup({
