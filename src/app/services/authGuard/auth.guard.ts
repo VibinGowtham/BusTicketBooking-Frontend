@@ -16,9 +16,6 @@ export class AuthGuard implements CanActivate {
 
   canActivate(): any {
     let result: any
-    // console.log(localStorage.getItem('token'));
-    // console.log(!!localStorage.getItem('token'));
-
     if (!!this.stateService.getToken()) {
       this.token = this.stateService.getToken()?.slice(7)
       try {

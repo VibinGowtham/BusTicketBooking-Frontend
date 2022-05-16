@@ -8,7 +8,6 @@ import { MaterialModule } from '../material/material.module';
 import { SeatlayoutComponent } from './seatlayout/seatlayout.component';
 import { BookingsComponent } from './bookings/bookings.component';
 
-
 @NgModule({
   declarations: [
     BookComponent,

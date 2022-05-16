@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/app/services/authGuard/auth.guard';
 import { BookComponent } from './book/book.component';
 import { BookingsComponent } from './bookings/bookings.component';
+
 import { SeatlayoutComponent } from './seatlayout/seatlayout.component';
 
 const routes: Routes = [

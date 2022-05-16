@@ -1,6 +1,10 @@
 <ul id="mainNav" class="navbar">
     <li class="nav-collapse"><mat-icon (click)="classToggle()">menu</mat-icon></li> 
-    <li id="nav-logo">Logo</li>
+    <li id="nav-logo">
+        <!-- <mat-icon [inline]="true" style="padding-right: 5px;font-size: 35px;">gps_fixed</mat-icon>  -->
+        Mr Bus
+        <!-- <img src="../../../assets/logo.png" width="70" height="70" alt="" srcset=""> -->
+    </li>
 
     <li class="nav-items nav-items-hide" routerLink="book/book-tickets" *ngIf="stateService.getSignedIn()">
         <mat-icon class="nav-icons">departure_board</mat-icon>

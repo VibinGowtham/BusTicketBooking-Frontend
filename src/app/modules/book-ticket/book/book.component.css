@@ -2,14 +2,12 @@
     display: grid;
     height: 70vh;
     grid-template-columns: 100%;
-    grid-template-rows: 85% 15%;
+    grid-template-rows: 100%;
     row-gap: 5%;
 }
 
 #inputContainer{
-    /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfX-Xc56MzLlSXKOWP-XI8WZ4ZVqYs6-YAaw&usqp=CAU"); */
-    /* background-color: black; */
-    background-image: url("https://c1.wallpaperflare.com/preview/924/883/662/train-interior-train-aisle-train-wagon-seat.jpg");
+    background-image: url("../../../../assets/backg.jpg");
     background-size:cover;
     background-repeat: no-repeat;
     border: 1px solid black;
@@ -37,12 +35,12 @@ button{
     color: white;
     font-weight: 550;
     text-transform: uppercase;
-    padding: 15px;
+    padding: 10px;
     border-radius: 25px;
     border: none;
     letter-spacing: 2px;
     transition: 0.7s;
-    margin-left: 5px;
+    margin-bottom: 5px;
 }
 
 button:hover{
@@ -64,7 +62,7 @@ img{
 }
 
 #busContainer{
-    margin-top: 3.5%;
+    margin-top: 8%;
     /* height: 100vh; */
     justify-content: center;
     display: grid;
@@ -103,7 +101,7 @@ img{
     text-align: center;
     text-transform: uppercase;
     grid-column: 1/span 2;
-    grid-row: 1/span 2;
+    grid-row: 1/span 3;
     display: grid;
     justify-content: center;
     align-items: center;
@@ -115,6 +113,7 @@ img{
     grid-template-columns: 75%;
     justify-content:flex-end;
     letter-spacing: 1.5px;
+    margin-bottom: 25px;
 }
 #busButton{
    margin-right: 10px;
@@ -124,6 +123,7 @@ img{
 }
  
 #busPropertiesContainer{
+    margin-top: 20px;
     display: grid;
     justify-content: center;
     grid-template-columns: 80%;

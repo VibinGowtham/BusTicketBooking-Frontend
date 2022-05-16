@@ -43,7 +43,11 @@ export class SeatlayoutComponent implements OnInit {
       .subscribe(data => console.log(data)
       )
     this.selectedSeats = [], this.selectedSeat = []
-    this.router.navigateByUrl('book/bookings')
+
+    setTimeout(() => {
+      this.router.navigateByUrl('book/bookings')
+    }, 1000);
+    
   }
 
 
