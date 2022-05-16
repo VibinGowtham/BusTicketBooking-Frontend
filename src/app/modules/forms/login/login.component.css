@@ -2,19 +2,31 @@
     position: absolute;
     padding: 10px 15px;
 }
-
-.message {
-    position: absolute;
-    top: 9.5vh;
+.message{
+    top: 60px;
     right: 10px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 30vw;
-    height: 6vh;
-    font-size: 1.2em;
+   color: white;
+   padding: 10px;
+   display: block;
+   position: absolute;
+   letter-spacing: 1.5px;
+}
+
+.success{
     background-color: green;
-    color: white;
+}
+
+.failed{
+    background-color: #FF0000;
+}
+
+.initial{
+    display: none;
+}
+
+.messageContainer{
+    display: flex;
+    align-items: center;
 }
 
 #register {
@@ -117,4 +129,11 @@ input {
     #form {
         width: 70%;
     }
+}
+
+.disabled{
+    background-color: grey;
+    border: none;
+    opacity: 0.5;
+    pointer-events: none;
 }

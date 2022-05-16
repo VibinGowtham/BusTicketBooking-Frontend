@@ -1,7 +1,14 @@
-<div *ngIf="this.stateService.getIsRegistered()==true" [ngClass]="{'message':this.stateService.getIsRegistered()==true}">
-  <mat-icon>check_circle</mat-icon> 
-  <span>{{message}}</span> 
-</div>
+<p [ngClass]="status===200?'message success':'initial'">
+  <span class="messageContainer">
+        <mat-icon [inline]="true" style="font-size:20px;margin-right:10px ;">check_circle</mat-icon> <span>{{message}}</span>
+</span>
+</p>
+
+<p [ngClass]="status===403?'message failed':'initial'">
+    <span class="messageContainer">
+        <mat-icon [inline]="true" style="font-size:20px;margin-right:10px;">warning</mat-icon> <span>{{message}}</span>
+    </span>
+ </p>
 
 
 <div id="container">
@@ -38,7 +45,7 @@
       </div>
 
       <div class="form-element">
-          <button id="login" [disabled]="registerForm.invalid" (click)="postDetails()">Register</button>
+          <button id="login" [ngClass]="registerForm.invalid?'disabled':''"  (click)="postDetails()">Register</button>
       </div>     
 
     </form>

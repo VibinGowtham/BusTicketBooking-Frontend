@@ -14,6 +14,7 @@ import { UserserviceService } from 'src/app/services/userServices/userservice.se
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  status:any
   message:any
   registerForm!:FormGroup
 
@@ -21,9 +22,13 @@ export class RegisterComponent implements OnInit {
    let body=this.registerForm.value
    this.registerForm.reset()
    this.userService.post('register', body).subscribe(data=>{
-     this.stateService.setIsRegistered(true)
+     console.log("reg");
+     console.log(data);
+     
+     this.status=data.status
      this.message=data.message
      if(data.status===200) {
+      this.stateService.setIsRegistered(true)
       setTimeout(() => {
         this.router.navigateByUrl('user/login');
       }, 500); 
@@ -33,6 +38,8 @@ export class RegisterComponent implements OnInit {
   constructor(private userService:UserserviceService,private router:Router,public stateService:StateService) { }
 
   ngOnInit(): void {
+    // this.status=404
+    // this.message="Succesfully Registered"
     this.registerForm=new FormGroup({
       name:new FormControl("",[Validators.required,Validators.pattern('[a-zA-Z]+$')]),
       email:new FormControl('',[Validators.required,Validators.email]),
