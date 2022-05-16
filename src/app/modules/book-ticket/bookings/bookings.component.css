@@ -1,4 +1,4 @@
-#totalBookings{
+#totalBookings {
     text-align: center;
     height: 50px;
     display: flex;
@@ -6,7 +6,11 @@
     align-items: center;
     text-transform: uppercase;
     letter-spacing: 1.5px;
+    /* position: relative; */
+    /* position: fixed; */
+    overflow: hidden;
 }
+
 #mainContainer {
     justify-content: center;
     display: grid;
@@ -16,6 +20,7 @@
 }
 
 .booking {
+    position: relative;
     border: 1px solid lightblue;
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
@@ -24,7 +29,7 @@
     text-transform: capitalize;
 }
 
-.booking:hover{
+.booking:hover {
     /* border: 1px solid black; */
     cursor: pointer;
     box-shadow: 5px 5px 15px lightseagreen;
@@ -56,7 +61,7 @@ h5 {
     grid-column: 2 /span 3;
     grid-row: 1/span 3;
     display: flex;
-    justify-content:space-around;
+    justify-content: space-around;
     align-items: center;
     text-transform: capitalize;
 }
@@ -76,44 +81,91 @@ h5 {
     grid-area: 4/3/span 3/span 1;
 }
 
-#departureDetails{
+#departureDetails {
     grid-area: 4/4/span 3/span 1;
 }
 
-#seatDetails{
+#seatDetails {
     grid-area: 7/2/span 2/span 1;
 }
 
-#passengerDetails{
+#passengerDetails {
     grid-area: 7/3/span 2/span 1;
 }
 
 
-.foot{
+.foot {
     display: grid;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
 
-#price{
+#price {
     grid-area: 9/4/span 3/span 1;
 }
 
-#paymentMode{
+#paymentMode {
     /* padding: 5px; */
     grid-area: 7/4/span 2/span 1;
 }
 
-#contact{
+#contact {
     grid-area: 9/3/span 3/span 1;
 }
 
-#email{
+#email {
     grid-area: 9/2/span 3/span 1;
     text-transform: lowercase;
 }
 
-#busId{
+#busId {
     grid-area: 9/1/span 3/span 1;
+}
+
+.cancel {
+    /* margin-top: 10px; */
+    letter-spacing: 1.5px;
+    font-size: 12px;
+    font-weight: 550;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    text-transform: uppercase;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.5s;
+    opacity: 0.7;
+}
+
+.cancel:hover {
+    opacity: 1;
+}
+
+.messageContainer{
+    display: flex;
+    align-items: center;
+}
+
+.message{
+    top: 5px;
+    right: 4px;
+   color: white;
+   padding: 7px;
+   display: block;
+   position: absolute;
+   /* overflow: hidden; */
+   letter-spacing: 1.5px;
+}
+
+.success{
+    background-color: green;
+}
+
+.initial{
+    display: none;
 }

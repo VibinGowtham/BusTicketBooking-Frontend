@@ -1,6 +1,14 @@
 <div id="totalBookings"><span style="font-weight: 550;">Your Total Bookings : </span> {{totalBooking}}</div>
+
 <div id="mainContainer">
+ 
     <div class="booking" *ngFor="let booking of bookings">
+        <p [ngClass]="status===200 && booking.bookingId==bookingId?'message success':'initial'">
+            <span class="messageContainer">
+                  <mat-icon [inline]="true" style="font-size:20px;margin-right:10px ;">check_circle</mat-icon> <span>{{message}}</span>
+          </span>
+         </p>
+        
         <div class="element" id="qrCode">
             <img src="https://www.investopedia.com/thmb/ZG1jKEKttKbiHi0EkM8yJCJp6TU=/1148x1148/filters:no_upscale():max_bytes(150000):strip_icc()/qr-code-bc94057f452f4806af70fd34540f72ad.png"
                 alt="">
@@ -10,10 +18,14 @@
                     style="font-size: 35px;">
                     arrow_right_alt</mat-icon> {{booking.destinationLocation}}</h2>
             <h3>{{booking.bookedDate}}</h3>
-            <h4 style="display:flex;align-items:center"><span style="font-size:22px ;">
+            <h4 style="display:flex;align-items:center">
+                <span style="font-size:22px ;">
                     <mat-icon [inline]="true">book_online</mat-icon>
                 </span> E-Receipt</h4>
-
+                <!-- <p style="text-transform:uppercase;margin:10px;">Inr <span
+                    style="padding-left:3px ; font-size: 1.3em;font-weight:500">{{booking.totalAmount}}</span>/-
+               </p>
+               -->
         </div>
         <div class="element foot" id="busDetails">
             <div>
@@ -54,8 +66,11 @@
         </div>
         <div class="element foot" id="paymentMode">
             <div>
-                <h2>Payment Mode</h2>
-                <h5>{{booking.paymentMode}}</h5>
+                <!-- <h2>Payment Mode</h2> -->
+                <p style="text-transform:uppercase;margin:10px;">Inr <span
+                    style="padding-left:3px ; font-size: 1.3em;font-weight:500">{{booking.totalAmount}}</span>/-
+               </p>
+                <!-- <h5 style="text-transform: uppercase;">{{booking.paymentMode}}</h5> -->
             </div>
         </div>
         <div class="element foot" id="busId">
@@ -68,8 +83,10 @@
             <h5>{{booking.contactNo}}</h5>
         </div>
         <div class="element foot" id="price">
-            <p style="text-transform:uppercase;margin:10px;">Inr <span
-                    style="padding-left:3px ; font-size: 1.3em;font-weight:500">{{booking.totalAmount}}</span>/-</p>
+            <button class="cancel" id="{{booking.busId}} {{booking.bookingId}} {{booking.seats}}" (click)="cancelBooking($event)">
+                <mat-icon [inline]="true" style="font-size:14px;margin-right: 5px;">close</mat-icon>
+                <span>Cancel</span> 
+            </button>
         </div>
 
     </div>

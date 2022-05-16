@@ -185,6 +185,7 @@ button {
     letter-spacing: 1.5px;
     cursor: pointer;
     opacity: 0.8;
+    border: none;
 }
 
 button:hover {
@@ -251,6 +252,14 @@ input {
     margin: 3%;
     width: 91%;
     margin-bottom: 20px;
+}
+
+.updateButton{
+    background-color: green;
+}
+
+.deleteButton{
+    background-color: red;
 }
 
 #button:hover {

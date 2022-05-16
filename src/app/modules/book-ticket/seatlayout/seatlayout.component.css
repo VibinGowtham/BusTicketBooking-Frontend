@@ -5,6 +5,7 @@
     justify-content: center;
     align-items: center;
     gap: 25px;
+    
 }
 
 #seatLayout {
@@ -79,11 +80,11 @@
 
 
 #foot {
+    /* border: 1px solid red; */
     text-transform: uppercase;
-    width: 35%;
+    width: 38%;
     display: flex;
     justify-content: space-between;
-    height: auto;
     align-items: center;
 }
 
@@ -126,4 +127,28 @@ button:hover {
     margin-left: 24.5%;
     margin-top: 12.4%;
     position: absolute;
+}
+
+.messageContainer{
+    display: flex;
+    align-items: center;
+}
+
+.message{
+    top: 57px;
+    right: 4px;
+   color: white;
+   padding: 7px;
+   display: block;
+   position: absolute;
+   /* overflow: hidden; */
+   letter-spacing: 2px;
+}
+
+.success{
+    background-color: green;
+}
+
+.initial{
+    display: none;
 }

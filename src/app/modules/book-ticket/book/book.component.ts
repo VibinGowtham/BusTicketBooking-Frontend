@@ -36,8 +36,16 @@ export class BookComponent implements OnInit {
       this.total = data.length
       this.busDetails = data
       this.date = new Date().toLocaleTimeString().slice(0, 5)
-      // console.log(this.busDetails);
     })
+
+    setTimeout(() => {
+      let element=document.getElementById('busPropertiesContainer') as HTMLElement
+      console.log(element);  
+      if(element!==null) element.scrollIntoView({behavior:'smooth'})
+    }, 500);
+    
+    
+    
   }
 
   constructor(private locationService: LocationService, private stateServive: StateService,private router:Router) { }

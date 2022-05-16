@@ -31,8 +31,10 @@
             </td>
             <td style="border-right:3px double black ;">{{user.isAdmin==true?'Yes':'No'}}</td>
             <td class="buttonContainer">
-                <button id="{{user._id}}" (click)="getUserDetails($event)">Update</button>
-                <button id="{{user._id}}" (click)="deleteUser($event)">Delete</button>
+                <button class="updateButton" id="{{user._id}}" (click)="getUserDetails($event)">
+                Update    
+                </button>
+                <button class="deleteButton" id="{{user._id}}" (click)="deleteUser($event)">Delete</button>
             </td>    
                 <!-- <td class="buttonContainer" style="border-bottom:3px double black ;"><button  id="{{bus._id}}">Delete</button></td> -->
         </tr>

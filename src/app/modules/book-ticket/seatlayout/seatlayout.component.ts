@@ -8,7 +8,10 @@ import { UserserviceService } from "../../../services/userServices/userservice.s
   templateUrl: './seatlayout.component.html',
   styleUrls: ['./seatlayout.component.css']
 })
+
 export class SeatlayoutComponent implements OnInit {
+  status:any
+  message:any
   userId: any
   selectedSeat: any
   selectedSeats: any
@@ -40,13 +43,18 @@ export class SeatlayoutComponent implements OnInit {
       paymentMode: this.paymentMode
     }
     this.seatService.post('updateAvailability', body)
-      .subscribe(data => console.log(data)
+      .subscribe(data => {
+        console.log(data)
+        this.status=data.status
+        this.message=data.message
+      }
       )
     this.selectedSeats = [], this.selectedSeat = []
 
     setTimeout(() => {
+      this.status=0
       this.router.navigateByUrl('book/bookings')
-    }, 1000);
+    }, 5000);
     
   }
 
@@ -69,6 +77,10 @@ export class SeatlayoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // this.stateService.setBusId("628286ddefb516f0a0b85b78")
+    // this.status=200
+    // this.message="Your Booking is Confirmed"
+    this.price=0
     if (this.stateService.busId != '') {
       this.seatService
         .post('getSeats', { id: this.stateService.getBusId() })
@@ -77,9 +89,7 @@ export class SeatlayoutComponent implements OnInit {
             this.seats[i] = data[i].seatNumber
             this.availability[i] = data[i].availability;
           }
-          // console.log(this.seats);
-          // console.log(this.availability);
-
+ 
           for (let i = 0; i < this.seats.length; i += 2) {
             this.iterations.push(i)
           }
@@ -87,8 +97,12 @@ export class SeatlayoutComponent implements OnInit {
 
         })
       this.userService.post('admin/getBus', { id: this.stateService.getBusId() }).subscribe(data => {
+        console.log("userser");
         console.log(data);
         this.price = data.price
+        console.log(this.price);
+        
+
       })
 
 

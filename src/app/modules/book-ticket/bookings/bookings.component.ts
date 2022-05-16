@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BookingService } from 'src/app/services/bookServices/booking.service';
+import { SeatService } from 'src/app/services/seatServices/seat.service';
 import { StateService } from 'src/app/services/stateServices/state.service';
 import { UserserviceService } from 'src/app/services/userServices/userservice.service';
 
@@ -9,29 +10,70 @@ import { UserserviceService } from 'src/app/services/userServices/userservice.se
   styleUrls: ['./bookings.component.css']
 })
 export class BookingsComponent implements OnInit {
+  status:any
+  message:any
   date: any
   userId: any
   totalBooking: any;
   bookings: any
-  constructor(private bookingService: BookingService, private stateService: StateService,private userService:UserserviceService) { }
+  bookingId:any
+  constructor(private bookingService: BookingService, private stateService: StateService, private userService: UserserviceService,private seatService:SeatService) { }
+
+ 
+  getUpdatedBookings=()=>{
+    this.bookingService.post('getBookings', { userId: this.stateService.getUserId() }).subscribe(data => {
+      console.log("In bookings");
+
+      console.log(data);
+      this.totalBooking = data.total;
+      this.bookings = data.filteredResults;
+
+    })
+  } 
+
+  cancelBooking(event: any) {
+   console.log(event.currentTarget.attributes.id.nodeValue);
+    
+   let id = event.currentTarget.attributes.id.nodeValue
+    let splittedArray = id.split(" ")
+    console.log(splittedArray);
+    let busId = splittedArray[0]
+    let bookingId = splittedArray[1]
+    this.bookingId=bookingId
+    let seats = splittedArray[2].toString().split(",")
+    console.log("BusId" + busId);
+    console.log("Booking" + bookingId);
+    console.log("seats" +seats);
+
+   this.seatService.post('releaseSeats',{busId,bookingId,seats}).subscribe(data=>{
+     console.log(data);
+     if(data.status==200){
+       this.status=data.status
+       this.message=data.message
+       setTimeout(() => {
+         this.status=0
+       }, 5000);
+       this.getUpdatedBookings()
+     }
+   })
+
+
+  }
 
   ngOnInit(): void {
-    this.userService.generateRefreshToken().subscribe(data=>{
-      console.log("Booking");
-      console.log(data);
-      
-    })
+    // this.status=200
+    // this.message="Booking Cancelled Successfully"
+    // this.bookingId="627d179efeb1d424c1f6828b"
     this.totalBooking = 0
     this.date = new Date().toDateString()
     if (this.stateService.getUserId() != '') {
       this.bookingService.post('getBookings', { userId: this.stateService.getUserId() }).subscribe(data => {
-        // console.log("bookings");
-        
-        // console.log(data);
+        console.log("In bookings");
+
+        console.log(data);
         this.totalBooking = data.total;
         this.bookings = data.filteredResults;
-        // console.log(this.totalBooking);
-        // console.log(this.bookings);
+  
       })
     }
   }

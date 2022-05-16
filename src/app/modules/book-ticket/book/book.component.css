@@ -2,7 +2,7 @@
     display: grid;
     height: 70vh;
     grid-template-columns: 100%;
-    grid-template-rows: 100%;
+    grid-template-rows: 130%;
     row-gap: 5%;
 }
 
@@ -35,7 +35,7 @@ button{
     color: white;
     font-weight: 550;
     text-transform: uppercase;
-    padding: 10px;
+    padding: 12px;
     border-radius: 25px;
     border: none;
     letter-spacing: 2px;
@@ -62,7 +62,7 @@ img{
 }
 
 #busContainer{
-    margin-top: 8%;
+    margin-top: 18%;
     /* height: 100vh; */
     justify-content: center;
     display: grid;

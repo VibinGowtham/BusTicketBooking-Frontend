@@ -29,8 +29,8 @@
             <td>{{bus.destinationLocation}}</td>
             <td style="border-right:3px double black ;"><span style="font-weight: 500;">INR</span> {{bus.price}}/-</td>
             <td class="buttonContainer">
-                <button  id="{{bus._id}}" (click)="getBusDetails($event)">Update</button>
-                <button  id="{{bus._id}}" (click)="deleteBus($event)">Delete</button>
+                <button class="updateButton" id="{{bus._id}}" (click)="getBusDetails($event)">Update</button>
+                <button  class="deleteButton" id="{{bus._id}}" (click)="deleteBus($event)">Delete</button>
             </td>    
                 <!-- <td class="buttonContainer" style="border-bottom:3px double black ;"><button  id="{{bus._id}}">Delete</button></td> -->
         </tr>
