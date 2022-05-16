@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class StateService {
   userId!: String
   busId!: String
 
-  constructor() {
+  constructor(private router:Router) {
     this.isSignedIn = false
     this.isRegistered = false
     this.isAdmin = false
@@ -74,5 +75,14 @@ export class StateService {
 
   setIsAdmin(isAdmin: any) {
     this.isAdmin = isAdmin
+  }
+
+  logout(){
+    this.setSignedIn(false)
+    this.setIsAdmin(false)
+    localStorage.removeItem('token')
+    localStorage.removeItem('refreshToken')
+    this.router.navigateByUrl('user/login');
+
   }
 }

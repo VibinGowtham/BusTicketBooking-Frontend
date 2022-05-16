@@ -11,18 +11,18 @@ import { UserserviceService } from '../userServices/userservice.service';
 })
 export class TokeninterceptorService implements HttpInterceptor {
 
-  constructor(private stateService: StateService,private userService:UserserviceService,private router:Router) { }
+  constructor(private stateService: StateService, private userService: UserserviceService, private router: Router) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let jwtToken = this.addTokenHeader(req, this.stateService.getToken())
     return next.handle(jwtToken)
       .pipe(
-        catchError(err=> {
+        catchError(err => {
           // console.log("CErr " +err);
-          
+
           if (err.status === 401) {
             // console.log("Inn");
-           return this.handleRefreshToken(req, next)
+            return this.handleRefreshToken(req, next)
           }
           return throwError(err)
         })
@@ -32,19 +32,18 @@ export class TokeninterceptorService implements HttpInterceptor {
   handleRefreshToken(req: HttpRequest<any>, next: HttpHandler) {
 
     return this.userService.generateRefreshToken().pipe(
-        switchMap((data:any)=>{
-          // console.log("Inrefresh");
-            // console.log(data);
-            this.stateService.setToken(data.accessToken)
-            return next.handle(this.addTokenHeader(req,data.accessToken))
-        }),
-        catchError(err=>{
-          this.stateService.setSignedIn(false)
-          localStorage.removeItem('token')
-          localStorage.removeItem('refreshToken')
-          this.router.navigateByUrl('user/login')
-          return throwError(err)
-        })
+      switchMap((data: any) => {
+        // console.log("Inrefresh");
+        // console.log(data);
+        this.stateService.setToken(data.accessToken)
+        return next.handle(this.addTokenHeader(req, data.accessToken))
+      }),
+      catchError(err => {
+        console.log("In renew tokem error");
+        this.stateService.logout()
+        return throwError(err)
+        // return throwError("hiii")
+      })
     )
   }
 

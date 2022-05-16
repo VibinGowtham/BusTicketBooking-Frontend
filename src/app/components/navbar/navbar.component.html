@@ -24,7 +24,7 @@
         <mat-icon class="nav-icons">dashboard</mat-icon>
         Dashboard</li>
     
-    <li class="nav-items nav-items-hide" *ngIf="stateService.isSignedIn" (click)="logOut()">
+    <li class="nav-items nav-items-hide" *ngIf="stateService.isSignedIn" (click)="stateService.logout()">
         <mat-icon class="nav-icons">logout</mat-icon>
         Log-out</li>
 </ul>

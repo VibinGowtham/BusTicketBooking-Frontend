@@ -8,13 +8,6 @@ import { StateService } from 'src/app/services/stateServices/state.service';
 })
 export class NavbarComponent implements OnInit {
 
-  logOut(): any {
-    this.stateService.setSignedIn(false)
-    this.stateService.setIsAdmin(false)
-    localStorage.removeItem('token')
-    this.router.navigateByUrl('user/login');
-  }
-
   classToggle() {
     const navs = document.querySelectorAll('.nav-items')
     navs.forEach(nav => nav.classList.toggle('nav-items-hide'));
