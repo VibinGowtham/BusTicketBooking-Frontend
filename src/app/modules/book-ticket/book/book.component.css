@@ -61,6 +61,13 @@ img{
     height: 180px;
 }
 
+.disabled {
+    pointer-events: none;
+    background-color: gray;
+    color: white;
+}
+
+
 #busContainer{
     margin-top: 18%;
     /* height: 100vh; */
@@ -81,7 +88,7 @@ img{
 
 .bus:hover{
     /* border: 1px solid black; */
-    cursor: pointer;
+    /* cursor: pointer; */
     box-shadow: 5px 5px 15px lightseagreen;
 }
 

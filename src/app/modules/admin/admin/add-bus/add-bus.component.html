@@ -65,10 +65,16 @@
 
             <div class="inputContainer">
                 <input type="text" placeholder="Price" formControlName="price">
+                <p class="error" *ngIf="bus.get('price')?.touched&& bus.get('price')?.invalid">
+                    <mat-icon style="margin-right:5px ;">dangerous</mat-icon> Enter only valid price value
+                </p>
             </div>
 
             <div class="inputContainer">
                 <input type="text" placeholder="Total Seats" formControlName="totalSeats">
+                <p class="error" *ngIf="bus.get('totalSeats')?.touched&& bus.get('totalSeats')?.invalid">
+                    <mat-icon style="margin-right:5px ;">dangerous</mat-icon> Total Seats must be in range 12-24
+                </p>
             </div>
 
             <div class="inputContainer">
@@ -78,6 +84,9 @@
 
             <div class="inputContainer">
                 <input type="text" placeholder="Rating" formControlName="rating">
+                <p class="error" *ngIf="bus.get('rating')?.touched&& bus.get('rating')?.invalid">
+                    <mat-icon style="margin-right:5px ;">dangerous</mat-icon>Rating must be only from 1.0 to 5.0
+                </p>
             </div>
 
             <div class="inputContainer">

@@ -20,6 +20,7 @@ export class SeatlayoutComponent implements OnInit {
   seats: any;
   availability: any
   price: any
+  totalAmount:any
   paymentMode: any
 
   bookSeats(): any {
@@ -28,8 +29,6 @@ export class SeatlayoutComponent implements OnInit {
     this.selectedSeats.length > 3 ? this.paymentMode = 'Card' : this.paymentMode = 'Upi'
     console.log(this.paymentMode);
 
-    this.price = this.selectedSeats.length * this.price;
-
     console.log(this.price);
     
     console.log(this.stateService.getUserId() + " " + this.stateService.getBusId());
@@ -37,7 +36,7 @@ export class SeatlayoutComponent implements OnInit {
     let body = {
       userId: this.stateService.getUserId(),
       busId: this.stateService.getBusId(),
-      price: this.price,
+      price: this.totalAmount,
       seats: this.selectedSeats,
       bookedDate: new Date().toDateString(),
       paymentMode: this.paymentMode
@@ -49,12 +48,17 @@ export class SeatlayoutComponent implements OnInit {
         this.message=data.message
       }
       )
+    
+      let timeout=0
+      if(this.selectedSeats.length>3) timeout=8000
+      else timeout=5000
     this.selectedSeats = [], this.selectedSeat = []
+    
 
     setTimeout(() => {
       this.status=0
       this.router.navigateByUrl('book/bookings')
-    }, 5000);
+    }, timeout);
     
   }
 
@@ -66,7 +70,8 @@ export class SeatlayoutComponent implements OnInit {
     if (this.selectedSeats.length == 0) this.selectedSeats.push(this.selectedSeat);
     else if (this.selectedSeats.includes(this.selectedSeat) == false) this.selectedSeats.push(this.selectedSeat);
     else this.selectedSeats.splice(this.selectedSeats.indexOf(this.selectedSeat), 1)
-    // console.log(this.selectedSeats)
+
+    this.totalAmount=this.selectedSeats.length*this.price
 
   }
   constructor(private seatService: SeatService, private stateService: StateService, private router: Router, private userService: UserserviceService) {
@@ -80,7 +85,7 @@ export class SeatlayoutComponent implements OnInit {
     // this.stateService.setBusId("628286ddefb516f0a0b85b78")
     // this.status=200
     // this.message="Your Booking is Confirmed"
-    this.price=0
+    this.totalAmount=0
     if (this.stateService.busId != '') {
       this.seatService
         .post('getSeats', { id: this.stateService.getBusId() })
@@ -96,7 +101,7 @@ export class SeatlayoutComponent implements OnInit {
           console.log(this.iterations);
 
         })
-      this.userService.post('admin/getBus', { id: this.stateService.getBusId() }).subscribe(data => {
+      this.userService.post('bus/getBus', { id: this.stateService.getBusId() }).subscribe(data => {
         console.log("userser");
         console.log(data);
         this.price = data.price

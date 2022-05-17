@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class BookingService {
   SERVER_URL: any
   constructor(private http: HttpClient) {
-    this.SERVER_URL = "http://localhost:3000/booking/"
+    this.SERVER_URL = "http://localhost:3000/booking"
   }
 
   post(route:string,body:Object):Observable<any>{

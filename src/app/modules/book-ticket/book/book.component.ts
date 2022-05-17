@@ -42,7 +42,7 @@ export class BookComponent implements OnInit {
       let element=document.getElementById('busPropertiesContainer') as HTMLElement
       console.log(element);  
       if(element!==null) element.scrollIntoView({behavior:'smooth'})
-    }, 500);
+    }, 1000);
     
     
     

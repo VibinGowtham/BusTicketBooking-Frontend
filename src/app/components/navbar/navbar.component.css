@@ -20,7 +20,7 @@
 }
 
 #nav-logo {
-    padding-top: 15px;
+    padding: 15px;
     font-family: 'Shojumaru', cursive;
     display: flex;
     text-transform: uppercase;

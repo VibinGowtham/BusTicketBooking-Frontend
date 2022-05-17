@@ -59,9 +59,9 @@ initialFormValues:any
       pickupLocation: new FormControl('', Validators.required),
       dropLocation: new FormControl('', Validators.required),
       price: new FormControl('', Validators.pattern('[0-9]*$')),
-      totalSeats: new FormControl('', Validators.pattern('[0-9]{2}')),
+      totalSeats: new FormControl('', [Validators.pattern('[0-9]{2}'),Validators.min(12), Validators.max(24)]),
       depatureDate: new FormControl(''),
-      rating: new FormControl('', [Validators.min(1.0), Validators.max(5.0)]),
+      rating: new FormControl('', [Validators.pattern('[0-9]{1}.[0-9]{1}'), Validators.min(1), Validators.max(5)]),
       depatureTime: new FormControl(''),
       arrivalTime: new FormControl(''),
       totalTime: new FormControl('')

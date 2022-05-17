@@ -81,7 +81,8 @@ input {
     height: 82%;
     background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbmjvzicipY10MB6sKB05_q5ZPBd_7g_Apsg&usqp=CAU');
     /* background-image: url('https://c4.wallpaperflare.com/wallpaper/512/901/163/night-bus-wallpaper-preview.jpg'); */
-    background-size: cover
+    background-size: cover;
+    /* display: none; */
 }
 
 

@@ -36,11 +36,10 @@
             </span></span>
             <span style="font-size:12px;font-weight:500;letter-spacing: 1px;">
                 Total Amount:
-                <span style="font-size:15px;letter-spacing: normal;">{{selectedSeats.length*price}}
+                <span style="font-size:15px;letter-spacing: normal;">{{totalAmount}}
                 </span></span>
     </div>
     <div>
         <button [ngClass]="selectedSeats.length ==0 ?'disabled':''" (click)="bookSeats()">Confirm</button>
-        
     </div>
 </div>
