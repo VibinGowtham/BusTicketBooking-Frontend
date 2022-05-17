@@ -15,6 +15,7 @@ export class BookComponent implements OnInit {
   busDetails!: any
   cities!: any
   city!: FormGroup
+  initialValues:any
 
   getBusId(event: any) {
     this.stateServive.setBusId(event.target.attributes.id.nodeValue.slice(5))
@@ -25,12 +26,18 @@ export class BookComponent implements OnInit {
 
 
   sendData(): any {
-    const { boardingLocation, destinationLocation, departureDate } = this.city.value
-    if (boardingLocation === destinationLocation || departureDate === undefined) {
-      this.city.reset()
+    const { boardingLocation, destinationLocation, depatureDate } = this.city.value
+    if (boardingLocation === destinationLocation || depatureDate === undefined || depatureDate === '') {
+      console.log("City In");
+      console.log(this.city.value);
+      this.city.reset(this.initialValues)
       return
     }
-    this.city.value.departureDate = parseInt(departureDate.slice(8)) % 7
+    this.city.value.depatureDate = parseInt(depatureDate.slice(8)) % 7
+
+    console.log("City");
+    console.log(this.city.value);
+    
 
     this.locationService.post('bus/filterBus', this.city.value).subscribe(data => {
       this.total = data.length
@@ -55,8 +62,11 @@ export class BookComponent implements OnInit {
     this.city = new FormGroup({
       boardingLocation: new FormControl('', Validators.required),
       destinationLocation: new FormControl('', Validators.required),
-      departureDate: new FormControl('', Validators.required),
+      depatureDate: new FormControl('', Validators.required),
     })
+
+    this.initialValues=this.city.value
+
     console.log(this.city.value);
 
     this.locationService.get('city/getAllCities').subscribe(data => {

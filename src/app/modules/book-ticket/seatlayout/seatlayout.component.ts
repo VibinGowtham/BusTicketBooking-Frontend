@@ -50,7 +50,7 @@ export class SeatlayoutComponent implements OnInit {
       )
     
       let timeout=0
-      if(this.selectedSeats.length>3) timeout=8000
+      if(this.selectedSeats.length>3) timeout=10000
       else timeout=5000
     this.selectedSeats = [], this.selectedSeat = []
     

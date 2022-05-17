@@ -29,7 +29,7 @@ export class RoleGuard implements CanActivate {
         throw new Error("");
       }
       catch (err) {
-        alert("Unauthorized")
+        // alert("Unauthorized")
         this.stateService.logout()
         this.router.navigateByUrl('user/login')
         return false
