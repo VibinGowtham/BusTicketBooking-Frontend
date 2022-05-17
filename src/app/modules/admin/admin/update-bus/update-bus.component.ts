@@ -2,6 +2,7 @@ import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y/input-modality/input-modality
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AdminService } from 'src/app/services/adminServices/admin.service';
+import { UserserviceService } from 'src/app/services/userServices/userservice.service';
 
 @Component({
   selector: 'app-update-bus',
@@ -49,7 +50,7 @@ export class UpdateBusComponent implements OnInit {
     let month = '0' + this.date.getMonth()
     month = month.slice(-2)
     this.busId = event.target.attributes.id.nodeValue
-    this.adminService.post('getBus', { id: this.busId }).subscribe(data => {
+    this.userService.post('bus/getBus', { id: this.busId }).subscribe(data => {
       console.log(data);
       this.bus = new FormGroup({
         name: new FormControl(data.name, Validators.required),
@@ -127,7 +128,7 @@ export class UpdateBusComponent implements OnInit {
     }, 500);
   }
 
-  constructor(private adminService: AdminService) { }
+  constructor(private adminService: AdminService,private userService:UserserviceService) { }
 
   ngOnInit(): void {
     this.getUpdatedBuses()

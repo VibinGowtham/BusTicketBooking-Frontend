@@ -69,6 +69,7 @@ export class UpdateUserComponent implements OnInit {
       contactNo,
       isAdmin: this.changeToBoolean(isAdmin)
     }
+    console.log("remove empty");
 
     this.removeEmpty(body)
     console.log(body);
