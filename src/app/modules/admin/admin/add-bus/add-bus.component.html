@@ -18,7 +18,7 @@
 
 
     <div>
-        <form [formGroup]="bus">
+        <form [formGroup]="bus" (keydown.enter)="$event.preventDefault()">
             <div class="inputContainer">
                 <input type="text" placeholder="Bus Name" formControlName="name">
                 <p class="error" *ngIf="bus.get('name')?.touched&& bus.get('name')?.invalid">

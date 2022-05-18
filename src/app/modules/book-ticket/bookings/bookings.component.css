@@ -166,6 +166,10 @@ h5 {
     background-color: green;
 }
 
+.failed{
+    background-color: red;
+}
+
 .initial{
     display: none;
 }

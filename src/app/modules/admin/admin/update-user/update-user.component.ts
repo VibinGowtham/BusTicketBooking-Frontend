@@ -89,8 +89,8 @@ export class UpdateUserComponent implements OnInit {
 
   deleteUser(event: any) {
     let dialogRef= this.dialog.open(LoadingComponent, { disableClose: true })
-    let UserId = event.target.attributes.id.nodeValue
-    this.adminService.post('deleteUser', { UserId }).subscribe(data => {
+    let userId = event.target.attributes.id.nodeValue
+    this.adminService.post('deleteUser', { userId }).subscribe(data => {
       dialogRef.close()
       console.log(data);
       if (data.status == 200) this.getUpdatedUsers()
@@ -100,6 +100,9 @@ export class UpdateUserComponent implements OnInit {
         this.status = 0
       }, 5000);
     })
+    setTimeout(() => {
+      dialogRef.close()
+    }, 15000);
 
   }
 
@@ -123,6 +126,8 @@ export class UpdateUserComponent implements OnInit {
   constructor(private adminService: AdminService,private dialog:MatDialog) { }
 
   ngOnInit(): void {
+    // this.status=409
+    // this.message="User doesn't exists"
     this.getUpdatedUsers()
     this.user = new FormGroup({
       name: new FormControl("", [Validators.required, Validators.pattern('[a-zA-Z]+$')]),

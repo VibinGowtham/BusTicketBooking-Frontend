@@ -33,21 +33,23 @@ initialFormValues:any
   postData() {
     let dialogRef= this.dialog.open(LoadingComponent, { disableClose: true })
     this.bus.value.depatureDate=parseInt(this.bus.value.depatureDate.slice(8))%7
-    console.log(this.bus.value.depatureDate);
+   
     
     let body = this.bus.value
     this.removeEmpty(body)
-    console.log(body);
+    console.log(dialogRef.getState());
+    
     this.adminService.post('addBus', body).subscribe(data => {
+      this.bus.reset(this.initialFormValues)
       dialogRef.close()
       console.log(data);
       this.status = data.status
       this.message = data.message
     })
+    console.log(dialogRef.getState());
     setTimeout(() => {
       this.status = 0
     }, 10000)
-    this.bus.reset(this.initialFormValues)
     
   }
 
