@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { LoadingComponent } from 'src/app/components/loading/loading.component';
 import { SeatService } from 'src/app/services/seatServices/seat.service';
 import { StateService } from 'src/app/services/stateServices/state.service';
 import { UserserviceService } from "../../../services/userServices/userservice.service";
+
+
 @Component({
   selector: 'app-seatlayout',
   templateUrl: './seatlayout.component.html',
@@ -24,14 +28,9 @@ export class SeatlayoutComponent implements OnInit {
   paymentMode: any
 
   bookSeats(): any {
-    console.log(this.price);
-    
+    let dialogRef= this.dialog.open(LoadingComponent, { disableClose: true })
+        
     this.selectedSeats.length > 3 ? this.paymentMode = 'Card' : this.paymentMode = 'Upi'
-    console.log(this.paymentMode);
-
-    console.log(this.price);
-    
-    console.log(this.stateService.getUserId() + " " + this.stateService.getBusId());
 
     let body = {
       userId: this.stateService.getUserId(),
@@ -46,20 +45,10 @@ export class SeatlayoutComponent implements OnInit {
         console.log(data)
         this.status=data.status
         this.message=data.message
+        dialogRef.close()
+        this.router.navigateByUrl('book/bookings')
       }
       )
-    
-      let timeout=0
-      if(this.selectedSeats.length>3) timeout=10000
-      else timeout=5000
-    this.selectedSeats = [], this.selectedSeat = []
-    
-
-    setTimeout(() => {
-      this.status=0
-      this.router.navigateByUrl('book/bookings')
-    }, timeout);
-    
   }
 
 
@@ -74,7 +63,7 @@ export class SeatlayoutComponent implements OnInit {
     this.totalAmount=this.selectedSeats.length*this.price
 
   }
-  constructor(private seatService: SeatService, private stateService: StateService, private router: Router, private userService: UserserviceService) {
+  constructor( private dialog:MatDialog,private seatService: SeatService, private stateService: StateService, private router: Router, private userService: UserserviceService) {
     this.selectedSeats = []
     this.seats = [];
     this.iterations = [];
@@ -82,9 +71,10 @@ export class SeatlayoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.stateService.setBusId("628286ddefb516f0a0b85b78")
+    // this.stateService.setBusId("62834d66440bf862d703acc6")
     // this.status=200
     // this.message="Your Booking is Confirmed"
+    
     this.totalAmount=0
     if (this.stateService.busId != '') {
       this.seatService
@@ -113,14 +103,5 @@ export class SeatlayoutComponent implements OnInit {
 
 
     }
-
-
-
-
-
-    // this.seats = ["A1", "A2", "A3", "A4", "A5", "B1", "B2", "B3", "B4", "B5", "C1", "C2", "C3", "C4", "C5", "D1", "D2", "D3", "D4", "D5", "E1", "E2"]
-    // this.seats=["A1","A2","A3","A4","A5","B1","B2","B3","B4","B5","C1",""]
-    // this.iterations = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
-    // this.iterations=[0,2,4,6,8,10]
   }
 }

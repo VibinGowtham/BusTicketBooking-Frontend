@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { LoadingComponent } from 'src/app/components/loading/loading.component';
 import { AdminService } from 'src/app/services/adminServices/admin.service';
 
 @Component({
@@ -29,7 +31,7 @@ initialFormValues:any
   }
 
   postData() {
-    // console.log(this.bus.value.depatureDate);
+    let dialogRef= this.dialog.open(LoadingComponent, { disableClose: true })
     this.bus.value.depatureDate=parseInt(this.bus.value.depatureDate.slice(8))%7
     console.log(this.bus.value.depatureDate);
     
@@ -37,6 +39,7 @@ initialFormValues:any
     this.removeEmpty(body)
     console.log(body);
     this.adminService.post('addBus', body).subscribe(data => {
+      dialogRef.close()
       console.log(data);
       this.status = data.status
       this.message = data.message
@@ -48,7 +51,7 @@ initialFormValues:any
     
   }
 
-  constructor(private adminService: AdminService) { }
+  constructor(private dialog:MatDialog,private adminService: AdminService) { }
 
   ngOnInit(): void {
     this.bus = new FormGroup({

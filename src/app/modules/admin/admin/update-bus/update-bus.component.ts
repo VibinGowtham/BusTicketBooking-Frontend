@@ -1,8 +1,11 @@
-import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y/input-modality/input-modality-detector';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { LoadingComponent } from 'src/app/components/loading/loading.component';
 import { AdminService } from 'src/app/services/adminServices/admin.service';
 import { UserserviceService } from 'src/app/services/userServices/userservice.service';
+
+
 
 @Component({
   selector: 'app-update-bus',
@@ -73,13 +76,14 @@ export class UpdateBusComponent implements OnInit {
   }
 
   updateData() {
+    let dialogRef= this.dialog.open(LoadingComponent, { disableClose: true })
     this.bus.value.depatureDate = parseInt(this.bus.value.depatureDate.slice(8)) % 7
-    // console.log(this.bus.value);
     let body = this.bus.value
     body.busId = this.busId
     console.log(body);
 
     this.adminService.post('updateBus', body).subscribe((data) => {
+      dialogRef.close()
       console.log(data);
       if (data.status == 200) {
         this.getUpdatedBuses()
@@ -96,10 +100,12 @@ export class UpdateBusComponent implements OnInit {
   }
 
   deleteBus(event: any) {
+    let dialogRef= this.dialog.open(LoadingComponent, { disableClose: true })
     let busId = event.target.attributes.id.nodeValue
     console.log(busId);
 
     this.adminService.post('deleteBus', { busId: busId }).subscribe(data => {
+      dialogRef.close()
       console.log(data);
       if (data.status == 200) {
         this.getUpdatedBuses()
@@ -128,7 +134,7 @@ export class UpdateBusComponent implements OnInit {
     }, 500);
   }
 
-  constructor(private adminService: AdminService,private userService:UserserviceService) { }
+  constructor(private adminService: AdminService,private userService:UserserviceService,private dialog:MatDialog) { }
 
   ngOnInit(): void {
     this.getUpdatedBuses()

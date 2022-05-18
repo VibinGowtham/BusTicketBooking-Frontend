@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { LoadingComponent } from 'src/app/components/loading/loading.component';
 import { AdminService } from 'src/app/services/adminServices/admin.service';
 
 @Component({
@@ -59,6 +61,7 @@ export class UpdateUserComponent implements OnInit {
   }
 
   postData() {
+    let dialogRef= this.dialog.open(LoadingComponent, { disableClose: true })
     const { name, email, password, contactNo, isAdmin } = this.user.value
 
     let body = {
@@ -74,6 +77,7 @@ export class UpdateUserComponent implements OnInit {
     this.removeEmpty(body)
     console.log(body);
     this.adminService.post('updateUser', body).subscribe(data => {
+      dialogRef.close()
       if (data.status == 200) this.getUpdatedUsers()
       this.status = data.status
       this.message = data.message
@@ -84,8 +88,10 @@ export class UpdateUserComponent implements OnInit {
   }
 
   deleteUser(event: any) {
-    let busId = event.target.attributes.id.nodeValue
-    this.adminService.post('deleteUser', { busId }).subscribe(data => {
+    let dialogRef= this.dialog.open(LoadingComponent, { disableClose: true })
+    let UserId = event.target.attributes.id.nodeValue
+    this.adminService.post('deleteUser', { UserId }).subscribe(data => {
+      dialogRef.close()
       console.log(data);
       if (data.status == 200) this.getUpdatedUsers()
       this.status = data.status
@@ -114,7 +120,7 @@ export class UpdateUserComponent implements OnInit {
   }
 
 
-  constructor(private adminService: AdminService) { }
+  constructor(private adminService: AdminService,private dialog:MatDialog) { }
 
   ngOnInit(): void {
     this.getUpdatedUsers()

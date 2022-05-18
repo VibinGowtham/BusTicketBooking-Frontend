@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { LoadingComponent } from 'src/app/components/loading/loading.component';
 import { BookingService } from 'src/app/services/bookServices/booking.service';
 import { SeatService } from 'src/app/services/seatServices/seat.service';
 import { StateService } from 'src/app/services/stateServices/state.service';
@@ -17,7 +19,7 @@ export class BookingsComponent implements OnInit {
   totalBooking: any;
   bookings: any
   bookingId:any
-  constructor(private bookingService: BookingService, private stateService: StateService, private userService: UserserviceService,private seatService:SeatService) { }
+  constructor(private dialog:MatDialog,private bookingService: BookingService, private stateService: StateService, private userService: UserserviceService,private seatService:SeatService) { }
 
  
   getUpdatedBookings=()=>{
@@ -32,8 +34,7 @@ export class BookingsComponent implements OnInit {
   } 
 
   cancelBooking(event: any) {
-   console.log(event.currentTarget.attributes.id.nodeValue);
-    
+    let dialogRef= this.dialog.open(LoadingComponent, { disableClose: true })
    let id = event.currentTarget.attributes.id.nodeValue
     let splittedArray = id.split(" ")
     console.log(splittedArray);
@@ -46,13 +47,14 @@ export class BookingsComponent implements OnInit {
     console.log("seats" +seats);
 
    this.seatService.post('releaseSeats',{busId,bookingId,seats}).subscribe(data=>{
+     dialogRef.close()
      console.log(data);
      if(data.status==200){
        this.status=data.status
        this.message=data.message
        setTimeout(() => {
          this.status=0
-       }, 5000);
+       }, 8000);
        this.getUpdatedBookings()
      }
    })

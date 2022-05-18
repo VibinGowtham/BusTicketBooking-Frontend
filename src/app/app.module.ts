@@ -11,11 +11,14 @@ import { HttpClientModule, HttpContext, HTTP_INTERCEPTORS} from '@angular/common
 import { BookTicketModule } from './modules/book-ticket/book-ticket.module';
 import { AdminModule } from './modules/admin/admin/admin.module';
 import { TokeninterceptorService } from './services/interceptor/tokeninterceptor.service';
+import { LoadingComponent } from './components/loading/loading.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
