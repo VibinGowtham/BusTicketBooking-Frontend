@@ -2,35 +2,37 @@
     position: absolute;
     padding: 10px 15px;
 }
-.message{
+
+.message {
     top: 60px;
     right: 10px;
-   color: white;
-   padding: 10px;
-   display: block;
-   position: absolute;
-   letter-spacing: 1.5px;
+    color: white;
+    padding: 10px;
+    display: block;
+    position: absolute;
+    letter-spacing: 1.5px;
 }
 
-.success{
+.success {
     background-color: green;
 }
 
-.failed{
+.failed {
     background-color: #FF0000;
 }
 
-.initial{
+.initial {
     display: none;
 }
 
-.messageContainer{
+.messageContainer {
     display: flex;
     align-items: center;
 }
 
 #register {
     text-align: center;
+    align-self: flex-end;
 }
 
 h2 {
@@ -92,7 +94,7 @@ input {
 }
 
 #login {
-    width: 97%;
+    width: 100%;
     /* border: 1px solid black; */
     background-color: black;
     color: white;
@@ -107,34 +109,113 @@ input {
 }
 
 #login:hover {
-    /* color: white;
-    background-color: black; */
     cursor: pointer;
     letter-spacing: 6px;
 }
 
-@media screen and (max-width:1056px) {
-    #form {
-        width: 47%;
-    }
-
-}
-
-@media screen and (max-width:750px) {
-    #form {
-        width: 47%;
-    }
-}
-
-@media screen and (max-width:650px) {
-    #form {
-        width: 70%;
-    }
-}
-
-.disabled{
+.disabled {
     background-color: grey;
     border: none;
     opacity: 0.5;
     pointer-events: none;
+}
+
+@media screen and (max-width:988px) {
+    #login{
+        width: 102%;
+    }
+
+    #formContainer {
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width:944px) {
+    #login{
+        width: 102%;
+    }
+
+    #formContainer {
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width:890px) {
+    #login{
+        width: 102%;
+    }
+
+    #container {
+        grid-template-columns: 50% 40%;
+    }
+}
+
+@media screen and (max-width:763px) {
+    #login{
+        width: 102%;
+    }
+    #container {
+        grid-template-columns: 50% 40%;
+    }
+}
+
+@media screen and (max-width:700px) {
+    #login{
+        width: 103%;
+    }
+
+    #container {
+        background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbmjvzicipY10MB6sKB05_q5ZPBd_7g_Apsg&usqp=CAU');
+        background-size: cover;
+        display: grid;
+        grid-template-columns: 100%;
+        justify-content: center;
+    }
+
+    #formContainer {
+        border: none;
+        width: 50%;
+        justify-self: center;
+        align-self: center;
+    }
+
+
+    #homeImage {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width:620px) {
+    #login{
+        width: 100%;
+    }
+
+    #formContainer {
+        width: 55%;
+    }
+}
+@media screen and (max-width:570px) {
+    #login{
+        width: 105%;
+    }
+    #formContainer {
+        width: 60%;
+    }
+}
+@media screen and (max-width:556px) {
+    #login{
+        width: 104%;
+    }
+}
+
+@media screen and (max-width:520px) {
+    #login{
+        width: 103%;
+    }
+    #formContainer {
+        width: 70%;
+    }
 }

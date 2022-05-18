@@ -41,10 +41,18 @@ input{
     background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbmjvzicipY10MB6sKB05_q5ZPBd_7g_Apsg&usqp=CAU');
     background-size:cover
 }
-
-#form{
+#formContainer {
+    background-color: white;
+    height: 81%;
     width: 90%;
     border: 1px solid lightcoral;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#form{
+    width: 90%;
+    /* border: 1px solid lightcoral; */
     background-color: white;
     height: 81%;
     display: grid;
@@ -60,7 +68,7 @@ input{
 
 #login{
     transition: 0.7s;
-    width: 97%;
+    width: 100%;
     background-color: black;
     color: white;
     text-transform: uppercase;
@@ -77,25 +85,6 @@ input{
     cursor: pointer;
     letter-spacing: 6px;
 }
-
-@media screen and (max-width:1056px) {
-    #form{
-       width: 47%;
-    }
-    
-}
-@media screen and (max-width:750px) {
-    #form{
-       width: 47%;
-    }
-}
-
-@media screen and (max-width:650px) {
-    #form{
-       width: 70%;
-    }
-}
-
 
 .message{
     top: 60px;
@@ -130,4 +119,107 @@ input{
     border: none;
     opacity: 0.5;
     pointer-events: none;
+}
+
+@media screen and (max-width:988px) {
+    #login{
+        width: 102%;
+    }
+
+    #formContainer {
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width:944px) {
+    #login{
+        width: 102%;
+    }
+
+    #formContainer {
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width:890px) {
+    #login{
+        width: 102%;
+    }
+
+    #container {
+        grid-template-columns: 50% 40%;
+    }
+}
+
+@media screen and (max-width:763px) {
+    #login{
+        width: 102%;
+    }
+    #container {
+        grid-template-columns: 50% 40%;
+    }
+}
+
+@media screen and (max-width:700px) {
+    #login{
+        width: 103%;
+    }
+
+    #container {
+        background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbmjvzicipY10MB6sKB05_q5ZPBd_7g_Apsg&usqp=CAU');
+        background-size: cover;
+        display: grid;
+        grid-template-columns: 100%;
+        justify-content: center;
+    }
+
+    #formContainer {
+        border: none;
+        width: 50%;
+        justify-self: center;
+        align-self: center;
+    }
+
+
+    #homeImage {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width:620px) {
+    #login{
+        width: 100%;
+    }
+
+    #formContainer {
+        width: 55%;
+    }
+}
+@media screen and (max-width:570px) {
+    #login{
+        width: 105%;
+    }
+    #formContainer {
+        width: 60%;
+    }
+}
+@media screen and (max-width:556px) {
+    #login{
+        width: 104%;
+    }
+    #formContainer {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width:500px) {
+    #login{
+        width: 103%;
+    }
+    #formContainer {
+        width: 70%;
+    }
 }
