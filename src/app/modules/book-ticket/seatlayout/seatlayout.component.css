@@ -1,5 +1,6 @@
 #mainContainer {
-    margin-top: 7%;
+    margin-top: 9%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -125,7 +126,7 @@ button:hover {
 
 #driver {
     margin-left: 24.5%;
-    margin-top: 12.4%;
+    margin-top: 14.5%;
     position: absolute;
 }
 
@@ -151,4 +152,202 @@ button:hover {
 
 .initial{
     display: none;
+}
+
+@media screen and (max-width:1120px) {
+
+    #driver {
+        margin-left: 21%;
+        margin-top: 17.2%;
+        position: absolute;
+    }
+
+    #infoContainer{
+        width: 47%;
+    }
+
+    #seatLayout{
+        width: 45%;
+    }
+
+    #mainContainer {
+        margin-top: 11%;
+        /* width: 105vw; */
+    }
+    #foot{
+        width: 40%;
+    }
+}
+
+@media screen and (max-width:1000px) {
+
+    #driver {
+        margin-left: 16.5%;
+        margin-top: 18.9%;
+        position: absolute;
+    }
+
+    #mainContainer {
+        margin-top: 12%;
+    }
+
+    #infoContainer{
+        width: 52%;
+    }
+
+    #seatLayout{
+        width: 52%;
+    }
+
+    #foot{
+        width: 50%;
+    }
+}
+
+@media screen and (max-width:890px) {
+    #mainContainer {
+        margin-top: 14%;
+    }
+
+    #driver {
+        margin-left: 12.4%;
+        margin-top: 22%;
+        position: absolute;
+    }
+
+    #infoContainer{
+        width: 57%;
+    }
+
+    #seatLayout{
+        width: 60%;
+    }
+
+    #foot{
+        width: 57%;
+    }
+}
+
+@media screen and (max-width:790px) {
+
+    #mainContainer{
+        margin-top: 16%;
+    }
+
+    #driver {
+        margin-left: 10.5%;
+        margin-top: 24.8%;
+        position: absolute;
+    }
+
+    #infoContainer{
+        width: 55%;
+    }
+
+    #seatLayout{
+        width: 62%;
+    }
+
+    #foot{
+        width: 59%;
+    }
+}
+
+@media screen and (max-width:670px) {
+
+    #mainContainer{
+        margin-top: 18%;
+    }
+
+    #driver {
+        margin-left: 6%;
+        margin-top: 28.5%;
+        position: absolute;
+    }
+
+    #infoContainer{
+        width: 65%;
+    }
+
+    #seatLayout{
+        width: 70%;
+    }
+
+    #foot{
+        width: 67%;
+    }
+}
+
+@media screen and (max-width:600px) {
+
+    #mainContainer{
+        margin-top: 20%;
+    }
+
+    #driver {
+        margin-left: 4%;
+        margin-top: 31.5%;
+        position: absolute;
+    }
+
+    #infoContainer{
+        width: 75%;
+    }
+
+    #seatLayout{
+        width: 73%;
+    }
+
+    #foot{
+        width: 70%;
+    }
+}
+
+@media screen and (max-width:575px) {
+
+    #mainContainer{
+        margin-top: 18%;
+    }
+
+    #driver {
+        margin-left: 4%;
+        margin-top: 29.5%;
+        position: absolute;
+    }
+
+    #infoContainer{
+        width: 75%;
+    }
+
+    #seatLayout{
+        width: 75%;
+    }
+
+    #foot{
+        width: 70%;
+    }
+}
+
+
+@media screen and (max-width:550px) {
+
+    #mainContainer{
+        margin-top: 22%;
+    }
+
+    #driver {
+        display: none;
+    }
+
+    #infoContainer{
+        width: 85%;
+    }
+
+    #seatLayout{
+        width: 85%;
+    }
+
+    #foot{
+        width: 80%;
+    }
 }

@@ -18,6 +18,7 @@
         <div class="occupiedInfo infoSeat">Occupied</div>
         <div class="selectedInfo infoSeat">Selected</div>
     </div>
+   
     <div id="seatLayout">
         <div *ngFor="let index of iterations;">
             <div (click)="toggleSelection($event)" id="{{seats[index]}}" class="seat"
@@ -29,6 +30,7 @@
                 <span id="{{seats[index]}}" style="visibility: hidden;">{{seats[index+1]}}</span> </div>
         </div>
     </div>
+    
     <div id="foot">
         <span style="font-size:12px;font-weight:500;letter-spacing: 1px;">
             Selected Seats:
@@ -39,6 +41,7 @@
                 <span style="font-size:15px;letter-spacing: normal;">{{totalAmount}}
                 </span></span>
     </div>
+
     <div>
         <button [ngClass]="selectedSeats.length ==0 ?'disabled':''" (click)="bookSeats()">Confirm</button>
     </div>

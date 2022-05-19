@@ -71,7 +71,7 @@ export class SeatlayoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.stateService.setBusId("62834d66440bf862d703acc6")
+    this.stateService.setBusId("62834d66440bf862d703acc6")
     // this.status=200
     // this.message="Your Booking is Confirmed"
     
