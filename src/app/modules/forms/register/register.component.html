@@ -25,25 +25,25 @@
         <div class="form-element">
             <i class="fa fa-user form-icons"></i>
               <input type="text" placeholder="Name" formControlName="name"><br>
-             <p style="text-align: center; width: 95%;background-color: red;color: white;padding: 4px;" *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched">Username must be filled</p>
+             <p class="error" *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched">Username must be filled</p>
         </div>
 
         <div class="form-element">
             <i class="fa fa-envelope email-icon form-icons"></i>
               <input type="email" placeholder="Email" formControlName="email"><br>
-              <p style="text-align: center; width: 95%;background-color: red;color: white;padding: 4px;" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">Please enter valid email</p>
+              <p class="error"  *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">Please enter valid email</p>
         </div>
 
         <div class="form-element">
           <i class="fa fa-address-card form-icons contact-icon"></i>
             <input type="text" placeholder="Contact Number" formControlName="contactNo"><br>
-            <p style="text-align: center; width: 95%;background-color: red;color: white;padding: 4px;" *ngIf="registerForm.get('contactNo')?.invalid && registerForm.get('contactNo')?.touched">Phone number must be of 10 digits</p>
+            <p class="error" *ngIf="registerForm.get('contactNo')?.invalid && registerForm.get('contactNo')?.touched">Phone number must be of 10 digits</p>
       </div>
 
       <div class="form-element">
         <i class="fa fa-lock form-icons"></i>
           <input type="password" placeholder="Enter your Password" formControlName="password">
-          <p style="text-align: center; width: 95%;background-color: red;color: white;padding: 4px;" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">Please enter atleast 8-15 characters</p>
+          <p class="error" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">Please enter atleast 8-15 characters</p>
       </div>
 
       <div class="form-element">

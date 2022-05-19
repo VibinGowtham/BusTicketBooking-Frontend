@@ -60,7 +60,9 @@ input {
 }
 
 #formContainer {
-    background-color: white;
+    /* background-image: url("https://bebs.org/wp-content/uploads/2019/05/form-background-1024x683.jpg");
+    background-size: cover; */
+    /* background-color: white; */
     height: 81%;
     width: 90%;
     border: 1px solid lightcoral;
@@ -70,7 +72,9 @@ input {
 }
 
 #form {
-    background-color: white;
+    /* background-image: url("https://bebs.org/wp-content/uploads/2019/05/form-background-1024x683.jpg");
+    background-size: cover;
+    background-color: white; */
     width: 100%;
     height: 75%;
     display: grid;
@@ -120,7 +124,24 @@ input {
     pointer-events: none;
 }
 
+
+.error{
+    text-align: center;
+    width: 95%;
+    background-color: red;
+    color: white;
+    padding: 4px;
+}
+
+@media screen and (max-width:1090px) {
+.error{
+    width: 98.5%;
+}
+}
+
 @media screen and (max-width:988px) {
+
+
     #login{
         width: 102%;
     }
@@ -132,6 +153,21 @@ input {
 }
 
 @media screen and (max-width:944px) {
+    #login{
+        width: 102%;
+    }
+
+    #formContainer {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:800px) {
+
+    .error{
+        width: 101%;
+    }
+
     #login{
         width: 102%;
     }
@@ -152,7 +188,11 @@ input {
     }
 }
 
-@media screen and (max-width:763px) {
+@media screen and (max-width:769px) {
+   .error{
+       width: 100%;
+   }
+
     #login{
         width: 102%;
     }
@@ -161,11 +201,23 @@ input {
     }
 }
 
-@media screen and (max-width:700px) {
+@media screen and (max-width:745px) {
+   .error{
+       width: 92.5%;
+   }
+
     #login{
         width: 103%;
     }
 
+    .link{
+        color: blue;
+        font-weight: 800;
+    }
+    
+    #title{
+       border-bottom: 3px solid white;
+    }
     #container {
         background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbmjvzicipY10MB6sKB05_q5ZPBd_7g_Apsg&usqp=CAU');
         background-size: cover;
@@ -175,26 +227,38 @@ input {
     }
 
     #formContainer {
+        backdrop-filter: blur(5px);
+        color: white;
         border: none;
-        width: 50%;
+        width: 60%;
         justify-self: center;
         align-self: center;
     }
-
+    i{
+        color: black;
+    }
 
     #homeImage {
         display: none;
     }
 
+    #login{
+        border: none;
+    }
+
 }
 
 @media screen and (max-width:620px) {
+   .error{
+       width: 96%;
+   }
+
     #login{
         width: 100%;
     }
 
     #formContainer {
-        width: 55%;
+        width: 65%;
     }
 }
 @media screen and (max-width:570px) {
@@ -202,7 +266,7 @@ input {
         width: 105%;
     }
     #formContainer {
-        width: 60%;
+        width: 70%;
     }
 }
 @media screen and (max-width:556px) {
@@ -212,6 +276,11 @@ input {
 }
 
 @media screen and (max-width:520px) {
+
+    .error{
+        width: 97%;
+    }
+
     #login{
         width: 103%;
     }

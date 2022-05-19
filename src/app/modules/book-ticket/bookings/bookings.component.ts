@@ -73,7 +73,6 @@ export class BookingsComponent implements OnInit {
       
       this.bookingService.post('getBookings', { userId: this.stateService.getUserId() }).subscribe(data => {
         console.log("In bookings");
-
         console.log(data);
         this.totalBooking = data.total;
         this.bookings = data.filteredResults;
