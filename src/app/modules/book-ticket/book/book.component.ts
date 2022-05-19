@@ -26,16 +26,16 @@ export class BookComponent implements OnInit {
 
 
   sendData(): any {
-    // const { boardingLocation, destinationLocation, depatureDate } = this.city.value
-    // if (boardingLocation === destinationLocation || depatureDate === undefined || depatureDate === '') {
-    //   console.log("City In");
-    //   console.log(this.city.value);
-    //   this.city.reset(this.initialValues)
-    //   return
-    // }
-    // this.city.value.depatureDate = parseInt(depatureDate.slice(8)) % 7
+    const { boardingLocation, destinationLocation, depatureDate } = this.city.value
+    if (boardingLocation === destinationLocation || depatureDate === undefined || depatureDate === '') {
+      console.log("City In");
+      console.log(this.city.value);
+      this.city.reset(this.initialValues)
+      return
+    }
+    this.city.value.depatureDate = parseInt(depatureDate.slice(8)) % 7
     
-  this.city.value.depatureDate=0
+  // this.city.value.depatureDate=0
     console.log("City");
     console.log(this.city.value);
     
@@ -61,8 +61,8 @@ export class BookComponent implements OnInit {
   ngOnInit(): void {
     this.cities = []
     this.city = new FormGroup({
-      boardingLocation: new FormControl('Coimbatore', Validators.required),
-      destinationLocation: new FormControl('Chennai', Validators.required),
+      boardingLocation: new FormControl('', Validators.required),
+      destinationLocation: new FormControl('', Validators.required),
       depatureDate: new FormControl('', Validators.required),
     })
 

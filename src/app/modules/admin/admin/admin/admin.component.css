@@ -67,3 +67,42 @@ button:hover {
     letter-spacing: 1px;
     opacity: 1;
 }
+
+@media screen and (max-width:1038px) {
+    #mainContainer{
+        grid-template-columns: 35% 35%;
+    }
+}
+
+@media screen and (max-width:860px) {
+    #mainContainer{
+        grid-template-columns: 40% 40%;
+    }
+}
+
+@media screen and (max-width:750px) {
+    #mainContainer{
+        grid-template-columns: 42% 42%;
+    }
+}
+
+@media screen and (max-width:700px) {
+    #mainContainer{
+        grid-template-columns: 60%;
+        height: 65%;
+    }
+}
+
+@media screen and (max-width:625px) {
+    #mainContainer{
+        grid-template-columns: 65%;
+        /* height: 65%; */
+    }
+}
+
+@media screen and (max-width:575px) {
+    #mainContainer{
+        grid-template-columns: 70%;
+        /* height: 65%; */
+    }
+}
