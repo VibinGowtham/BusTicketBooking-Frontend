@@ -35,11 +35,9 @@
     width: 220px;
     height: 230px;
     padding: 20px;
-    /* align-self: flex-end; */
 }
 
 #button {
-    /* border: 1px solid red; */
     display: flex;
     justify-content: space-between;
 }
@@ -72,6 +70,10 @@ button:hover {
     #mainContainer{
         grid-template-columns: 35% 35%;
     }
+
+    #addBus{
+        display: block;
+    }
 }
 
 @media screen and (max-width:860px) {
@@ -96,13 +98,11 @@ button:hover {
 @media screen and (max-width:625px) {
     #mainContainer{
         grid-template-columns: 65%;
-        /* height: 65%; */
     }
 }
 
 @media screen and (max-width:575px) {
     #mainContainer{
         grid-template-columns: 70%;
-        /* height: 65%; */
     }
 }

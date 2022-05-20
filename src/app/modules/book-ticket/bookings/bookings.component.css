@@ -1,6 +1,6 @@
 #totalBookings {
     text-align: center;
-    height: 50px;
+    height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -201,6 +201,10 @@ h5 {
 }
 
 @media screen and (max-width:805px) {
+    #totalBookings {
+      width: 110%;
+    }
+
     #mainContainer {
         width: 110vw;
         grid-template-columns: 97%;
@@ -209,6 +213,9 @@ h5 {
 
 
 @media screen and (max-width:690px) {
+    #totalBookings {
+        width:120%;
+      }
     #mainContainer {
         width: 120vw;
         grid-template-columns: 97%;
@@ -216,6 +223,9 @@ h5 {
 }
 
 @media screen and (max-width:650px) {
+    #totalBookings {
+        width:125%;
+      }
     #mainContainer {
         width: 125vw;
         grid-template-columns: 97%;
@@ -223,6 +233,11 @@ h5 {
 }
 
 @media screen and (max-width:615px) {
+ 
+    #totalBookings {
+        width:145%;
+      }
+
     #mainContainer {
         width: 145vw;
         grid-template-columns: 95%;
@@ -230,6 +245,10 @@ h5 {
 }
 
 @media screen and (max-width:566px) {
+    #totalBookings {
+        width:160%;
+      }
+
     #mainContainer {
         width: 160vw;
         grid-template-columns: 95%;
@@ -238,6 +257,10 @@ h5 {
 
 
 @media screen and (max-width:510px) {
+    
+    #totalBookings {
+        width:165%;
+      }
     #mainContainer {
         width: 165vw;
         grid-template-columns: 95%;

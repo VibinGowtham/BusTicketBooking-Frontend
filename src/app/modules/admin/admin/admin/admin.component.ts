@@ -8,16 +8,25 @@ import { UpdateUserComponent } from '../update-user/update-user.component';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
- 
-  @ViewChild(UpdateBusComponent)updateBus!: UpdateBusComponent;
 
-  @ViewChild(UpdateUserComponent)updateUser!: UpdateUserComponent;
+  @ViewChild(UpdateBusComponent) updateBus!: UpdateBusComponent;
+
+  @ViewChild(UpdateUserComponent) updateUser!: UpdateUserComponent;
 
   toggle(id: any) {
     const element = document.getElementById(`${id}`) as HTMLElement;
-    if (element.style.display == 'none') element.style.display = 'grid'
-    else if (element.style.display == 'grid') element.style.display = 'npne'
-    element!.scrollIntoView({ behavior: 'smooth' });
+    if (element.style.display == 'none') {
+      element.style.display = 'grid'
+      element!.scrollIntoView({ behavior: 'smooth' });
+    }
+    else if (element.style.display == 'grid') {
+      let main = document.getElementById('mainNav') as HTMLElement
+
+      main.scrollIntoView({ behavior: 'smooth' })
+      setTimeout(() => {
+        element.style.display = 'none'
+      }, 500);
+    }
   }
 
   toggleAddBusComponent() {
@@ -41,7 +50,7 @@ export class AdminComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
- 
+
   }
 
 }
