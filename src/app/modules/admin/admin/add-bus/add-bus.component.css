@@ -61,20 +61,20 @@ input {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
 }
 
 
-.inputContainer{
+.inputContainer {
     margin-bottom: 10px;
 }
 
-.foot{
+.foot {
     margin-bottom: 20px;
 }
 
 
-.disabled{
+.disabled {
     background-color: grey;
     border: none;
     opacity: 0.5;
@@ -82,43 +82,43 @@ input {
 }
 
 
-.message{
+.message {
     top: 10px;
     right: 10px;
-   color: white;
-   padding: 10px;
-   display: block;
-   position: absolute;
-   letter-spacing: 1.5px;
+    color: white;
+    padding: 10px;
+    display: block;
+    position: absolute;
+    letter-spacing: 1.5px;
 }
 
-.success{
+.success {
     background-color: green;
 }
 
-.failed{
+.failed {
     background-color: #FF0000;
 }
 
-.initial{
+.initial {
     display: none;
 }
 
-.messageContainer{
+.messageContainer {
     display: flex;
     align-items: center;
 }
 
-.foot{
+.foot {
     margin-bottom: 20px;
 }
 
 
-.close{
-position: absolute;
-right: 10px;
-top: 10px;
-cursor: pointer;
+.close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
 }
 
 @media screen and (max-width:940px) {
@@ -129,7 +129,7 @@ cursor: pointer;
         width: 75%;
     }
 
-    #button{
+    #button {
         width: 90%;
         justify-self: center;
     }
@@ -167,43 +167,42 @@ cursor: pointer;
         grid-template-columns: 85%;
         justify-content: center;
     }
-  form{
-     grid-template-columns: 100%;
-     justify-content: center;
- }
 
- #button{
-     align-self: center;
-     padding: 12px;
-     width: 85%;
- }
+    form {
+        grid-template-columns: 100%;
+        justify-content: center;
+    }
+
+    #button {
+        align-self: center;
+        padding: 12px;
+        width: 85%;
+    }
 }
 
 @media screen and (max-width:660px) {
-   #formContainer{
-       margin-top: 70%;
-   }
+    #formContainer {
+        margin-top: 70%;
+    }
 }
 
-
 @media screen and (max-width:610px) {
-    #formContainer{
+    #formContainer {
         margin-top: 75%;
     }
- }
+}
 
-
- @media screen and (max-width:580px) {
-    #formContainer{
+@media screen and (max-width:580px) {
+    #formContainer {
         margin-top: 80%;
     }
- }
+}
 
- @media screen and (max-width:540px) {
-    #formContainer{
+@media screen and (max-width:540px) {
+    #formContainer {
         width: 90%;
         margin-left: 5%;
         margin-top: 85%;
         grid-template-columns: 97%;
     }
- }
+}
