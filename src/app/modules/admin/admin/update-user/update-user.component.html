@@ -17,8 +17,8 @@
         <tr>
             <th>UserName</th>
             <th>Email</th>
-            <th>Contact Number</th>
-            <th>password</th>
+            <th>Mobile</th>
+            <!-- <th>password</th> -->
             <th style="border-right:3px double black ;">Admin</th>
             <th colspan="2" style="text-align:center;border-right:none; letter-spacing:3px ;">Update/DELETE</th>
         </tr>
@@ -26,9 +26,9 @@
             <td>{{user.name}}</td>
             <td>{{user.email}}</td>
             <td>{{user.contactNo}}</td>
-            <td>
-                <input id="password" type="password" value="{{user.email}}" disabled="true">
-            </td>
+            <!-- <td>
+                <input disabled="true" id="password" type="password" value="{{user.email}}">
+            </td> -->
             <td style="border-right:3px double black ;">{{user.isAdmin==true?'Yes':'No'}}</td>
             <td class="buttonContainer">
                 <button class="updateButton" id="{{user._id}}" (click)="getUserDetails($event)">

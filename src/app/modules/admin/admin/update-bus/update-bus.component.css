@@ -139,7 +139,6 @@ cursor: pointer;
     position: relative;
     margin-left: 5%;
     margin-top: 7%;
-    /* margin-bottom: 10%; */
     border: 3px double black;
     border-bottom: none;
     display: grid;
@@ -169,6 +168,7 @@ th {
 td {
     border-bottom: 3px double #000000;
     border-right: 3px double black;
+    font-size: 15px;
     /* text-transform: uppercase; */
     letter-spacing: 1.5px;
     /* font-style: italic; */
@@ -265,4 +265,65 @@ input {
 
 #button:hover {
     letter-spacing: 7px;
+}
+
+
+@media screen and (max-width:1011px) {
+  td{
+      padding: 7px;
+  }
+}
+
+@media screen and (max-width:975px) {
+   table{
+       font-size: 1.1em;
+   }
+   td{
+       padding:5px ;
+   }
+}
+
+@media screen and (max-width:915px) {
+  #tableContainer{
+      width: 110vw;
+  }
+  
+}
+
+@media screen and (max-width:850px) {
+    #tableContainer{
+        width: 120vw;
+    }
+}
+
+@media screen and (max-width:700px) {
+    #tableContainer{
+        margin-top: 53%;
+        width: 120vw;
+    }
+   
+}
+
+@media screen and (max-width:674px) {
+    #tableContainer{
+        width: 130vw;
+    }
+}
+
+@media screen and (max-width:635px) {
+    #tableContainer{
+        width: 135vw;
+    }
+}
+
+@media screen and (max-width:610px) {
+    #tableContainer{
+        width: 145vw;
+    }
+}
+
+@media screen and (max-width:560px) {
+    #tableContainer{
+        width: 165vw;
+    }
 }

@@ -139,7 +139,6 @@ cursor: pointer;
     position: relative;
     margin-left: 5%;
     margin-top: 7%;
-    /* margin-bottom: 10%; */
     border: 3px double black;
     border-bottom: none;
     display: grid;
@@ -272,4 +271,79 @@ input {
     text-align: center;
     background-color: white;
     border: none;
+}
+
+@media screen and (max-width:1066px) {
+
+    #updateFormContainer{
+        width: 100%;
+    }
+    td{
+        padding: 7px;
+    }
+  }
+  
+  @media screen and (max-width:1040px) {
+    #updateTableContainer{
+        width: 105vw;
+    }
+     table{
+         font-size: 1.1em;
+     }
+     td{
+         padding:5px ;
+     }
+  }
+  
+  @media screen and (max-width:915px) {
+    #updateTableContainer{
+        width: 110vw;
+    }
+    
+  }
+  
+  @media screen and (max-width:850px) {
+      #updateTableContainer{
+          width: 120vw;
+      }
+  }
+  
+  @media screen and (max-width:700px) {
+      #updateTableContainer{
+          margin-top: 53%;
+          width: 120vw;
+      }
+     
+  }
+  
+  @media screen and (max-width:674px) {
+      #updateTableContainer{
+          width: 130vw;
+      }
+  }
+  
+  @media screen and (max-width:635px) {
+      #updateTableContainer{
+          width: 135vw;
+      }
+  }
+  
+  @media screen and (max-width:610px) {
+      #updateTableContainer{
+          width: 145vw;
+      }
+  }
+  
+  @media screen and (max-width:560px) {
+      #updateTableContainer{
+        margin-top: 55%;
+          /* width: 145vw; */
+      }
+  }
+
+  @media screen and (max-width:530px) {
+    #updateTableContainer{
+      margin-top: 58%;
+        /* width: 145vw; */
+    }
 }
