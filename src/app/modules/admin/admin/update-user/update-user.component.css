@@ -273,11 +273,9 @@ input {
     border: none;
 }
 
-@media screen and (max-width:1066px) {
+/* Table media query */
 
-    #updateFormContainer{
-        width: 100%;
-    }
+@media screen and (max-width:1066px) {
     td{
         padding: 7px;
     }
@@ -345,5 +343,105 @@ input {
     #updateTableContainer{
       margin-top: 58%;
         /* width: 145vw; */
+    }
+}
+
+/* Form Media Query */
+
+
+@media screen and (max-width:940px) {
+    #updateFormContainer {
+        position: relative;
+        margin-left: 9.5%;
+        margin-top: 5%;
+        width: 78%;
+    }
+
+    #button {
+        width: 90%;
+        justify-self: center;
+    }
+}
+@media screen and (max-width:915px) {
+    #updateFormContainer {
+        position: relative;
+        margin-left: 12.5%;
+        margin-top: 5%;
+        width: 68%;
+    }
+
+    #button {
+        width: 90%;
+        justify-self: center;
+    }
+}
+@media screen and (max-width:850px) {
+    #updateFormContainer {
+        margin-left: 8%;
+        margin-top: 5%;
+        width: 68%;
+    }
+}
+
+@media screen and (max-width:760px) {
+    #updateFormContainer {
+        margin-left: 6%;
+        margin-top: 5%;
+        width: 71%;
+    }
+    #button{
+       width: 85%;
+    }
+}
+@media screen and (max-width:700px) {
+    #updateFormContainer {
+        margin-left: 6.5%;
+        width: 70%;
+        margin-top: 8%;
+        grid-template-columns: 85%;
+        justify-content: center;
+    }
+
+    form {
+        grid-template-columns: 100%;
+        justify-content: center;
+    }
+
+    #button {
+        align-self: center;
+        justify-self: baseline;
+        padding: 13px;
+        width: 89%;
+    }
+}
+
+@media screen and (max-width:675px) {
+    #updateFormContainer {
+        margin-top: 6%;
+        margin-left: 5.8%;
+        width: 65%;
+    }
+}
+
+@media screen and (max-width:635px) {
+    #updateFormContainer {
+        width: 62%;
+    }
+}
+
+@media screen and (max-width:612px) {
+    #updateFormContainer {
+        margin-left: 5%;
+        width: 58%;
+    }
+}
+
+@media screen and (max-width:560px) {
+    #updateFormContainer {
+        margin-left: 7%;
+        width: 53%;
+    }
+    #button{
+        width: 93%;
     }
 }

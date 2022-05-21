@@ -19,7 +19,7 @@
 
 
     <div>
-        <form [formGroup]="user">
+        <form [formGroup]="user" (keydown.enter)="$event.preventDefault()">
             <div class="inputContainer">
                 <input type="text" placeholder="Name" formControlName="name">
                 <p class="error" *ngIf="user.get('name')?.touched && user.get('name')?.invalid">

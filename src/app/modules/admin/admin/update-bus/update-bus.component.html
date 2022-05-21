@@ -38,7 +38,7 @@
 </div>
 
 
-<div id="updateBusFormContainer">
+<!-- <div id="updateBusFormContainer">
     <span class="formClose" (click)="closeForm()"><mat-icon>close</mat-icon></span>
     <p [ngClass]="status===200?'message success':'initial'">
       <span class="messageContainer">
@@ -113,11 +113,118 @@
 
             <div class="inputContainer">
                 <!-- <input type="text" placeholder="Date of birth" onfocus="(this.type='date')">  -->
+                <!-- <input type="date" placeholder="Depature Date" formControlName="depatureDate"> -->
+            <!-- </div> -->
+
+            <!-- <div class="inputContainer">
+                <input type="text" placeholder="Rating" formControlName="rating">
+            </div> -->
+
+            <!-- <div class="inputContainer">
+                <input type="text" placeholder="Depature Time" formControlName="depatureTime">
+            </div>
+
+            <div class="inputContainer">
+                <input type="text" placeholder="Arrival Time" formControlName="arrivalTime">
+            </div> -->
+
+            <!-- <div class="inputContainer foot">
+                <input type="text" placeholder="Total Time" formControlName="totalTime">
+            </div>
+
+            <button id="button" [ngClass]="bus.invalid?'disabled':''" (click)="updateData()">Update Bus</button>
+
+        </form>
+    </div> -->
+<div id="updateBusFormContainer">
+    <span class="close" (click)="closeForm()"><mat-icon>close</mat-icon></span>
+    <p [ngClass]="status===200?'message success':'initial'">
+      <span class="messageContainer">
+            <mat-icon [inline]="true" style="font-size:20px;margin-right:10px ;">check_circle</mat-icon> <span>{{message}}</span>
+    </span>
+   </p>
+
+    <p [ngClass]="status===403?'message failed':'initial'">
+        <span class="messageContainer">
+            <mat-icon [inline]="true" style="font-size:20px;margin-right:10px;">warning</mat-icon> <span>{{message}}</span>
+        </span>
+     </p>
+
+    <h2>
+        <mat-icon id="header" [inline]="true" style="font-size:22px;margin-right:5px;">directions_bus</mat-icon> Update Bus
+    </h2>
+
+
+    <div>
+        <form [formGroup]="bus" (keydown.enter)="$event.preventDefault()">
+            <div class="inputContainer">
+                <input type="text" placeholder="Bus Name" formControlName="name">
+                <p class="error" *ngIf="bus.get('name')?.touched&& bus.get('name')?.invalid">
+                    <mat-icon style="margin-right:5px ;">dangerous</mat-icon> Bus name is mandatory
+                </p>
+            </div>
+
+            <div class="inputContainer">
+                <input list="bustypes" placeholder="Bus Type" formControlName="busType">
+                <datalist id="bustypes">
+                    <option value="A/c Sleeper"></option>
+                    <option value="Non-A/c Sleeper"></option>
+                </datalist>
+            </div>
+
+            <div class="inputContainer">
+                <input type="text" placeholder="Boarding Location" formControlName="boardingLocation">
+                <p class="error" *ngIf="bus.get('boardingLocation')?.touched&& bus.get('boardingLocation')?.invalid">
+                    <mat-icon style="margin-right:5px;">dangerous</mat-icon> Boarding Location is mandatory
+                </p>
+            </div>
+
+            <div class="inputContainer">
+                <input type="text" placeholder="Destination Location" formControlName="destinationLocation">
+                <p class="error"
+                    *ngIf="bus.get('destinationLocation')?.touched&& bus.get('destinationLocation')?.invalid">
+                    <mat-icon style="margin-right:5px;">dangerous</mat-icon> Destination Location is mandatory
+                </p>
+            </div>
+
+            <div class="inputContainer">
+                <input type="text" placeholder="Pick-Up Location" formControlName="pickupLocation">
+                <p class="error" *ngIf="bus.get('pickupLocation')?.touched&& bus.get('pickupLocation')?.invalid">
+                    <mat-icon style="margin-right:5px;">dangerous</mat-icon> Pick-Up Location Location is mandatory
+                </p>
+            </div>
+
+            <div class="inputContainer">
+                <input type="text" placeholder="Drop Location" formControlName="dropLocation">
+                <p class="error" *ngIf="bus.get('dropLocation')?.touched&& bus.get('dropLocation')?.invalid">
+                    <mat-icon style="margin-right:5px;">dangerous</mat-icon> Drop Location Location is mandatory
+                </p>
+            </div>
+
+            <div class="inputContainer">
+                <input type="text" placeholder="Price" formControlName="price">
+                <p class="error" *ngIf="bus.get('price')?.touched&& bus.get('price')?.invalid">
+                    <mat-icon style="margin-right:5px ;">dangerous</mat-icon> Enter only valid price value
+                </p>
+            </div>
+
+            <div class="inputContainer">
+                <input type="text" placeholder="Total Seats" formControlName="totalSeats">
+                <p class="error" *ngIf="bus.get('totalSeats')?.touched&& bus.get('totalSeats')?.invalid">
+                    <mat-icon style="margin-right:5px ;">dangerous</mat-icon> Total Seats must be in range 12-24
+                </p>
+            </div>
+
+            <div class="inputContainer">
+                <!-- <input type="text" placeholder="Date of birth" onfocus="(this.type='date')">  -->
                 <input type="date" placeholder="Depature Date" formControlName="depatureDate">
             </div>
 
             <div class="inputContainer">
                 <input type="text" placeholder="Rating" formControlName="rating">
+                <p class="error" *ngIf="bus.get('rating')?.touched&& bus.get('rating')?.invalid">
+                    <mat-icon style="margin-right:5px ;">dangerous</mat-icon>Rating must be only from 1.0 to 5.0
+                </p>
             </div>
 
             <div class="inputContainer">
@@ -132,7 +239,7 @@
                 <input type="text" placeholder="Total Time" formControlName="totalTime">
             </div>
 
-            <button id="button" [ngClass]="bus.invalid?'disabled':''" (click)="updateData()">Update Bus</button>
+            <button id="button" [ngClass]="bus.invalid?'disabled':''" (click)="updateData()">Add Bus</button>
 
         </form>
     </div>

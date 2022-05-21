@@ -267,6 +267,7 @@ input {
     letter-spacing: 7px;
 }
 
+/* Table Media Query*/
 
 @media screen and (max-width:1011px) {
   td{
@@ -325,5 +326,106 @@ input {
 @media screen and (max-width:560px) {
     #tableContainer{
         width: 165vw;
+    }
+}
+
+
+/* Form Media Query*/
+
+
+@media screen and (max-width:940px) {
+    #updateBusFormContainer {
+        position: relative;
+        margin-left: 12.5%;
+        margin-top: 5%;
+        width: 75%;
+    }
+
+    #button {
+        width: 90%;
+        justify-self: center;
+    }
+}
+@media screen and (max-width:915px) {
+    #updateBusFormContainer {
+        position: relative;
+        margin-left: 12.5%;
+        margin-top: 5%;
+        width: 68%;
+    }
+
+    #button {
+        width: 90%;
+        justify-self: center;
+    }
+}
+@media screen and (max-width:850px) {
+    #updateBusFormContainer {
+        margin-left: 8%;
+        margin-top: 5%;
+        width: 68%;
+    }
+}
+
+@media screen and (max-width:760px) {
+    #updateBusFormContainer {
+        margin-left: 6%;
+        margin-top: 5%;
+        width: 71%;
+    }
+    #button{
+       width: 85%;
+    }
+}
+@media screen and (max-width:700px) {
+    #updateBusFormContainer {
+        margin-left: 6.5%;
+        width: 70%;
+        margin-top: 10%;
+        grid-template-columns: 85%;
+        justify-content: center;
+    }
+
+    form {
+        grid-template-columns: 100%;
+        justify-content: center;
+    }
+
+    #button {
+        align-self: center;
+        justify-self: baseline;
+        padding: 13px;
+        width: 89%;
+    }
+}
+
+@media screen and (max-width:675px) {
+    #updateBusFormContainer {
+        margin-top: 6%;
+        margin-left: 5.8%;
+        width: 65%;
+    }
+}
+
+@media screen and (max-width:635px) {
+    #updateBusFormContainer {
+        width: 62%;
+    }
+}
+
+@media screen and (max-width:612px) {
+    #updateBusFormContainer {
+        margin-left: 5%;
+        width: 58%;
+    }
+}
+
+@media screen and (max-width:560px) {
+    #updateBusFormContainer {
+        margin-left: 3%;
+        width: 53%;
+    }
+    #button{
+        width: 92%;
     }
 }
