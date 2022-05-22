@@ -40,6 +40,7 @@ export class SeatlayoutComponent implements OnInit {
       bookedDate: new Date().toDateString(),
       paymentMode: this.paymentMode
     }
+    this.stateService.setBusId('')
     this.seatService.post('updateAvailability', body)
       .subscribe(data => {
         console.log(data)
@@ -71,7 +72,7 @@ export class SeatlayoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.stateService.setBusId("62834d66440bf862d703acc6")
+    // this.stateService.setBusId("62834d66440bf862d703acc6")
     // this.status=200
     // this.message="Your Booking is Confirmed"
     
@@ -92,12 +93,7 @@ export class SeatlayoutComponent implements OnInit {
 
         })
       this.userService.post('bus/getBus', { id: this.stateService.getBusId() }).subscribe(data => {
-        console.log("userser");
-        console.log(data);
         this.price = data.price
-        console.log(this.price);
-        
-
       })
 
 

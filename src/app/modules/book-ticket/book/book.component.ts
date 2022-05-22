@@ -10,12 +10,16 @@ import { StateService } from 'src/app/services/stateServices/state.service';
   styleUrls: ['./book.component.css']
 })
 export class BookComponent implements OnInit {
+  status: any
+  message: any
   total: any
   date!: any
   busDetails!: any
   cities!: any
   city!: FormGroup
-  initialValues:any
+  initialValues: any
+  boardingLocations: any
+  destinationLocations: any
 
   getBusId(event: any) {
     this.stateServive.setBusId(event.target.attributes.id.nodeValue.slice(5))
@@ -26,20 +30,26 @@ export class BookComponent implements OnInit {
 
 
   sendData(): any {
+
     const { boardingLocation, destinationLocation, depatureDate } = this.city.value
-    if (boardingLocation === destinationLocation || depatureDate === undefined || depatureDate === '') {
-      console.log("City In");
-      console.log(this.city.value);
-      this.city.reset(this.initialValues)
+    if (boardingLocation === destinationLocation) {
+      this.status = 403
+      this.message = "Boarding and Depature locations cannot be same"
+      //  this.city.reset(this.initialValues)
       return
     }
-    this.city.value.depatureDate = parseInt(depatureDate.slice(8)) % 7
-    
-  // this.city.value.depatureDate=0
-    console.log("City");
-    console.log(this.city.value);
-    
 
+    if (depatureDate === undefined || depatureDate === '') {
+      this.status = 403
+      this.message = "Depture date cannot be empty"
+      //this.city.reset(this.initialValues)
+      return
+    }
+
+    this.city.value.boardingLocation = boardingLocation.toLowerCase()
+    this.city.value.destinationLocation = destinationLocation.toLowerCase()
+    this.city.value.depatureDate = parseInt(depatureDate.slice(8)) % 7
+ 
     this.locationService.post('bus/filterBus', this.city.value).subscribe(data => {
       this.total = data.length
       this.busDetails = data
@@ -47,32 +57,43 @@ export class BookComponent implements OnInit {
     })
 
     setTimeout(() => {
-      let element=document.getElementById('busPropertiesContainer') as HTMLElement
-      console.log(element);  
-      if(element!==null) element.scrollIntoView({behavior:'smooth'})
+      let element = document.getElementById('busPropertiesContainer') as HTMLElement
+      console.log(element);
+      if (element !== null) element.scrollIntoView({ behavior: 'smooth' })
     }, 1000);
-    
-    
-    
+
   }
 
-  constructor(private locationService: LocationService, private stateServive: StateService,private router:Router) { }
+
+  convertToCapitalize(string: String) {
+    return string.charAt(0).toUpperCase() + string.slice(1)
+  }
+
+  constructor(private locationService: LocationService, private stateServive: StateService, private router: Router) { }
 
   ngOnInit(): void {
-    this.cities = []
+ 
     this.city = new FormGroup({
       boardingLocation: new FormControl('', Validators.required),
       destinationLocation: new FormControl('', Validators.required),
       depatureDate: new FormControl('', Validators.required),
     })
 
-    this.initialValues=this.city.value
+    this.initialValues = this.city.value
 
-    console.log(this.city.value);
+    this.locationService.get('bus/getAllLocations').subscribe(data => {
 
-    this.locationService.get('city/getAllCities').subscribe(data => {
-      for (let i = 0; i < data.totalCities; i++) {
-        this.cities.push(data.cities[i].city)
+      this.boardingLocations = data.boardinglocations
+      this.destinationLocations = data.destinationLocations
+
+      for (let i = 0; i < this.boardingLocations.length; i++) {
+        let location = this.boardingLocations[i]
+        this.boardingLocations[i] = this.convertToCapitalize(location)
+      }
+
+      for (let i = 0; i < this.destinationLocations.length; i++) {
+        let location = this.destinationLocations[i]
+        this.destinationLocations[i] = this.convertToCapitalize(location)
       }
 
     })

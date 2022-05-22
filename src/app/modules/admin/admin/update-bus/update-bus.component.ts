@@ -55,6 +55,18 @@ export class UpdateBusComponent implements OnInit {
     this.busId = event.target.attributes.id.nodeValue
     this.userService.post('bus/getBus', { id: this.busId }).subscribe(data => {
       console.log(data);
+      let day=data.depatureDate
+
+      console.log("dayy");
+      console.log(day);
+
+      if(day==0) day=7
+      let busDay='0'+day;
+      console.log("busss before "+busDay);
+      
+       busDay=busDay.slice(-2)
+       console.log("Busday "+busDay);
+       
       this.bus = new FormGroup({
         name: new FormControl(data.name, Validators.required),
         busType: new FormControl(data.busType),
@@ -64,7 +76,7 @@ export class UpdateBusComponent implements OnInit {
         dropLocation: new FormControl(data.dropLocation, Validators.required),
         price: new FormControl(data.price, Validators.pattern('[0-9]{2,4}')),
         totalSeats: new FormControl(data.totalSeats,  [Validators.pattern('[0-9]{2}'),Validators.min(12), Validators.max(24)]),
-        depatureDate: new FormControl(`${year}-${month}-${day}`),
+        depatureDate: new FormControl(`${year}-${month}-${busDay}`),
         rating: new FormControl(data.rating,  [Validators.pattern('[0-9]{1}.[0-9]{1}'), Validators.min(1), Validators.max(5)]),
         depatureTime: new FormControl(data.depatureTime),
         arrivalTime: new FormControl(data.arrivalTime),
@@ -80,6 +92,7 @@ export class UpdateBusComponent implements OnInit {
     this.bus.value.depatureDate = parseInt(this.bus.value.depatureDate.slice(8)) % 7
     let body = this.bus.value
     body.busId = this.busId
+    console.log("Update Bus");
     console.log(body);
 
     this.adminService.post('updateBus', body).subscribe((data) => {

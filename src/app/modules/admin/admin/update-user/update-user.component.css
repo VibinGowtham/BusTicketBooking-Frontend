@@ -168,7 +168,7 @@ th {
 td {
     border-bottom: 3px double #000000;
     border-right: 3px double black;
-    text-transform: uppercase;
+    text-transform: capitalize;
     letter-spacing: 1.5px;
     font-size: 15px;
 }

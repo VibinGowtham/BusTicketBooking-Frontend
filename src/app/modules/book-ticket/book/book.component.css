@@ -170,6 +170,33 @@ h1 {
     font-weight: 500;
 }
 
+.messageContainer{
+    display: flex;
+    align-items: center;
+}
+
+.message{
+    top: 60px;
+    right: 10px;
+   color: white;
+   padding: 9px;
+   display: block;
+   position: absolute;
+   letter-spacing: 2px;
+}
+
+.success{
+    background-color: green;
+}
+
+.failed {
+    background-color: #FF0000;
+}
+
+.initial{
+    display: none;
+}
+
 @media screen and (max-width:1160px) {
     #busPropertiesContainer {
         grid-template-columns: 90%;

@@ -10,7 +10,7 @@ import { AdminService } from 'src/app/services/adminServices/admin.service';
   styleUrls: ['./add-bus.component.css']
 })
 export class AddBusComponent implements OnInit {
-initialFormValues:any
+  initialFormValues: any
   bus: any
   message: any
   status: any
@@ -30,30 +30,34 @@ initialFormValues:any
     }
   }
 
+  convertToLowerCase(string:String){
+      return string.toLowerCase()
+  }
+
   postData() {
-    let dialogRef= this.dialog.open(LoadingComponent, { disableClose: true })
-    this.bus.value.depatureDate=parseInt(this.bus.value.depatureDate.slice(8))%7
-   
-    
+    let dialogRef = this.dialog.open(LoadingComponent, { disableClose: true })
     let body = this.bus.value
     this.removeEmpty(body)
-    console.log(dialogRef.getState());
-    
+    if( this.bus.value.depatureDate) this.bus.value.depatureDate = parseInt(this.bus.value.depatureDate.slice(8)) % 7
+    this.bus.value.name=this.convertToLowerCase(this.bus.value.name)
+    this.bus.value.boardingLocation=this.convertToLowerCase(this.bus.value.boardingLocation)
+    this.bus.value.destinationLocation=this.convertToLowerCase(this.bus.value.destinationLocation)
+  
     this.adminService.post('addBus', body).subscribe(data => {
-      this.bus.reset(this.initialFormValues)
-      dialogRef.close()
+      this.bus.reset(this.initialFormValues);
+      dialogRef.close();
       console.log(data);
       this.status = data.status
       this.message = data.message
     })
-    console.log(dialogRef.getState());
+
     setTimeout(() => {
       this.status = 0
     }, 10000)
-    
+
   }
 
-  constructor(private dialog:MatDialog,private adminService: AdminService) { }
+  constructor(private dialog: MatDialog, private adminService: AdminService) { }
 
   ngOnInit(): void {
     this.bus = new FormGroup({
@@ -63,16 +67,13 @@ initialFormValues:any
       destinationLocation: new FormControl('', Validators.required),
       pickupLocation: new FormControl('', Validators.required),
       dropLocation: new FormControl('', Validators.required),
-      price: new FormControl('', Validators.pattern('[0-9]*$')),
-      totalSeats: new FormControl('', [Validators.pattern('[0-9]{2}'),Validators.min(12), Validators.max(24)]),
+      price: new FormControl('', Validators.pattern('[0-9]{2,4}')),
+      totalSeats: new FormControl('', [Validators.pattern('[0-9]{2}'), Validators.min(12), Validators.max(24)]),
       depatureDate: new FormControl(''),
       rating: new FormControl('', [Validators.pattern('[0-9]{1}.[0-9]{1}'), Validators.min(1), Validators.max(5)]),
       depatureTime: new FormControl(''),
       arrivalTime: new FormControl(''),
       totalTime: new FormControl('')
     })
-    this.initialFormValues= this.bus.value
-    
   }
-
 }

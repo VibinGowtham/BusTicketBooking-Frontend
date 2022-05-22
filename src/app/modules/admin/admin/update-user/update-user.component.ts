@@ -67,7 +67,7 @@ export class UpdateUserComponent implements OnInit {
     let body = {
       id: this.userId,
       name,
-      email,
+      email:email.toLowerCase(),
       password,
       contactNo,
       isAdmin: this.changeToBoolean(isAdmin)
@@ -75,6 +75,7 @@ export class UpdateUserComponent implements OnInit {
     console.log("remove empty");
 
     this.removeEmpty(body)
+    console.log("user body");
     console.log(body);
     this.adminService.post('updateUser', body).subscribe(data => {
       dialogRef.close()

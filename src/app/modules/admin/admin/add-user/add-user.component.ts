@@ -35,12 +35,12 @@ export class AddUserComponent implements OnInit {
     const {name,email,password,contactNo,isAdmin}=this.user.value
     let body = {
        name,
-       email,
+       email:email.toLowerCase(),
        password,
        contactNo,
        isAdmin:this.changeToBoolean(isAdmin)
     }
-    console.log(body);
+
     this.userService.post('register',body).subscribe(data=>{
       dialogRef.close()
         this.status=data.status
@@ -55,9 +55,7 @@ export class AddUserComponent implements OnInit {
   constructor(private dialog:MatDialog,private userService:UserserviceService) { }
 
   ngOnInit(): void {
-    // this.status = 200
-    // this.message = "User Successfully Added"
-    this.user = new FormGroup({
+      this.user = new FormGroup({
       name: new FormControl("", [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
       email: new FormControl('', [Validators.required, Validators.email]),
       contactNo: new FormControl('', [Validators.required, Validators.pattern('[0-9]{10}')]),

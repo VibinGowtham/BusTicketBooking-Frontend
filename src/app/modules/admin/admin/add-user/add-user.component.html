@@ -43,7 +43,7 @@
             </div>
 
             <div class="inputContainer">
-                <input type="text" placeholder="Password" formControlName="password">
+                <input type="password" placeholder="Password" formControlName="password">
                 <p class="error" *ngIf="user.get('password')?.touched && user.get('password')?.invalid">
                     <mat-icon style="margin-right:5px;">dangerous</mat-icon> Password must be 8-15 characters
                 </p>

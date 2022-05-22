@@ -1,16 +1,19 @@
 <div id="mainContainer">
+    <p [ngClass]="status===403?'message failed':'initial'">
+        <span class="messageContainer">
+            <mat-icon [inline]="true" style="font-size:20px;margin-right:10px;">warning</mat-icon> <span>{{message}}</span>
+        </span>
+     </p>
     <form id="inputContainer" [formGroup]="city">
-
-        <input type="text" formControlName="boardingLocation" list="departureCities" placeholder="Boarding Location*">
-        <input type="text" formControlName="destinationLocation" list="boardingCities"
-            placeholder="Destination Location*">
-        <datalist id="departureCities">
-            <span *ngFor="let city of cities">
-                <option value="{{city}}"></option>
-            </span>
-        </datalist>
-        <datalist id="boardingCities">
-            <span *ngFor="let city of cities">
+        <input type="text" formControlName="boardingLocation" list="boardingCities" placeholder="Boarding Location*">
+        <input type="text" formControlName="destinationLocation" list="departureCities" placeholder="Destination Location*">
+            <datalist id="boardingCities">
+                <span *ngFor="let city of boardingLocations">
+                    <option value="{{city}}"></option>
+                </span>
+            </datalist>
+            <datalist id="departureCities">
+            <span *ngFor="let city of destinationLocations">
                 <option value="{{city}}"></option>
             </span>
         </datalist>

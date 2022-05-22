@@ -18,7 +18,7 @@
                 alt="">
         </div>
         <div class="element" id="header">
-            <h2 style="display: flex;gap: 10px;">{{booking.boardingLocation}} <mat-icon [inline]="true"
+            <h2 style="display: flex;gap: 10px;text-transform: capitalize;">{{booking.boardingLocation}} <mat-icon [inline]="true"
                     style="font-size: 35px;">
                     arrow_right_alt</mat-icon> {{booking.destinationLocation}}</h2>
             <h3>{{booking.bookedDate}}</h3>
@@ -33,7 +33,7 @@
         </div>
         <div class="element foot" id="busDetails">
             <div>
-                <h2>{{booking.bus}}</h2>
+                <h2 style="text-transform:capitalize">{{booking.bus}}</h2>
                 <h5 style="text-transform: uppercase;">{{booking.busType}}</h5>
             </div>
 
