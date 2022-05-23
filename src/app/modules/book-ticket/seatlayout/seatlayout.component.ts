@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, NgZone, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { LoadingComponent } from 'src/app/components/loading/loading.component';
@@ -7,6 +7,9 @@ import { StateService } from 'src/app/services/stateServices/state.service';
 import { UserserviceService } from "../../../services/userServices/userservice.service";
 
 
+
+declare let Razorpay:any
+
 @Component({
   selector: 'app-seatlayout',
   templateUrl: './seatlayout.component.html',
@@ -14,7 +17,8 @@ import { UserserviceService } from "../../../services/userServices/userservice.s
 })
 
 export class SeatlayoutComponent implements OnInit {
-  paymentHandler:any
+  razorpayOptions:any
+  userName:any
   status:any
   message:any
   userId: any
@@ -31,8 +35,6 @@ export class SeatlayoutComponent implements OnInit {
   bookSeats(): any {
     let dialogRef= this.dialog.open(LoadingComponent, { disableClose: true })
         
-    this.selectedSeats.length > 3 ? this.paymentMode = 'Card' : this.paymentMode = 'Upi'
-
     let body = {
       userId: this.stateService.getUserId(),
       busId: this.stateService.getBusId(),
@@ -44,6 +46,7 @@ export class SeatlayoutComponent implements OnInit {
     this.stateService.setBusId('')
     this.seatService.post('updateAvailability', body)
       .subscribe(data => {
+        console.log("Seatlayout Done");
         console.log(data)
         this.status=data.status
         this.message=data.message
@@ -65,52 +68,42 @@ export class SeatlayoutComponent implements OnInit {
     this.totalAmount=this.selectedSeats.length*this.price
 
   }
+   
+  initializePayment() {
+    this.userService.post('payment/razorpay', {amount:this.totalAmount}).subscribe((data)=>{  
+      this.razorpayOptions.key=data.key
+      this.razorpayOptions.name=this.userName.toUpperCase()
+      this.razorpayOptions.amount=data.value.amount
+      this.razorpayOptions.order_id=data.value.id
+      let rzpl=new Razorpay(this.razorpayOptions)
+      rzpl.open()
+    })
+  }
 
-  initializePayment(amount: number) {
-    const paymentHandler = (<any>window).StripeCheckout.configure({
-      key: 'pk_test_51L2UUPSCtz67dN3OlUhkNVfTqTWnoSvSt6Sk02EWaQq8kqfks2Sv1VgMCVAdYUMIfiwncEmgCc3BEvDBCYzuVOGR004XEZrDz7',
-      locale: 'auto',
-      token: (stripeToken: any)=> {
-        console.log({stripeToken})
-        this.bookSeats()
-      }
-    });
-  
-    paymentHandler.open({
-      name:"Enter Your Card Details",
-      amount: amount*100
-    });
-  }
-  invokeStripe() {
-    if(!window.document.getElementById('stripe-script')) {
-      const script = window.document.createElement("script");
-      script.id = "stripe-script";
-      script.type = "text/javascript";
-      script.src = "https://checkout.stripe.com/checkout.js";
-      script.setAttribute('data-currency','inr'),
-      script.onload = () => {
-        this.paymentHandler = (<any>window).StripeCheckout.configure({
-          key: 'pk_test_sLUqHXtqXOkwSdPosC8ZikQ800snMatYMb',
-          locale: 'auto',
-          token: function (stripeToken: any) {
-            console.log(stripeToken)
-            alert('Payment has been successfull!');
-          }
-        });
-      }
-      window.document.body.appendChild(script);
-    }
-  }
-  constructor( private dialog:MatDialog,private seatService: SeatService, private stateService: StateService, private router: Router, private userService: UserserviceService) {
+  constructor(private zone:NgZone, private dialog:MatDialog,private seatService: SeatService, private stateService: StateService, private router: Router, private userService: UserserviceService) {
     this.selectedSeats = []
     this.seats = [];
     this.iterations = [];
     this.availability = []
   }
 
-  ngOnInit(): void {   
-    this.invokeStripe()
-    // this.stateService.setBusId('62834d66440bf862d703acc6')
+  ngOnInit(): void {         
+    this.razorpayOptions = {
+      'key': '',
+      'amount': '',
+      'currency': 'INR',
+      'name': '',
+      'description': `Proceed to Pay`,
+      'order_id': '',
+      'handler': (res: any) => {
+        console.log("In Handler")
+        console.log(res);
+        this.zone.run(()=>{
+          this.bookSeats()
+        })
+      }
+    }
+
     this.totalAmount=0
     if (this.stateService.busId != '') {
       this.seatService
@@ -130,7 +123,10 @@ export class SeatlayoutComponent implements OnInit {
       this.userService.post('bus/getBus', { id: this.stateService.getBusId() }).subscribe(data => {
         this.price = data.price
       })
-
+ 
+      this.userService.post('getUserName',{userId:this.stateService.getUserId()}).subscribe(data=>{
+        this.userName=data.userName
+      })
 
 
     }

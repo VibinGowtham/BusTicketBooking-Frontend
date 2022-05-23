@@ -19,8 +19,7 @@ export class AuthGuard implements CanActivate {
     if (!!this.stateService.getToken()) {
       this.token = this.stateService.getToken()?.slice(7)
       try {
-        let result = jwtDecode(this.token)
-        console.log(result);
+        jwtDecode(this.token)
         return true
       }
       catch (err) {

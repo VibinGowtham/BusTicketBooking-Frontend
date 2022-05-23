@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UserserviceService } from './services/userServices/userservice.service';
+
+declare var Razorpay:any
 
 @Component({
   selector: 'app-root',
@@ -7,14 +10,5 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  title = 'BusTicketBooking-Frontend';
-  paymentHandler:any = null;
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-  
-  
-  
 }

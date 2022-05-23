@@ -22,7 +22,6 @@ loginForm!:FormGroup
 
 postLoginDetails(){
   let body=this.loginForm.value
-  // this.loginForm.reset()
   this.userService.post('login', body).subscribe(data=>{
     console.log("In login");
     console.log(data);
@@ -35,13 +34,17 @@ postLoginDetails(){
       return
     }
     this.stateService.setUserId(decodedValue.id)
+    
+    console.log("UserId");
+    console.log(this.stateService.getUserId());
+    
     this.stateService.setToken(data.AccessToken)
     this.stateService.setRefreshToken(data.RefreshToken)
 
     this.message=data.message
     this.status=data.status
 
-    if(this.status===200) {
+    if(this.status===200) {     
       this.stateService.isSignedIn=true
       this.stateService.isAdmin=decodedValue.isAdmin
       setTimeout(() => {
