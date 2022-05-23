@@ -4,7 +4,7 @@
             <mat-icon [inline]="true" style="font-size:20px;margin-right:10px;">warning</mat-icon> <span>{{message}}</span>
         </span>
      </p>
-    <form id="inputContainer" [formGroup]="city">
+    <form id="inputContainer"  [formGroup]="city">
         <input type="text" formControlName="boardingLocation" list="boardingCities" placeholder="Boarding Location*">
         <input type="text" formControlName="destinationLocation" list="departureCities" placeholder="Destination Location*">
             <datalist id="boardingCities">

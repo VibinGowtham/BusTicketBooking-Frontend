@@ -27,12 +27,16 @@ export class RegisterComponent implements OnInit {
      
      this.status=data.status
      this.message=data.message
+
      if(data.status===200) {
       this.stateService.setIsRegistered(true)
       setTimeout(() => {
         this.router.navigateByUrl('user/login');
       }, 500); 
    }
+   setTimeout( ()=> {
+    this.status=0
+  }, 1500);
   })
  }
   constructor(private userService:UserserviceService,private router:Router,public stateService:StateService) { }

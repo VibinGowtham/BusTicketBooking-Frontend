@@ -35,21 +35,25 @@ export class BookComponent implements OnInit {
     if (boardingLocation === destinationLocation) {
       this.status = 403
       this.message = "Boarding and Depature locations cannot be same"
-      //  this.city.reset(this.initialValues)
+      setTimeout(() => {
+        this.status = 0
+      }, 2000);
       return
     }
 
     if (depatureDate === undefined || depatureDate === '') {
       this.status = 403
       this.message = "Depture date cannot be empty"
-      //this.city.reset(this.initialValues)
+      setTimeout(() => {
+        this.status = 0
+      }, 2000);
       return
     }
 
     this.city.value.boardingLocation = boardingLocation.toLowerCase()
     this.city.value.destinationLocation = destinationLocation.toLowerCase()
     this.city.value.depatureDate = parseInt(depatureDate.slice(8)) % 7
- 
+
     this.locationService.post('bus/filterBus', this.city.value).subscribe(data => {
       this.total = data.length
       this.busDetails = data
@@ -72,7 +76,7 @@ export class BookComponent implements OnInit {
   constructor(private locationService: LocationService, private stateServive: StateService, private router: Router) { }
 
   ngOnInit(): void {
- 
+
     this.city = new FormGroup({
       boardingLocation: new FormControl('', Validators.required),
       destinationLocation: new FormControl('', Validators.required),

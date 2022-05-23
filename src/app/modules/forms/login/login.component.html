@@ -4,7 +4,7 @@
 </span>
 </p>
 
-<p [ngClass]="status===404?'message failed':'initial'">
+<p [ngClass]="status===403?'message failed':'initial'">
     <span class="messageContainer">
         <mat-icon [inline]="true" style="font-size:20px;margin-right:10px;">warning</mat-icon> <span>{{message}}</span>
     </span>
@@ -13,7 +13,7 @@
 <div id="container">
   <div id="homeImage" class="divs"> </div>
   <div id="formContainer">
-    <form id="form" [formGroup]="loginForm">
+    <form id="form" (keydown.enter)="$event.preventDefault()" [formGroup]="loginForm">
 
       <h2 style="text-align: center; display: flex;justify-content: center;">
         <mat-icon [inline]="true" style="margin-right:8px;">login</mat-icon>
