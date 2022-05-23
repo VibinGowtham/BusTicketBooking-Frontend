@@ -14,6 +14,7 @@ import { UserserviceService } from "../../../services/userServices/userservice.s
 })
 
 export class SeatlayoutComponent implements OnInit {
+  paymentHandler:any
   status:any
   message:any
   userId: any
@@ -64,6 +65,42 @@ export class SeatlayoutComponent implements OnInit {
     this.totalAmount=this.selectedSeats.length*this.price
 
   }
+
+  initializePayment(amount: number) {
+    const paymentHandler = (<any>window).StripeCheckout.configure({
+      key: 'pk_test_51L2UUPSCtz67dN3OlUhkNVfTqTWnoSvSt6Sk02EWaQq8kqfks2Sv1VgMCVAdYUMIfiwncEmgCc3BEvDBCYzuVOGR004XEZrDz7',
+      locale: 'auto',
+      token: (stripeToken: any)=> {
+        console.log({stripeToken})
+        this.bookSeats()
+      }
+    });
+  
+    paymentHandler.open({
+      name:"Enter Your Card Details",
+      amount: amount*100
+    });
+  }
+  invokeStripe() {
+    if(!window.document.getElementById('stripe-script')) {
+      const script = window.document.createElement("script");
+      script.id = "stripe-script";
+      script.type = "text/javascript";
+      script.src = "https://checkout.stripe.com/checkout.js";
+      script.setAttribute('data-currency','inr'),
+      script.onload = () => {
+        this.paymentHandler = (<any>window).StripeCheckout.configure({
+          key: 'pk_test_sLUqHXtqXOkwSdPosC8ZikQ800snMatYMb',
+          locale: 'auto',
+          token: function (stripeToken: any) {
+            console.log(stripeToken)
+            alert('Payment has been successfull!');
+          }
+        });
+      }
+      window.document.body.appendChild(script);
+    }
+  }
   constructor( private dialog:MatDialog,private seatService: SeatService, private stateService: StateService, private router: Router, private userService: UserserviceService) {
     this.selectedSeats = []
     this.seats = [];
@@ -71,11 +108,9 @@ export class SeatlayoutComponent implements OnInit {
     this.availability = []
   }
 
-  ngOnInit(): void {
-    // this.stateService.setBusId("62834d66440bf862d703acc6")
-    // this.status=200
-    // this.message="Your Booking is Confirmed"
-    
+  ngOnInit(): void {   
+    this.invokeStripe()
+    // this.stateService.setBusId('62834d66440bf862d703acc6')
     this.totalAmount=0
     if (this.stateService.busId != '') {
       this.seatService

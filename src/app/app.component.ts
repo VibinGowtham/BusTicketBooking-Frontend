@@ -8,5 +8,13 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
   title = 'BusTicketBooking-Frontend';
+  paymentHandler:any = null;
 
+  constructor() { }
+
+  ngOnInit() {
+  }
+  
+  
+  
 }
